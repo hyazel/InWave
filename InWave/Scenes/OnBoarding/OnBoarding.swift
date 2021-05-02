@@ -63,13 +63,13 @@ struct OnBoarding: View {
             
             TabView(selection: $selectedTab,
                     content:  {
-                        OnBoardingView(title: Texts.page1)
+                        OnBoardingView(title: Texts.page1, icon: "worried_face")
                             .tag(0)
                             .padding([.leading, .trailing], 36)
-                        OnBoardingView(title: Texts.page2)
+                        OnBoardingView(title: Texts.page2, icon: "interested_face")
                             .tag(1)
                             .padding([.leading, .trailing], 36)
-                        OnBoardingView(title: Texts.page3)
+                        OnBoardingView(title: Texts.page3, icon: "happy_face")
                             .tag(2)
                             .padding([.leading, .trailing], 36)
                     })
@@ -83,7 +83,7 @@ struct OnBoarding: View {
                 }
                 .frame(width: 158, height: 54)
                 .foregroundColor(Color.white)
-                .background(Color.Palette.c1)
+                .background(Color.Palette.lagoon)
                 .cornerRadius(54)
                 .padding(.bottom, 64)
                 .offset(y: selectedTab == 2 ? 0 : 150)

@@ -20,21 +20,25 @@ public struct StatsView: View {
         
         HStack {
             VStack(spacing: 8) {
-                Text(leadingText).font(Font.headline2()).foregroundColor(.white)
+                Text(leadingText)
+                    .font(Font.title1())
+                    .foregroundColor(.white)
                 Text("SESSIONS")
-                    .font(Font.paragraph4())
+                    .font(Font.detail())
                     .foregroundColor(.white)
             }
             Spacer()
             HStack(spacing: 24) {
                 Divider()
                     .frame(width: 1.0, height: 30.0)
-                    .background(Color(red: 0.518, green: 0.584, blue: 0.631))
+                    .background(Color.Divider.primary())
                 
                 VStack(spacing: 8) {
-                    Text(trailingText).font(Font.headline2()).foregroundColor(.white)
+                    Text(trailingText)
+                        .font(Font.title1())
+                        .foregroundColor(.white)
                     Text("MINUTES")
-                        .font(Font.paragraph4())
+                        .font(Font.detail())
                         .foregroundColor(.white)
                 }
             }

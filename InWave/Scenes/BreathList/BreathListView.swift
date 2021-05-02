@@ -17,30 +17,42 @@ struct BreathListView: View {
     var body: some View {
         ZStack {
             Color.Background.primary().ignoresSafeArea()
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 LazyVGrid(
                     columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible())],
                     alignment: .center,
                     spacing: 16,
-                    pinnedViews: [.sectionHeaders, .sectionFooters]
+                    pinnedViews: [.sectionHeaders]
                 ) {
-                    Section(header: Text("Activités").frame(maxWidth: .infinity, alignment: .leading).foregroundColor(.white).padding(.leading, 0)) {
+                    Section(header: Text("Activités")
+                                .frame(maxWidth: .infinity,
+                                       alignment: .leading)
+                                .foregroundColor(.white)
+                                .padding(.leading, 0)) {
                         ForEach(Array(viewModel.breathCellViewModels.enumerated()), id: \.element.id) { (index, breath) in
-                            BreathCard(imageName: breath.iconName,
-                                       title: breath.title,
-                                       subtitle: breath.subtitle,
-                                       duration: breath.duration)
-                                .onTapGesture {
-                                    selectedBreath = viewModel.selectedBreath(index: index)
-                                       }
+                            Button(action: {
+                                selectedBreath = viewModel.selectedBreath(index: index)
+                            }, label: {
+                                BreathCard(imageName: breath.iconName,
+                                           title: breath.title,
+                                           subtitle: breath.subtitle,
+                                           duration: breath.duration,
+                                           imageSize: CGSize(width: 72, height: 72))
+                            })
+                            .buttonStyle(PressableButtonStyle())
                         }
                     }
                 }
             }
             .padding(.top, 16)
             .padding([.leading, .trailing], 16)
-            .sheet(item: $selectedBreath) { breath in
+            .fullScreenCover(item: $selectedBreath) { breath in
                 BreathPlayerView(viewModel: BreathViewModel(breath: breath))
+            }
+            
+            VStack {
+                Spacer()
+                Color.Background.primaryAlpha().frame(maxWidth: .infinity, maxHeight: 36)
             }
         }
     }

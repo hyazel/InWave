@@ -10,7 +10,7 @@ import SwiftUI
 extension Color {
     public enum Background {
         public static func primary() -> LinearGradient {
-            LinearGradient(gradient: Gradient(colors: [Color.Palette.c6, Color.Palette.c4]), startPoint: .bottom, endPoint: .top)
+            LinearGradient(gradient: Gradient(colors: [Color.Palette.darkOcean, Color.Palette.lake]), startPoint: .bottom, endPoint: .top)
         }
         
         public static func blue1() -> LinearGradient {
@@ -20,11 +20,15 @@ extension Color {
         public static func blue2() -> LinearGradient {
             LinearGradient(gradient: Gradient(colors: [Color(hex: 0x4EB7EE), Color(hex: 0x41CCEA)]), startPoint: .bottom, endPoint: .top)
         }
+        
+        public static func primaryAlpha() -> LinearGradient {
+            LinearGradient(gradient: Gradient(colors: [Color.Palette.darkOcean, Color.Palette.darkOcean.opacity(0)]), startPoint: .bottom, endPoint: .top)
+        }
     }
     
     public enum Divider {
         public static func primary() -> Color {
-            Color.Palette.gray1
+            Color.Palette.shell
         }
     }
     

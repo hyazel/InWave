@@ -17,7 +17,5 @@ final class AppDependencies {
         let dc = Self.container
         dc.register(dependencyType: UserRepositoryContract.self,
                     dependencyValue: UserRepository())
-//        dc.register(dependencyType: InWavePlayer.self,
-//                    dependencyValue: InWavePlayer())
     }
 }

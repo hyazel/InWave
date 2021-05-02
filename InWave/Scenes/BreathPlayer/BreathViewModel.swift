@@ -51,6 +51,11 @@ final class BreathViewModel: ObservableObject, Identifiable {
     @Published var currentNumber: Double  = 0
     @Published var isPlaying: Bool = true
     @Published var isMusicPlaying: Bool = true
+    @Published var strokeWidth: Double = 1
+    @Published var waveAnimation: (WaveAnimationType, CGFloat) = (.idleLow, 1)
+    @Published var breathSymbolIndex: Int = 1
+    var breathSymbolIndexAvailable: [Int] = []
+    
     let breathTitle: String
     var totalTime: String = ""
     
@@ -65,7 +70,7 @@ final class BreathViewModel: ObservableObject, Identifiable {
     private var breathTimer: Timer?
     private var countdownTimer: Timer?
     private lazy var feedbackGenerator: UIImpactFeedbackGenerator = {
-        let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         feedbackGenerator.prepare()
         return feedbackGenerator
     }()
@@ -85,7 +90,9 @@ final class BreathViewModel: ObservableObject, Identifiable {
         breathTitle = breath.name
         totalTime = formatNumber(breath.configuration.duration)
         
-        self.setupPlayer()
+        breathSymbolIndexAvailable = configureBreathSymbolsAvailable(breath: breath)
+        
+        setupPlayer()
         
         cycle = "CYCLE 01 / \(breath.configuration.cycleTotalNumber.formatStringWith0())"
     }
@@ -93,6 +100,7 @@ final class BreathViewModel: ObservableObject, Identifiable {
     deinit {
         breathTimer?.invalidate()
         countdownTimer?.invalidate()
+        player.stopMusic()
     }
 }
 
@@ -128,12 +136,14 @@ private extension BreathViewModel {
 private extension BreathViewModel {
     func startBreathing() {
         isPlaying = true
+        strokeWidth = 5
         emitManoeuvers()
         player.play(self.breathEngine.getCurrentAudio())
     }
     
     func emitManoeuvers() {
         manoeuverLogic()
+        feedbackGenerator.impactOccurred()
         
         breathTimer = nil
         breathTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
@@ -145,7 +155,6 @@ private extension BreathViewModel {
         print("totalSeconds \(totalSeconds)")
         // Increment totalSeconds
         self.totalSeconds += 1
-        
         // End session if beyond breath total duration
         guard self.totalSeconds < self.breath.configuration.duration else {
             finishSession()
@@ -154,18 +163,32 @@ private extension BreathViewModel {
         
         updateBreathManoeuverIfNeeded()
         
-        self.manoeuver = self.breathEngine.currentManoeuver.getTitle()
-        self.manoeuverTime = String(self.upperBounds - self.totalSeconds) + "s"
-        self.currentText = self.formatNumber(self.totalSeconds)
-        self.currentNumber = Double(self.totalSeconds) / Double(self.breath.configuration.duration)
+        waveAnimation = (WaveAnimationType.convert(from: breathEngine.currentManoeuver),
+                         2 / CGFloat(breathEngine.getCurrentManoeuverDuration()))
+        manoeuver = self.breathEngine.currentManoeuver.getTitle()
+        manoeuverTime = String(self.upperBounds - self.totalSeconds) + "s"
+        currentText = self.formatNumber(self.totalSeconds)
+        currentNumber = Double(self.totalSeconds) / Double(self.breath.configuration.duration)
+
+        switch breathEngine.currentManoeuver {
+        case .inhale:
+            breathSymbolIndex = 1
+        case .inHaleHold:
+            breathSymbolIndex = 2
+        case .exhale:
+            breathSymbolIndex = 3
+        case .exhaleHold:
+            breathSymbolIndex = 4
+        }
     }
-    
+    // 2 1
+    // 5
     func updateBreathManoeuverIfNeeded() {
         if self.totalSeconds == upperBounds {
             feedbackGenerator.impactOccurred()
             breathEngine.nextManoeuver()
             player.play(self.breathEngine.getCurrentAudio())
-            
+            strokeWidth = 5
             // Update cycle if needed
             if case .inhale = breathEngine.currentManoeuver {
                 currentCycle += 1
@@ -182,22 +205,24 @@ private extension BreathViewModel {
 // MARK: - Finished
 private extension BreathViewModel {
     func finishSession() {
-        self.breathTimer?.invalidate()
-        self.userRepository.totalSessionNumber += 1
-        self.userRepository.totalDailyTime += self.breath.configuration.duration
-        self.currentNumber = 1
-        self.viewState = .finished
+        breathTimer?.invalidate()
+        userRepository.totalSessionNumber += 1
+        userRepository.totalDailyTime += self.breath.configuration.duration
+        currentNumber = 1
+        viewState = .finished
+        player.toogleMusic()
     }
 }
 
 // MARK: - Player setup
 private extension BreathViewModel {
     func setupPlayer() {
-        player.play(.beach)
-        if !userRepository.isMusicmuted {
-            player.toogleMusic()
-        }
         isMusicPlaying = !userRepository.isMusicmuted
+        if !userRepository.isMusicmuted {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.player.play(.beach)
+            }
+        }
     }
 }
 
@@ -213,9 +238,9 @@ extension BreathViewModel {
     }
     
     func toogleMusic() {
+        player.toogleMusic()
         userRepository.isMusicmuted = !player.musicIsPlaying()
         isMusicPlaying.toggle()
-        player.toogleMusic()
     }
 }
 
@@ -225,6 +250,15 @@ private extension BreathViewModel {
         let minutes = Int(number / 60) < 10 ? "0\(Int(number / 60))" : "\(Int(number / 60))"
         let seconds = number % 60 < 10 ? "0\(number%60)" : "\(number%60)"
         return minutes + ":" + seconds
+    }
+    
+    func configureBreathSymbolsAvailable(breath: Breath) -> [Int] {
+        var array: [Int] = []
+        if breath.configuration.inhale > 0 { array.append(1) }
+        if breath.configuration.inHaleHold > 0 { array.append(2) }
+        if breath.configuration.exhale > 0 { array.append(3) }
+        if breath.configuration.exhaleHold > 0 { array.append(4) }
+        return array
     }
 }
 

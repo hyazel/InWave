@@ -13,12 +13,14 @@ public struct BreathCard: View {
     private let title: String
     private let subtitle: String
     private let duration: String
+    private let imageSize: CGSize
     
-    public init(imageName: String, title: String, subtitle: String, duration: String) {
+    public init(imageName: String, title: String, subtitle: String, duration: String, imageSize: CGSize = CGSize(width: 92, height: 92)) {
         self.imageName = imageName
         self.title = title
         self.subtitle = subtitle
         self.duration = duration
+        self.imageSize = imageSize
     }
     
     public var body: some View {
@@ -26,24 +28,32 @@ public struct BreathCard: View {
             VStack() {
                 Image(imageName)
                     .resizable()
-                    .frame(width: 92, height: 92)
+                    .frame(width: imageSize.width, height: imageSize.height)
                     .clipShape(Circle())
-                    .padding(.top, 24)
                 VStack(spacing: 20) {
                     VStack(spacing: 6) {
-                        Text(title).font(Font.paragraph2())
+                        Text(title)
+                            .font(Font.detail())
                             .foregroundColor(.black)
                             .multilineTextAlignment(.center)
-                        Text(subtitle).font(Font.paragraph5()).foregroundColor(.black).lineLimit(10).multilineTextAlignment(.center)
+                        Text(subtitle)
+                            .font(Font.title3())
+                            .foregroundColor(.black)
+                            .lineLimit(2)
+                            .multilineTextAlignment(.center)
+                            .frame(height: 35)
                     }
-                    Text(duration).font(Font.paragraph4()).foregroundColor(Color.Palette.gray1)
-                }.padding([.trailing, .leading, .bottom], 18)
+                    Text(duration)
+                        .font(Font.detail())
+                        .foregroundColor(Color.Palette.shell)
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding([.trailing, .leading, .bottom], 12)
+            .padding(.top, 24)
             .background(Color.white)
             .cornerRadius(24)
         }
-        .frame(width: 182, height: 234)
     }
 }
 
@@ -51,10 +61,23 @@ struct BreathCard_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.Background.primary().edgesIgnoringSafeArea(.all)
-            BreathCard(imageName: "test1",
-                       title: "Marche Afghane",
-                       subtitle: "Marche Afghane, to reach the calm.",
-                       duration: "30 MIN")
+            HStack {
+                BreathCard(imageName: "test1",
+                           title: "Respiration Relaxante",
+                           subtitle: "Marche Afghane, to reach the calm.",
+                           duration: "30 MIN",
+                           imageSize: CGSize(width: 92,
+                                             height: 92))
+                    .frame(width: 182, height: 234)
+                
+                BreathCard(imageName: "test1",
+                           title: "Marche Afghane",
+                           subtitle: "Marche Afghane",
+                           duration: "30 MIN",
+                           imageSize: CGSize(width: 92,
+                                             height: 92))
+                    .frame(width: 182, height: 234)
+            }
         }
     }
 }

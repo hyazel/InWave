@@ -18,12 +18,11 @@ public struct HomeTimeView: View {
     public var body: some View {
         VStack(alignment: .leading) {
             Text("Il est :")
-                .font(Font.paragraph1())
-                .foregroundColor(.white)
+                .font(Font.title2())
             Text(time)
-                .font(Font.headline1(.extraLarge))
-                .foregroundColor(.white)
+                .font(Font.headline1())
         }
+        .foregroundColor(.white)
     }
 }
 

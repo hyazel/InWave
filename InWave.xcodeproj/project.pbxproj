@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F903AE6925DFE5DB00747D90 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F903AE6825DFE5DB00747D90 /* Lottie */; };
-		F903AE7025DFE69F00747D90 /* data_anim_loop_high.json in Resources */ = {isa = PBXBuildFile; fileRef = F903AE6F25DFE69F00747D90 /* data_anim_loop_high.json */; };
 		F903AE7725E0163200747D90 /* CongratsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F903AE7625E0163200747D90 /* CongratsView.swift */; };
 		F9104DC92603AAED00C6D972 /* InWavePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93E0D2525F6548100643C91 /* InWavePlayer.swift */; };
 		F9104DF02603B84800C6D972 /* music-beach.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9104DED2603B84800C6D972 /* music-beach.mp3 */; };
@@ -18,6 +17,7 @@
 		F9291D17260CE2CD005ABABA /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9291D16260CE2CD005ABABA /* AppDependencies.swift */; };
 		F94251F226149F14000B4E1E /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94251F126149F14000B4E1E /* Journey.swift */; };
 		F94304DB25BEDB31006FC535 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94304DA25BEDB31006FC535 /* OnBoarding.swift */; };
+		F9590381262478BF00BE1342 /* BreathSymbolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9590380262478BF00BE1342 /* BreathSymbolsView.swift */; };
 		F95B34742573DB84006AF485 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95B34732573DB84006AF485 /* TabBarView.swift */; };
 		F95B347D2573EB03006AF485 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95B347C2573EB03006AF485 /* ActivityView.swift */; };
 		F95B34842573EE96006AF485 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95B34832573EE96006AF485 /* HomeView.swift */; };
@@ -32,6 +32,11 @@
 		F98D2B17260CE9A0001CBC4F /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911452F25A9F715002C1127 /* NSAttributedStringExtensions.swift */; };
 		F98D2B18260CE9A0001CBC4F /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93E0D2C25F6574000643C91 /* URLExtensions.swift */; };
 		F98D2B30260CEA74001CBC4F /* libCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F98D2B04260CE987001CBC4F /* libCommon.a */; };
+		F99A4539262F24B500D27215 /* 4_fall.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4535262F24B400D27215 /* 4_fall.json */; };
+		F99A453A262F24B500D27215 /* 3_idle_high.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4536262F24B500D27215 /* 3_idle_high.json */; };
+		F99A453B262F24B500D27215 /* 2_rise.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4537262F24B500D27215 /* 2_rise.json */; };
+		F99A453C262F24B500D27215 /* 1_idle_low.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4538262F24B500D27215 /* 1_idle_low.json */; };
+		F9B30B2726150C1200EAE40B /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B30B2626150C1200EAE40B /* PressableButtonStyle.swift */; };
 		F9BA63F125A735C500729E88 /* ColorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BA63F025A735C500729E88 /* ColorsExtensions.swift */; };
 		F9BA63FD25A7362400729E88 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BA63FC25A7362400729E88 /* Palette.swift */; };
 		F9BA640925A73FC300729E88 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BA640825A73FC300729E88 /* Colors.swift */; };
@@ -65,10 +70,6 @@
 		F9DEA42E260CF67D00885587 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D14F05255ED579005E9A3C /* StorageKeys.swift */; };
 		F9DEA43A260CFA9000885587 /* HomeViewModelTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA439260CFA9000885587 /* HomeViewModelTimer.swift */; };
 		F9DEA441260CFAA500885587 /* BreathCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA440260CFAA500885587 /* BreathCellViewModel.swift */; };
-		F9DEA48C260E18DC00885587 /* 1_idle_low.json in Resources */ = {isa = PBXBuildFile; fileRef = F9DEA488260E18DC00885587 /* 1_idle_low.json */; };
-		F9DEA48D260E18DC00885587 /* 2_rise.json in Resources */ = {isa = PBXBuildFile; fileRef = F9DEA489260E18DC00885587 /* 2_rise.json */; };
-		F9DEA48E260E18DC00885587 /* 3_idle_high.json in Resources */ = {isa = PBXBuildFile; fileRef = F9DEA48A260E18DC00885587 /* 3_idle_high.json */; };
-		F9DEA48F260E18DC00885587 /* 4_fall.json in Resources */ = {isa = PBXBuildFile; fileRef = F9DEA48B260E18DC00885587 /* 4_fall.json */; };
 		F9DEA49C260E24B200885587 /* Waves.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA49B260E24B200885587 /* Waves.swift */; };
 		F9E984BB25B329DF00FA8E50 /* BreathPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E984BA25B329DF00FA8E50 /* BreathPlayerView.swift */; };
 		F9EEA3EB2613AEBC006AA6FA /* pads2_insp_5s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9EEA3DF2613AEBC006AA6FA /* pads2_insp_5s.mp3 */; };
@@ -174,7 +175,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F903AE6F25DFE69F00747D90 /* data_anim_loop_high.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data_anim_loop_high.json; sourceTree = "<group>"; };
 		F903AE7625E0163200747D90 /* CongratsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsView.swift; sourceTree = "<group>"; };
 		F90AEAF425F14414000266FF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		F9104DED2603B84800C6D972 /* music-beach.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "music-beach.mp3"; sourceTree = "<group>"; };
@@ -191,6 +191,7 @@
 		F943042925B5DA83006FC535 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		F94304DA25BEDB31006FC535 /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
 		F94304E125BEDDA6006FC535 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		F9590380262478BF00BE1342 /* BreathSymbolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathSymbolsView.swift; sourceTree = "<group>"; };
 		F95B34732573DB84006AF485 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F95B347C2573EB03006AF485 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		F95B34832573EE96006AF485 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -201,7 +202,12 @@
 		F98D2ADE260CE486001CBC4F /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		F98D2B04260CE987001CBC4F /* libCommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F98D2B06260CE987001CBC4F /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		F99A4535262F24B400D27215 /* 4_fall.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 4_fall.json; sourceTree = "<group>"; };
+		F99A4536262F24B500D27215 /* 3_idle_high.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3_idle_high.json; sourceTree = "<group>"; };
+		F99A4537262F24B500D27215 /* 2_rise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 2_rise.json; sourceTree = "<group>"; };
+		F99A4538262F24B500D27215 /* 1_idle_low.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1_idle_low.json; sourceTree = "<group>"; };
 		F9AC5C2125ACDF3D00B85FC1 /* BreathCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathCard.swift; sourceTree = "<group>"; };
+		F9B30B2626150C1200EAE40B /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
 		F9BA63F025A735C500729E88 /* ColorsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtensions.swift; sourceTree = "<group>"; };
 		F9BA63FC25A7362400729E88 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		F9BA640825A73FC300729E88 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -235,10 +241,6 @@
 		F9DEA425260CF63900885587 /* JourneyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyList.swift; sourceTree = "<group>"; };
 		F9DEA439260CFA9000885587 /* HomeViewModelTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTimer.swift; sourceTree = "<group>"; };
 		F9DEA440260CFAA500885587 /* BreathCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathCellViewModel.swift; sourceTree = "<group>"; };
-		F9DEA488260E18DC00885587 /* 1_idle_low.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1_idle_low.json; sourceTree = "<group>"; };
-		F9DEA489260E18DC00885587 /* 2_rise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 2_rise.json; sourceTree = "<group>"; };
-		F9DEA48A260E18DC00885587 /* 3_idle_high.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3_idle_high.json; sourceTree = "<group>"; };
-		F9DEA48B260E18DC00885587 /* 4_fall.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 4_fall.json; sourceTree = "<group>"; };
 		F9DEA49B260E24B200885587 /* Waves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waves.swift; sourceTree = "<group>"; };
 		F9E984BA25B329DF00FA8E50 /* BreathPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathPlayerView.swift; sourceTree = "<group>"; };
 		F9EEA3DF2613AEBC006AA6FA /* pads2_insp_5s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pads2_insp_5s.mp3; sourceTree = "<group>"; };
@@ -333,12 +335,11 @@
 		F93E0D3325F6642400643C91 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F99A4535262F24B400D27215 /* 4_fall.json */,
+				F99A4538262F24B500D27215 /* 1_idle_low.json */,
+				F99A4536262F24B500D27215 /* 3_idle_high.json */,
+				F99A4537262F24B500D27215 /* 2_rise.json */,
 				F9EEA3D42613AE86006AA6FA /* Audio */,
-				F9DEA488260E18DC00885587 /* 1_idle_low.json */,
-				F9DEA489260E18DC00885587 /* 2_rise.json */,
-				F9DEA48A260E18DC00885587 /* 3_idle_high.json */,
-				F9DEA48B260E18DC00885587 /* 4_fall.json */,
-				F903AE6F25DFE69F00747D90 /* data_anim_loop_high.json */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -366,6 +367,7 @@
 				F9AC5C2125ACDF3D00B85FC1 /* BreathCard.swift */,
 				F94304E125BEDDA6006FC535 /* OnBoardingView.swift */,
 				F95B347C2573EB03006AF485 /* ActivityView.swift */,
+				F9590380262478BF00BE1342 /* BreathSymbolsView.swift */,
 			);
 			path = Molecules;
 			sourceTree = "<group>";
@@ -386,6 +388,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F9B30B2526150C0400EAE40B /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				F9B30B2626150C1200EAE40B /* PressableButtonStyle.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		F9BA63EF25A735B100729E88 /* Modifiers */ = {
@@ -502,6 +512,7 @@
 		F9D14EE5255ED29E005E9A3C /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				F9B30B2526150C0400EAE40B /* Styles */,
 				F9DEA495260E22F300885587 /* Shapes */,
 				F9BA63EF25A735B100729E88 /* Modifiers */,
 				F95B347B2573EABE006AF485 /* Molecules */,
@@ -847,17 +858,16 @@
 			files = (
 				F9EEA3FF2613B010006AA6FA /* chrono_2.mp3 in Resources */,
 				F9EEA3ED2613AEBC006AA6FA /* pads2_insp_8s.mp3 in Resources */,
-				F9DEA48D260E18DC00885587 /* 2_rise.json in Resources */,
 				F9EEA3F12613AEBC006AA6FA /* pads2_insp_6s.mp3 in Resources */,
 				F9D14E88255ED0A7005E9A3C /* Preview Assets.xcassets in Resources */,
 				F9EEA3EE2613AEBC006AA6FA /* pads2_exp_5s.mp3 in Resources */,
-				F9DEA48E260E18DC00885587 /* 3_idle_high.json in Resources */,
+				F99A453B262F24B500D27215 /* 2_rise.json in Resources */,
 				F9D14E85255ED0A7005E9A3C /* Assets.xcassets in Resources */,
 				F9EEA3FE2613B00F006AA6FA /* chrono_1.mp3 in Resources */,
+				F99A453A262F24B500D27215 /* 3_idle_high.json in Resources */,
 				F9104DF02603B84800C6D972 /* music-beach.mp3 in Resources */,
-				F9DEA48F260E18DC00885587 /* 4_fall.json in Resources */,
 				F9EEA40F2613B5BB006AA6FA /* stop_son_bref.mp3 in Resources */,
-				F903AE7025DFE69F00747D90 /* data_anim_loop_high.json in Resources */,
+				F99A453C262F24B500D27215 /* 1_idle_low.json in Resources */,
 				F9EEA3EC2613AEBC006AA6FA /* pads2_insp_7s.mp3 in Resources */,
 				F9EEA3F02613AEBC006AA6FA /* pads2_exp_8s.mp3 in Resources */,
 				F9EEA3F62613AEBC006AA6FA /* pads2_insp_4s.mp3 in Resources */,
@@ -865,8 +875,8 @@
 				F9EEA4082613B595006AA6FA /* Inspi_son_bref.mp3 in Resources */,
 				F9EEA3F52613AEBC006AA6FA /* pads2_exp_7s.mp3 in Resources */,
 				F9EEA3EF2613AEBC006AA6FA /* pads2_exp_3s.mp3 in Resources */,
+				F99A4539262F24B500D27215 /* 4_fall.json in Resources */,
 				F9EEA4072613B595006AA6FA /* expir_son_bref.mp3 in Resources */,
-				F9DEA48C260E18DC00885587 /* 1_idle_low.json in Resources */,
 				F9EEA3F32613AEBC006AA6FA /* pads2_exp_4s.mp3 in Resources */,
 				F9EEA3EB2613AEBC006AA6FA /* pads2_insp_5s.mp3 in Resources */,
 				F9EEA3F42613AEBC006AA6FA /* pads2_insp_3s.mp3 in Resources */,
@@ -985,7 +995,9 @@
 				F9DEA3FF260CEFD900885587 /* BreathCard.swift in Sources */,
 				F9291CD5260CA25B005ABABA /* Modifier.swift in Sources */,
 				F9BA640925A73FC300729E88 /* Colors.swift in Sources */,
+				F9B30B2726150C1200EAE40B /* PressableButtonStyle.swift in Sources */,
 				F9DEA49C260E24B200885587 /* Waves.swift in Sources */,
+				F9590381262478BF00BE1342 /* BreathSymbolsView.swift in Sources */,
 				F95B347D2573EB03006AF485 /* ActivityView.swift in Sources */,
 				F9BA63F125A735C500729E88 /* ColorsExtensions.swift in Sources */,
 				F9DEA405260CF04800885587 /* StatsView.swift in Sources */,
@@ -1188,9 +1200,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"InWave/Preview Content\"";
-				DEVELOPMENT_TEAM = RCSU9599FQ;
+				DEVELOPMENT_TEAM = KNR6KF3VJA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InWave/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1198,10 +1211,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.InWave;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inwave.InWave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = InWave_Dev;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1211,9 +1225,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"InWave/Preview Content\"";
-				DEVELOPMENT_TEAM = RCSU9599FQ;
+				DEVELOPMENT_TEAM = KNR6KF3VJA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InWave/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1221,10 +1236,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.InWave;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inwave.InWave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = InWave_Dev;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1386,7 +1402,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = DesignSystem/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1416,7 +1432,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = DesignSystem/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

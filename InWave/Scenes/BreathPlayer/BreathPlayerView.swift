@@ -8,47 +8,179 @@
 
 import SwiftUI
 import Core
+import DesignSystem
 
 struct BreathPlayerView: View {
     @StateObject var viewModel: BreathViewModel
     @Environment(\.presentationMode) private var presentationMode
     @State private var startAnimation: Bool = false
+    @State private var strokeWidth: Double = 12
+    
+    @State var test = false
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .center)) {
-            Color.Background.primary()
+            Color
+                .Background.primary()
                 .ignoresSafeArea(.all)
                 .opacity(viewModel.viewState.hasFinished() ? 0.8 : 1)
+            
             VStack {
+                Text(viewModel.breathTitle)
+                    .font(Font.title2())
+                    .foregroundColor(.white)
                 Spacer()
-                ZStack {
-//                    LottieView()
-//                    Wave(firstCurveX: 0.4, secondCurveX: 0.55, yOffset: startAnimation ? 0.5 : -0.5)
-//                        .fill(Color.Background.blue1())
-//                        .frame(maxWidth: .infinity, maxHeight: 300)
-//                        .animation(Animation
-//                                    .easeInOut(duration: 0.5)
-//                                    .repeat(while: viewModel.viewState.hasNotStarted(), autoreverses: true))
-//
-//                    Wave(firstCurveX: 0.2, secondCurveX: 0.75, yOffset: startAnimation ? 0.7 : -0.7)
-//                        .fill(Color.Background.blue2())
-//                        .frame(maxWidth: .infinity, maxHeight: 300)
-//                        .animation(Animation
-//                                    .easeInOut(duration: 0.6)
-//                                    .repeat(while: viewModel.viewState.hasNotStarted(), autoreverses: true))
-                }
-                
             }
-            .ignoresSafeArea()
+            .padding(.top, 14)
+            
+            
+            Text(viewModel.cycle)
+                .font(Font.detail())
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .offset(y: -180)
+            
+            HStack {
+                Spacer()
+                Image("island_big")
+            }
+            .offset(y: 100)
+            
+            BreathSymbolsView(indexAvailable: viewModel.breathSymbolIndexAvailable,
+                              indexHighlighted: $viewModel.breathSymbolIndex)
+                .offset(x: 0, y: -130)
+            
+            switch viewModel.viewState {
+            case .finished:
+                ZStack {
+                    LottieView(type: .idleLow,
+                               animationSpeed: viewModel.waveAnimation.1)
+                        .frame(maxWidth: .infinity,
+                               maxHeight: .infinity)
+                        .ignoresSafeArea()
+                    CongratsView()
+                        .padding(.horizontal, 24)
+                }
+            case .notStarted:
+                ZStack {
+                    LottieView(type: .idleLow,
+                               animationSpeed: viewModel.waveAnimation.1)
+                        .frame(maxWidth: .infinity,
+                               maxHeight: .infinity)
+                        .ignoresSafeArea()
+                    Button {
+                        viewModel.viewState = .countdown
+                    } label: {
+                        Text("Commencer")
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, maxHeight: 54)
+                            .background(Color.orange)
+                            .cornerRadius(54)
+                            .shadow(color: Color.black.opacity(0.15), radius: 12.0, x: 0, y: 0)
+                    }.padding(.horizontal, 53)
+                    .offset(y: 50)
+                    
+                }
+            case .countdown:
+                ZStack {
+                    LottieView(type: .idleLow,
+                               animationSpeed: viewModel.waveAnimation.1)
+                        .frame(maxWidth: .infinity,
+                               maxHeight: .infinity)
+                        .ignoresSafeArea()
+                    Text(viewModel.countdownTime)
+                        .font(Font.headline1())
+                        .foregroundColor(.white)
+                }
+            case .started:
+                ZStack {
+                    VStack {
+                        Spacer()
+                        switch viewModel.waveAnimation.0 {
+                        case .idleLow:
+                            LottieView(type: viewModel.waveAnimation.0,
+                                       animationSpeed: viewModel.waveAnimation.1)
+                                .frame(maxWidth: .infinity,
+                                       maxHeight: .infinity)
+                                .ignoresSafeArea()
+                        case .rise:
+                            LottieView(type: viewModel.waveAnimation.0,
+                                       animationSpeed: viewModel.waveAnimation.1)
+                                .frame(maxWidth: .infinity,
+                                       maxHeight: .infinity)
+                                .ignoresSafeArea()
+                        case .fall:
+                            LottieView(type: viewModel.waveAnimation.0,
+                                       animationSpeed: viewModel.waveAnimation.1)
+                                .frame(maxWidth: .infinity,
+                                       maxHeight: .infinity)
+                                .ignoresSafeArea()
+                        case .idleHigh:
+                            LottieView(type: viewModel.waveAnimation.0,
+                                       animationSpeed: viewModel.waveAnimation.1)
+                                .frame(maxWidth: .infinity,
+                                       maxHeight: .infinity)
+                                .ignoresSafeArea()
+                        }
+                        
+                    }
+                    
+                    HStack {
+                        Text(viewModel.manoeuver)
+                            .font(Font.headline2())
+                            .foregroundColor(.white)
+                        Text(viewModel.manoeuverTime)
+                            .font(Font.headline2())
+                            .foregroundColor(.white)
+                    }
+                    .offset(y: 100)
+                    
+                    // MARK: - Player
+                    VStack {
+                        Spacer()
+                        VStack(spacing: 56) {
+                            VStack(spacing: 14) {
+                                ProgressView(value: viewModel.currentNumber, total: 1)
+                                HStack {
+                                    Text(viewModel.currentText)
+                                        .font(Font.title3())
+                                        .foregroundColor(.white)
+                                    Spacer()
+                                    Text(viewModel.totalTime)
+                                        .font(Font.title3())
+                                        .foregroundColor(.white)
+                                }
+                            }
+                            Button(action: {
+                                viewModel.tooglePlayer()
+                            }, label: {
+                                Image(viewModel.isPlaying ? "pause" : "play")
+                                    .resizable()
+                                    .frame(width: 64, height: 64)
+                            })
+                        }
+                        .padding()
+                    }
+                }
+            }
             
             HStack {
                 VStack {
-                    Image(systemName: "xmark")
-                        .frame(width: 46, height: 46)
-                        .foregroundColor(.white)
-                        .onTapGesture {
-                            presentationMode.wrappedValue.dismiss()
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        ZStack {
+                            Circle().stroke(Color.white, lineWidth: 2)
+                                .frame(width: 36, height: 36)
+                            
+                            Image(systemName: "xmark")
+                                .frame(width: 36, height: 36)
+                                .foregroundColor(.white)
                         }
+                    }
+                    .frame(width: 46, height: 46)
+                    .shadow(color: Color.black.opacity(0.15), radius: 12.0, x: 0, y: 0)
+                    .padding(.leading, 10)
                     Spacer()
                 }
                 Spacer()
@@ -60,86 +192,14 @@ struct BreathPlayerView: View {
                     Button {
                         viewModel.toogleMusic()
                     } label: {
-                        Image(systemName: viewModel.isMusicPlaying ? "pause" : "play")
+                        Image(viewModel.isMusicPlaying ? "speaker_on" : "speaker_off")
                             .frame(width: 46, height: 46)
                             .foregroundColor(.white)
                     }
+                    .frame(width: 46, height: 46)
+                    .shadow(color: Color.black.opacity(0.15), radius: 12.0, x: 0, y: 0)
+                    .padding(.trailing, 10)
                     Spacer()
-                }
-            }
-            
-            VStack {
-                Text(viewModel.breathTitle)
-                    .foregroundColor(.white)
-                Spacer()
-            }
-            .padding(.top, 12)
-            
-            GeometryReader { geometry in
-                Text(viewModel.cycle)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .offset(x: 0, y: geometry.size.height * 0.33 - 120)
-            }
-            
-            switch viewModel.viewState {
-            case .finished:
-                CongratsView().padding(.horizontal, 24)
-            case .notStarted:
-                GeometryReader { geometry in
-                    Text("Commencer")
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, maxHeight: 54)
-                        .background(Color.orange)
-                        .cornerRadius(54)
-                        .padding(.horizontal, 53)
-                        .offset(x: 0, y: geometry.size.height * 0.33)
-                        .onTapGesture {
-                            viewModel.viewState = .countdown
-                        }
-                }
-            case .countdown:
-                Text(viewModel.countdownTime).foregroundColor(.white).font(Font.headline1(.extraLarge))
-            case .started:
-                VStack {
-                    GeometryReader { geometry in
-                        HStack {
-                            Text(viewModel.manoeuver).foregroundColor(.white).font(Font.headline1())
-                            Text(viewModel.manoeuverTime).foregroundColor(.blue).font(Font.headline1())
-                                .frame(width: 50)
-                        }
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 16)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.Palette.c4)
-                        .overlay(
-                                RoundedRectangle(cornerRadius: 60)
-                                    .stroke(Color.white.opacity(0.5), lineWidth: 1)
-                            )
-                        .cornerRadius(60)
-                        .padding(.horizontal, 80)
-                        .offset(x: 0, y: geometry.size.height * 0.33)
-                    }
-                    
-                    Spacer()
-                    VStack(spacing: 56) {
-                        VStack(spacing: 14) {
-                            ProgressView(value: viewModel.currentNumber, total: 1)
-                            HStack {
-                                Text(viewModel.currentText).foregroundColor(.white)
-                                Spacer()
-                                Text(viewModel.totalTime).foregroundColor(.white)
-                            }
-                        }
-                        Button(action: {
-                            viewModel.tooglePlayer()
-                        }, label: {
-                            Image(viewModel.isPlaying ? "pause" : "settings")
-                                .resizable()
-                                .frame(width: 64, height: 64)
-                        })
-                    }
-                    .padding()
                 }
             }
         }
@@ -161,5 +221,87 @@ struct BreathPlayerView_Previews: PreviewProvider {
                                                                duration: 5))
         
         return BreathPlayerView(viewModel: BreathViewModel(breath: breath))
+    }
+}
+
+/// An animatable modifier that is used for observing animations for a given animatable value.
+struct AnimationCompletionObserverModifier<Value>: AnimatableModifier where Value: VectorArithmetic {
+    
+    /// While animating, SwiftUI changes the old input value to the new target value using this property. This value is set to the old value until the animation completes.
+    var animatableData: Value {
+        didSet {
+            notifyCompletionIfFinished()
+        }
+    }
+    
+    /// The target value for which we're observing. This value is directly set once the animation starts. During animation, `animatableData` will hold the oldValue and is only updated to the target value once the animation completes.
+    private var targetValue: Value
+    
+    /// The completion callback which is called once the animation completes.
+    private var completion: () -> Void
+    
+    init(observedValue: Value, completion: @escaping () -> Void) {
+        self.completion = completion
+        self.animatableData = observedValue
+        targetValue = observedValue
+    }
+    
+    /// Verifies whether the current animation is finished and calls the completion callback if true.
+    private func notifyCompletionIfFinished() {
+        guard animatableData == targetValue else { return }
+        
+        /// Dispatching is needed to take the next runloop for the completion callback.
+        /// This prevents errors like "Modifying state during view update, this will cause undefined behavior."
+        DispatchQueue.main.async {
+            self.completion()
+        }
+    }
+    
+    func body(content: Content) -> some View {
+        /// We're not really modifying the view so we can directly return the original input value.
+        return content
+    }
+}
+
+extension View {
+    
+    /// Calls the completion handler whenever an animation on the given value completes.
+    /// - Parameters:
+    ///   - value: The value to observe for animations.
+    ///   - completion: The completion callback to call once the animation completes.
+    /// - Returns: A modified `View` instance with the observer attached.
+    func onAnimationCompleted<Value: VectorArithmetic>(for value: Value, completion: @escaping () -> Void) -> ModifiedContent<Self, AnimationCompletionObserverModifier<Value>> {
+        return modifier(AnimationCompletionObserverModifier(observedValue: value, completion: completion))
+    }
+}
+
+struct ReversingScale: AnimatableModifier {
+    var value: CGFloat
+    
+    private var target: CGFloat
+    private var onEnded: () -> ()
+    
+    init(to value: CGFloat, onEnded: @escaping () -> () = {}) {
+        self.target = value
+        self.value = value
+        self.onEnded = onEnded // << callback
+    }
+    
+    var animatableData: CGFloat {
+        get { value }
+        set { value = newValue
+            // newValue here is interpolating by engine, so changing
+            // from previous to initially set, so when they got equal
+            // animation ended
+            if newValue == target {
+                onEnded()
+            }
+        }
+    }
+    
+    func body(content: Content) -> some View {
+        content.overlay(RoundedRectangle(cornerRadius: 60)
+                            .strokeBorder(Color.white.opacity(0.5), lineWidth: value)
+        )
     }
 }

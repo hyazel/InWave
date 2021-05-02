@@ -9,14 +9,14 @@
 import Foundation
 import SwiftUI
 
-//public extension View {
-//    static var screenSize: CGRect {
-//        UIScreen.main.bounds
-//    }
-//    static var height: CGFloat {
-//        screenSize.height
-//    }
-//    static var width: CGFloat {
-//        screenSize.width
-//    }
-//}
+public extension View {
+    static var screenSize: CGRect {
+        UIScreen.main.bounds
+    }
+    static var height: CGFloat {
+        screenSize.height
+    }
+    static var width: CGFloat {
+        screenSize.width
+    }
+}

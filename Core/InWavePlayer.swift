@@ -22,23 +22,26 @@ public final class InWavePlayer {
         case countdownEnd
     }
     
-    private var musicPlayer: AVAudioPlayer = AVAudioPlayer()
+    private static var musicPlayer: AVAudioPlayer = AVAudioPlayer()
     private var breathPlayer: AVAudioPlayer = AVAudioPlayer()
     private var longInhaleBreathPlayer: AVAudioPlayer = AVAudioPlayer()
     private var longExhaleBreathPlayer: AVAudioPlayer = AVAudioPlayer()
     private var countDownPlayer: AVAudioPlayer = AVAudioPlayer()
+//    private static var musicPlayerIsPlaying: Bool = false
     
     public init() {
-        musicPlayer.numberOfLoops = -1
-        
-        longExhaleBreathPlayer.volume = 0.6
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+        } catch {
+            
+        }
     }
     
     func loadMusicBeach() {
         do {
-            musicPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "music-beach.mp3")))
-            musicPlayer.prepareToPlay()
-            musicPlayer.volume = 0
+            Self.musicPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "music-beach.mp3")))
+            Self.musicPlayer.prepareToPlay()
+            Self.musicPlayer.numberOfLoops = -1
         } catch {
             print("player init failed")
         }
@@ -48,7 +51,6 @@ public final class InWavePlayer {
         do {
             countDownPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "chrono_1.mp3")))
             countDownPlayer.prepareToPlay()
-            countDownPlayer.volume = 0.7
         } catch {
             print("player init failed")
         }
@@ -58,7 +60,6 @@ public final class InWavePlayer {
         do {
             countDownPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "chrono_2.mp3")))
             countDownPlayer.prepareToPlay()
-            countDownPlayer.volume = 0.7
         } catch {
             print("player init failed")
         }
@@ -93,9 +94,8 @@ public final class InWavePlayer {
     
     func loadBreathLongExhale(duration: Int) {
         do {
-            longExhaleBreathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "pads2_insp_\(duration)s.mp3")))
+            longExhaleBreathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "pads2_exp_\(duration)s.mp3")))
             longExhaleBreathPlayer.prepareToPlay()
-            longExhaleBreathPlayer.volume = 0.6
         } catch {
             print("player init failed")
         }
@@ -103,9 +103,8 @@ public final class InWavePlayer {
     
     func loadBreathLongInhale(duration: Int) {
         do {
-            longInhaleBreathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "pads2_exp_\(duration)s.mp3")))
+            longInhaleBreathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "pads2_insp_\(duration)s.mp3")))
             longExhaleBreathPlayer.prepareToPlay()
-            longInhaleBreathPlayer.volume = 0.6
         } catch {
             print("player init failed")
         }
@@ -115,42 +114,53 @@ public final class InWavePlayer {
         switch audio {
         case .beach:
             loadMusicBeach()
-            musicPlayer.play()
-            musicPlayer.setVolume(0.7, fadeDuration: 4)
+            Self.musicPlayer.play()
+            Self.musicPlayer.volume = 0.05
         case .inhale(let duration):
             loadBreathInhale()
             breathPlayer.play()
+            breathPlayer.volume = 0.05
             loadBreathLongInhale(duration: duration)
             longInhaleBreathPlayer.play()
+            longInhaleBreathPlayer.volume = 0.05
         case .exhale(let duration):
             loadBreathExhale()
             breathPlayer.play()
+            breathPlayer.volume = 0.05
             loadBreathLongExhale(duration: duration)
             longExhaleBreathPlayer.play()
+            longExhaleBreathPlayer.volume = 0.05
         case .hold:
             loadBreathHold()
+            breathPlayer.volume = 0.05
             breathPlayer.play()
         case .countdownStart:
             loadCountdownStart()
             countDownPlayer.play()
+            countDownPlayer.volume = 0.05
         case .countdownEnd:
             loadCountdownEnd()
             countDownPlayer.play()
+            countDownPlayer.volume = 0.05
         }
     }
     
     public func toogleMusic() {
-        if musicPlayer.isPlaying {
-            musicPlayer.pause()
-            musicPlayer.setVolume(0, fadeDuration: 2)
+        if Self.musicPlayer.isPlaying {
+            Self.musicPlayer.setVolume(0, fadeDuration: 0.5)
+            Self.musicPlayer.pause()
         } else {
-            musicPlayer.play()
-            musicPlayer.setVolume(0.7, fadeDuration: 2)
+            Self.musicPlayer.play()
+            Self.musicPlayer.setVolume(0.05, fadeDuration: 2)
         }
     }
     
     public func musicIsPlaying() -> Bool {
-        musicPlayer.isPlaying
+        Self.musicPlayer.isPlaying
+    }
+    
+    public func stopMusic() {
+        Self.musicPlayer.setVolume(0, fadeDuration: 2)
     }
 }
 

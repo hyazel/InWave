@@ -27,7 +27,7 @@ public struct ActivityView: View {
             Spacer()
         }
         .padding(.all, 16)
-        .background(Color.Palette.c6)
+        .background(Color.Palette.darkOcean)
         .cornerRadius(20)
         .shadow(radius: 10)
     }

@@ -55,20 +55,20 @@ struct SplashScreen: View {
                     HStack(spacing: 8) {
                         Text("Respirez")
                             .foregroundColor(Color.Text.accent())
-                            .font(Font.headline2())
+                            .font(Font.title1())
                         Text("pour")
                             .foregroundColor(.white)
-                            .font(Font.headline2())
+                            .font(Font.title1())
 
 
                     }.padding(.horizontal, 43.0)
                     HStack(spacing: 8) {
                         Text("équilibrer")
                             .foregroundColor(Color.Text.accent())
-                            .font(Font.headline2())
+                            .font(Font.title1())
                         Text("votre flot intérieur")
                             .foregroundColor(.white)
-                            .font(Font.headline2())
+                            .font(Font.title1())
 
 
                     }

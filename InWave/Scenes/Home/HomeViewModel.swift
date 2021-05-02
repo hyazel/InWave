@@ -56,25 +56,26 @@ extension HomeViewModel {
     }
     
     func refresh() {
-        self.breathCards = getBestBreath(for: Date())
-            .map { BreathCellViewModel(iconName: $0.image,
-                                       title: $0.name,
-                                       subtitle: $0.description,
-                                       duration: String($0.configuration.duration)) }
+        self.breathCards = getBestBreaths()
     }
 }
 
 // MARK: - BreathCellViewModels
 private extension HomeViewModel {
     func getBestBreaths() -> [BreathCellViewModel] {
-        let journeys = getJourney(for: Date())
-        breaths = journeys.map { $0.breath }
-        return journeys.map {
-            BreathCellViewModel(iconName: $0.breath.image,
-                                title: $0.title,
-                                subtitle: $0.description,
-                                duration: "\(Int( $0.breath.configuration.duration / 60)) min")
-        }
+        breaths = getBestBreath(for: Date())
+        return breaths.map { BreathCellViewModel(iconName: $0.image,
+                                                 title: $0.name,
+                                                 subtitle: $0.description,
+                                                 duration: "\(Int( $0.configuration.duration / 60)) min") }
+        //        let journeys = getJourney(for: Date())
+        //        breaths = journeys.map { $0.breath }
+        //        return journeys.map {
+        //            BreathCellViewModel(iconName: $0.breath.image,
+        //                                title: $0.title,
+        //                                subtitle: $0.description,
+        //                                duration: "\(Int( $0.breath.configuration.duration / 60)) min")
+        //        }
     }
 }
 
@@ -84,7 +85,7 @@ private extension HomeViewModel {
         let totalMinutes: Int = number / 60
         
         if totalMinutes < 1 {
-            return "Moins de 1"
+            return "0"
         } else {
             return String(totalMinutes)
         }
