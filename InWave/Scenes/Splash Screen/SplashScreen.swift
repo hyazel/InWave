@@ -27,9 +27,9 @@ struct SplashScreen: View {
                     Spacer()
                     Ellipse()
                         .fill(Color.Palette.blueAccent).opacity(0.35)
-                        .frame(width: 400, height: 500)
-                        .rotationEffect(Angle(degrees: -30))
-                        .offset(x: 320, y: -70)
+                        .frame(width: UIScreen.main.bounds.width - 50,
+                               height: UIScreen.main.bounds.width - 50)
+                        .offset(x: UIScreen.main.bounds.width - 100, y: -200)
                 }
                 Spacer()
             }.ignoresSafeArea()
@@ -40,10 +40,10 @@ struct SplashScreen: View {
                     Spacer()
                     Ellipse()
                         .fill(Color.Palette.blueAccent).opacity(0.35)
-                        .frame(width: 400, height: 500)
+                        .frame(width: 300, height: 500)
                         .offset(x: 100, y: 400)
                 }
-                
+
             }.ignoresSafeArea()
             
             VStack(spacing: 32){
@@ -81,7 +81,11 @@ struct SplashScreen: View {
 
 struct SplashScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SplashScreen()
+        Group {
+            SplashScreen().previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro Max"))
+            SplashScreen().previewDevice(PreviewDevice(rawValue: "iPhone Xr"))
+            SplashScreen().previewDevice(PreviewDevice(rawValue: "iPhone SE (2nd generation)"))
+        }
     }
 }
 

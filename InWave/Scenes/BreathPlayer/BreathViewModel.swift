@@ -61,10 +61,10 @@ final class BreathViewModel: ObservableObject, Identifiable {
     
     // MARK: - Private properties
     // Injected
-    private var breath: Breath
+    let breath: Breath
     private var userRepository: UserRepositoryContract
     private var breathEngine: BreathEngine
-    private let player: InWavePlayer = InWavePlayer()
+    private var player: InWavePlayer!
 
     // Local
     private var breathTimer: Timer?
@@ -86,15 +86,21 @@ final class BreathViewModel: ObservableObject, Identifiable {
         self.breath = breath
         self.breathEngine = BreathEngine(breath: breath)
         
+        
+        
         upperBounds = breathEngine.getCurrentManoeuverDuration()
         breathTitle = breath.name
         totalTime = formatNumber(breath.configuration.duration)
         
         breathSymbolIndexAvailable = configureBreathSymbolsAvailable(breath: breath)
         
-        setupPlayer()
+        DispatchQueue.global().async {
+            self.player = InWavePlayer(breath: breath)
+            self.setupPlayer()
+        }
         
-        cycle = "CYCLE 01 / \(breath.configuration.cycleTotalNumber.formatStringWith0())"
+        cycle = "CYCLE 01 / \(breath.configuration.cycleNumber.formatStringWith0())"
+        
     }
     
     deinit {
@@ -110,7 +116,7 @@ private extension BreathViewModel {
         countdownTime = "3"
         totalSeconds += 1
         player.play(.countdownStart)
-        
+
         countdownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             
@@ -181,8 +187,7 @@ private extension BreathViewModel {
             breathSymbolIndex = 4
         }
     }
-    // 2 1
-    // 5
+
     func updateBreathManoeuverIfNeeded() {
         if self.totalSeconds == upperBounds {
             feedbackGenerator.impactOccurred()
@@ -195,7 +200,7 @@ private extension BreathViewModel {
                 cycle = "CYCLE " +
                     currentCycle.formatStringWith0()
                     + " / "
-                    + breath.configuration.cycleTotalNumber.formatStringWith0()
+                    + breath.configuration.cycleNumber.formatStringWith0()
             }
             upperBounds += breathEngine.getCurrentManoeuverDuration()
         }
@@ -210,18 +215,22 @@ private extension BreathViewModel {
         userRepository.totalDailyTime += self.breath.configuration.duration
         currentNumber = 1
         viewState = .finished
-        player.toogleMusic()
+        player.stopMusic()
     }
 }
 
 // MARK: - Player setup
 private extension BreathViewModel {
     func setupPlayer() {
-        isMusicPlaying = !userRepository.isMusicmuted
+        DispatchQueue.main.async {
+            self.isMusicPlaying = !self.userRepository.isMusicmuted
+        }
+        
         if !userRepository.isMusicmuted {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.player.play(.beach)
-            }
+            self.player.play(.beach)
+//            DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+//                self.player.play(.beach)
+//            }
         }
     }
 }
@@ -268,3 +277,9 @@ extension Int {
     }
 }
 
+extension Bundle {
+    func safePath(forResource: String?) -> String {
+        guard let path = Bundle.main.path(forResource: forResource, ofType: nil) else { fatalError() }
+        return path
+    }
+}

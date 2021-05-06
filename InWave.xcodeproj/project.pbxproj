@@ -71,6 +71,9 @@
 		F9DEA43A260CFA9000885587 /* HomeViewModelTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA439260CFA9000885587 /* HomeViewModelTimer.swift */; };
 		F9DEA441260CFAA500885587 /* BreathCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA440260CFAA500885587 /* BreathCellViewModel.swift */; };
 		F9DEA49C260E24B200885587 /* Waves.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA49B260E24B200885587 /* Waves.swift */; };
+		F9DFDB0A264167990078D36A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9DFDB09264167990078D36A /* Launch Screen.storyboard */; };
+		F9DFDB5A26418A5A0078D36A /* BacASable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DFDB5926418A5A0078D36A /* BacASable.swift */; };
+		F9E49505263FF36D00FB5D4F /* ScreenshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E49504263FF36D00FB5D4F /* ScreenshotTest.swift */; };
 		F9E984BB25B329DF00FA8E50 /* BreathPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E984BA25B329DF00FA8E50 /* BreathPlayerView.swift */; };
 		F9EEA3EB2613AEBC006AA6FA /* pads2_insp_5s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9EEA3DF2613AEBC006AA6FA /* pads2_insp_5s.mp3 */; };
 		F9EEA3EC2613AEBC006AA6FA /* pads2_insp_7s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9EEA3E02613AEBC006AA6FA /* pads2_insp_7s.mp3 */; };
@@ -242,6 +245,9 @@
 		F9DEA439260CFA9000885587 /* HomeViewModelTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTimer.swift; sourceTree = "<group>"; };
 		F9DEA440260CFAA500885587 /* BreathCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathCellViewModel.swift; sourceTree = "<group>"; };
 		F9DEA49B260E24B200885587 /* Waves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waves.swift; sourceTree = "<group>"; };
+		F9DFDB09264167990078D36A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F9DFDB5926418A5A0078D36A /* BacASable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacASable.swift; sourceTree = "<group>"; };
+		F9E49504263FF36D00FB5D4F /* ScreenshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotTest.swift; sourceTree = "<group>"; };
 		F9E984BA25B329DF00FA8E50 /* BreathPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathPlayerView.swift; sourceTree = "<group>"; };
 		F9EEA3DF2613AEBC006AA6FA /* pads2_insp_5s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pads2_insp_5s.mp3; sourceTree = "<group>"; };
 		F9EEA3E02613AEBC006AA6FA /* pads2_insp_7s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pads2_insp_7s.mp3; sourceTree = "<group>"; };
@@ -318,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				F911450E25A9E8C9002C1127 /* SplashScreen.swift */,
+				F9DFDB09264167990078D36A /* Launch Screen.storyboard */,
 			);
 			path = "Splash Screen";
 			sourceTree = "<group>";
@@ -443,6 +450,7 @@
 				F93E0D3325F6642400643C91 /* Assets */,
 				F9D14E86255ED0A7005E9A3C /* Preview Content */,
 				F9DE9E8C25D6951D0067749B /* Playground.swift */,
+				F9E49504263FF36D00FB5D4F /* ScreenshotTest.swift */,
 			);
 			path = InWave;
 			sourceTree = "<group>";
@@ -533,6 +541,7 @@
 			children = (
 				F9D14E80255ED0A6005E9A3C /* InWaveApp.swift */,
 				F9DEA3DC260CEBAF00885587 /* Dependencies */,
+				F9DFDB5926418A5A0078D36A /* BacASable.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -540,8 +549,8 @@
 		F9D14F00255ED38D005E9A3C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				F9DEA3DB260CEBA500885587 /* RootView */,
 				F911450D25A9E8B2002C1127 /* Splash Screen */,
+				F9DEA3DB260CEBA500885587 /* RootView */,
 				F9D14EB4255ED137005E9A3C /* OnBoarding */,
 				F95B34722573DB62006AF485 /* TabBar */,
 				F9D14EB5255ED144005E9A3C /* Home */,
@@ -869,6 +878,7 @@
 				F9EEA40F2613B5BB006AA6FA /* stop_son_bref.mp3 in Resources */,
 				F99A453C262F24B500D27215 /* 1_idle_low.json in Resources */,
 				F9EEA3EC2613AEBC006AA6FA /* pads2_insp_7s.mp3 in Resources */,
+				F9DFDB0A264167990078D36A /* Launch Screen.storyboard in Resources */,
 				F9EEA3F02613AEBC006AA6FA /* pads2_exp_8s.mp3 in Resources */,
 				F9EEA3F62613AEBC006AA6FA /* pads2_insp_4s.mp3 in Resources */,
 				F9EEA3F22613AEBC006AA6FA /* pads2_exp_6s.mp3 in Resources */,
@@ -936,6 +946,7 @@
 				F911450F25A9E8C9002C1127 /* SplashScreen.swift in Sources */,
 				F9DEA441260CFAA500885587 /* BreathCellViewModel.swift in Sources */,
 				F9E984BB25B329DF00FA8E50 /* BreathPlayerView.swift in Sources */,
+				F9DFDB5A26418A5A0078D36A /* BacASable.swift in Sources */,
 				F95B34742573DB84006AF485 /* TabBarView.swift in Sources */,
 				F973E64D25F3BBF40071177A /* RootViewCoordinator.swift in Sources */,
 				F9D346BD25D40CAA00071541 /* BreathListViewModel.swift in Sources */,
@@ -947,6 +958,7 @@
 				F9D14F32256164C4005E9A3C /* BreathViewModel.swift in Sources */,
 				F903AE7725E0163200747D90 /* CongratsView.swift in Sources */,
 				F94304DB25BEDB31006FC535 /* OnBoarding.swift in Sources */,
+				F9E49505263FF36D00FB5D4F /* ScreenshotTest.swift in Sources */,
 				F98D2ADF260CE486001CBC4F /* RootViewModel.swift in Sources */,
 				F9D346B125D40B5A00071541 /* BreathListView.swift in Sources */,
 			);

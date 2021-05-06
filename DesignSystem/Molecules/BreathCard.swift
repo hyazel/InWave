@@ -25,11 +25,13 @@ public struct BreathCard: View {
     
     public var body: some View {
         ZStack {
-            VStack() {
+            VStack(spacing: 12) {
                 Image(imageName)
                     .resizable()
                     .frame(width: imageSize.width, height: imageSize.height)
                     .clipShape(Circle())
+                    .shadow(color: Color(UIImage(named: imageName)!.averageColor).opacity(1), radius: 1.0, x: 0, y: 3)
+                
                 VStack(spacing: 20) {
                     VStack(spacing: 6) {
                         Text(title)
@@ -62,7 +64,7 @@ struct BreathCard_Previews: PreviewProvider {
         ZStack {
             Color.Background.primary().edgesIgnoringSafeArea(.all)
             HStack {
-                BreathCard(imageName: "test1",
+                BreathCard(imageName: "squared",
                            title: "Respiration Relaxante",
                            subtitle: "Marche Afghane, to reach the calm.",
                            duration: "30 MIN",
@@ -70,7 +72,7 @@ struct BreathCard_Previews: PreviewProvider {
                                              height: 92))
                     .frame(width: 182, height: 234)
                 
-                BreathCard(imageName: "test1",
+                BreathCard(imageName: "buteyko",
                            title: "Marche Afghane",
                            subtitle: "Marche Afghane",
                            duration: "30 MIN",
@@ -79,5 +81,22 @@ struct BreathCard_Previews: PreviewProvider {
                     .frame(width: 182, height: 234)
             }
         }
+    }
+}
+
+extension UIImage {
+    /// Average color of the image, nil if it cannot be found
+    var averageColor: UIColor {
+        guard let inputImage = CIImage(image: self) else { return .black }
+                let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
+
+        guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return .black }
+        guard let outputImage = filter.outputImage else { return .black }
+
+                var bitmap = [UInt8](repeating: 0, count: 4)
+                let context = CIContext(options: [.workingColorSpace: kCFNull])
+                context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
+
+                return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
     }
 }

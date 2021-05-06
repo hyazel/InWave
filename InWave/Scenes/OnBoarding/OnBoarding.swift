@@ -27,27 +27,24 @@ struct OnBoarding: View {
             VStack {
                 HStack {
                     Wave1()
-                        .fill(Color.Palette.blueAccent)
-                        .opacity(0.35)
+                        .fill(Color.Palette.blueAccent).opacity(0.35)
                         .frame(width: 50, height: 500)
                     Spacer()
                 }
                 Spacer()
-            }
-            .ignoresSafeArea()
+            }.ignoresSafeArea()
             
             VStack {
                 HStack {
                     Spacer()
                     Ellipse()
                         .fill(Color.Palette.blueAccent).opacity(0.35)
-                        .frame(width: 400, height: 500)
-                        .rotationEffect(Angle(degrees: -30))
-                        .offset(x: 320, y: -70)
+                        .frame(width: UIScreen.main.bounds.width,
+                               height: UIScreen.main.bounds.width)
+                        .offset(x: UIScreen.main.bounds.width - 100, y: -200)
                 }
                 Spacer()
-            }
-            .ignoresSafeArea()
+            }.ignoresSafeArea()
             
             VStack {
                 Spacer()
@@ -55,10 +52,10 @@ struct OnBoarding: View {
                     Spacer()
                     Ellipse()
                         .fill(Color.Palette.blueAccent).opacity(0.35)
-                        .frame(width: 400, height: 500)
+                        .frame(width: 300, height: 500)
                         .offset(x: 100, y: 400)
                 }
-                
+
             }.ignoresSafeArea()
             
             TabView(selection: $selectedTab,

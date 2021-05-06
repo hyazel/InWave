@@ -9,6 +9,7 @@
 import SwiftUI
 import Core
 import DesignSystem
+import AVKit
 
 struct BreathPlayerView: View {
     @StateObject var viewModel: BreathViewModel
@@ -18,6 +19,8 @@ struct BreathPlayerView: View {
     
     @State var test = false
     
+    @State var countDownPlayer: AVAudioPlayer!
+    
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .center)) {
             Color
@@ -26,12 +29,16 @@ struct BreathPlayerView: View {
                 .opacity(viewModel.viewState.hasFinished() ? 0.8 : 1)
             
             VStack {
+                Image(viewModel.breath.image)
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
                 Text(viewModel.breathTitle)
                     .font(Font.title2())
                     .foregroundColor(.white)
                 Spacer()
             }
-            .padding(.top, 14)
+//            .padding(.top, 14)
             
             
             Text(viewModel.cycle)
@@ -40,34 +47,28 @@ struct BreathPlayerView: View {
                 .frame(maxWidth: .infinity)
                 .offset(y: -180)
             
-            HStack {
-                Spacer()
-                Image("island_big")
+            if startAnimation {
+                HStack {
+                    Spacer()
+                    Image("island_big")
+                }
+                .offset(y: 100)
             }
-            .offset(y: 100)
             
             BreathSymbolsView(indexAvailable: viewModel.breathSymbolIndexAvailable,
                               indexHighlighted: $viewModel.breathSymbolIndex)
                 .offset(x: 0, y: -130)
             
             switch viewModel.viewState {
-            case .finished:
-                ZStack {
-                    LottieView(type: .idleLow,
-                               animationSpeed: viewModel.waveAnimation.1)
-                        .frame(maxWidth: .infinity,
-                               maxHeight: .infinity)
-                        .ignoresSafeArea()
-                    CongratsView()
-                        .padding(.horizontal, 24)
-                }
             case .notStarted:
                 ZStack {
+                    if startAnimation {
                     LottieView(type: .idleLow,
                                animationSpeed: viewModel.waveAnimation.1)
                         .frame(maxWidth: .infinity,
                                maxHeight: .infinity)
                         .ignoresSafeArea()
+                    }
                     Button {
                         viewModel.viewState = .countdown
                     } label: {
@@ -77,9 +78,9 @@ struct BreathPlayerView: View {
                             .background(Color.orange)
                             .cornerRadius(54)
                             .shadow(color: Color.black.opacity(0.15), radius: 12.0, x: 0, y: 0)
-                    }.padding(.horizontal, 53)
+                    }
+                    .padding(.horizontal, 53)
                     .offset(y: 50)
-                    
                 }
             case .countdown:
                 ZStack {
@@ -92,7 +93,7 @@ struct BreathPlayerView: View {
                         .font(Font.headline1())
                         .foregroundColor(.white)
                 }
-            case .started:
+            case .started, .finished:
                 ZStack {
                     VStack {
                         Spacer()
@@ -122,7 +123,6 @@ struct BreathPlayerView: View {
                                        maxHeight: .infinity)
                                 .ignoresSafeArea()
                         }
-                        
                     }
                     
                     HStack {
@@ -162,6 +162,8 @@ struct BreathPlayerView: View {
                         .padding()
                     }
                 }
+                
+                
             }
             
             HStack {
@@ -202,9 +204,18 @@ struct BreathPlayerView: View {
                     Spacer()
                 }
             }
+            
+            if viewModel.viewState.hasFinished() {
+                CongratsView()
+                    .transition(AnyTransition.scale.animation(Animation.easeIn(duration: 0.2)))
+                    .padding(.horizontal, 18)
+            }
         }
         .onAppear {
             startAnimation = true
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                startAnimation = true
+//            }
         }
     }
 }
@@ -218,7 +229,7 @@ struct BreathPlayerView_Previews: PreviewProvider {
                                                                inHaleHold: 4,
                                                                exhale: 4,
                                                                exhaleHold: 4,
-                                                               duration: 5))
+                                                               cycleNumber: 30))
         
         return BreathPlayerView(viewModel: BreathViewModel(breath: breath))
     }

@@ -16,33 +16,36 @@ struct BreathListView: View {
     
     var body: some View {
         ZStack {
-            Color.Background.primary().ignoresSafeArea()
             ScrollView(showsIndicators: false) {
-                LazyVGrid(
-                    columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible())],
-                    alignment: .center,
-                    spacing: 16,
-                    pinnedViews: [.sectionHeaders]
-                ) {
-                    Section(header: Text("Activités")
-                                .frame(maxWidth: .infinity,
-                                       alignment: .leading)
-                                .foregroundColor(.white)
-                                .padding(.leading, 0)) {
-                        ForEach(Array(viewModel.breathCellViewModels.enumerated()), id: \.element.id) { (index, breath) in
-                            Button(action: {
-                                selectedBreath = viewModel.selectedBreath(index: index)
-                            }, label: {
-                                BreathCard(imageName: breath.iconName,
-                                           title: breath.title,
-                                           subtitle: breath.subtitle,
-                                           duration: breath.duration,
-                                           imageSize: CGSize(width: 72, height: 72))
-                            })
-                            .buttonStyle(PressableButtonStyle())
+                VStack {
+                    LazyVGrid(
+                        columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible())],
+                        alignment: .center,
+                        spacing: 16,
+                        pinnedViews: [.sectionHeaders]
+                    ) {
+                        Section(header: Text("Activités")
+                                    .frame(maxWidth: .infinity,
+                                           alignment: .leading)
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 0)) {
+                            ForEach(Array(viewModel.breathCellViewModels.enumerated()), id: \.element.id) { (index, breath) in
+                                Button(action: {
+                                    selectedBreath = viewModel.selectedBreath(index: index)
+                                }, label: {
+                                    BreathCard(imageName: breath.iconName,
+                                               title: breath.title,
+                                               subtitle: breath.subtitle,
+                                               duration: breath.duration,
+                                               imageSize: CGSize(width: 72, height: 72))
+                                })
+                                .buttonStyle(PressableButtonStyle())
+                            }
                         }
                     }
+                    Color.clear.padding(.bottom, 10)
                 }
+                
             }
             .padding(.top, 16)
             .padding([.leading, .trailing], 16)
@@ -61,6 +64,7 @@ struct BreathListView: View {
 struct BreathListView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
+            Color.Background.primary().ignoresSafeArea()
             BreathListView(viewModel: BreathListViewModel())
         }
     }

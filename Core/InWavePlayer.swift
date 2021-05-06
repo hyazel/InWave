@@ -22,19 +22,31 @@ public final class InWavePlayer {
         case countdownEnd
     }
     
-    private static var musicPlayer: AVAudioPlayer = AVAudioPlayer()
-    private var breathPlayer: AVAudioPlayer = AVAudioPlayer()
-    private var longInhaleBreathPlayer: AVAudioPlayer = AVAudioPlayer()
-    private var longExhaleBreathPlayer: AVAudioPlayer = AVAudioPlayer()
-    private var countDownPlayer: AVAudioPlayer = AVAudioPlayer()
-//    private static var musicPlayerIsPlaying: Bool = false
+    private static var musicPlayer: AVAudioPlayer!
+    private static var breathPlayer: AVAudioPlayer!
+    private static var longInhaleBreathPlayer: AVAudioPlayer!
+    private static var longExhaleBreathPlayer: AVAudioPlayer!
+    private static var countDownPlayer: AVAudioPlayer!
+    private static var countDownEndPlayer: AVAudioPlayer!
+    private var breath: Breath? = nil
     
-    public init() {
+    public init(breath: Breath? = nil) {
+        self.breath = breath
+        bufferAudio()
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)
         } catch {
-            
+
         }
+    }
+    
+    func bufferAudio() {
+        loadMusicBeach()
+        loadBreathHold()
+        loadCountdownStart()
+        loadCountdownEnd()
+        loadBreathInhale()
+        loadBreathExhale()
     }
     
     func loadMusicBeach() {
@@ -49,8 +61,8 @@ public final class InWavePlayer {
     
     func loadCountdownStart() {
         do {
-            countDownPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "chrono_1.mp3")))
-            countDownPlayer.prepareToPlay()
+            Self.countDownPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "chrono_1.mp3")))
+            Self.countDownPlayer.prepareToPlay()
         } catch {
             print("player init failed")
         }
@@ -58,8 +70,8 @@ public final class InWavePlayer {
     
     func loadCountdownEnd() {
         do {
-            countDownPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "chrono_2.mp3")))
-            countDownPlayer.prepareToPlay()
+            Self.countDownEndPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "chrono_2.mp3")))
+            Self.countDownEndPlayer.prepareToPlay()
         } catch {
             print("player init failed")
         }
@@ -67,8 +79,8 @@ public final class InWavePlayer {
     
     func loadBreathInhale() {
         do {
-            breathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "Inspi_son_bref.mp3")))
-            breathPlayer.prepareToPlay()
+            Self.breathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "Inspi_son_bref.mp3")))
+            Self.breathPlayer.prepareToPlay()
         } catch {
             print("player init failed")
         }
@@ -76,8 +88,8 @@ public final class InWavePlayer {
     
     func loadBreathExhale() {
         do {
-            breathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "expir_son_bref.mp3")))
-            breathPlayer.prepareToPlay()
+            Self.breathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "expir_son_bref.mp3")))
+            Self.breathPlayer.prepareToPlay()
         } catch {
             print("player init failed")
         }
@@ -85,8 +97,8 @@ public final class InWavePlayer {
     
     func loadBreathHold() {
         do {
-            breathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "stop_son_bref.mp3")))
-            breathPlayer.prepareToPlay()
+            Self.breathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "stop_son_bref.mp3")))
+            Self.breathPlayer.prepareToPlay()
         } catch {
             print("player init failed")
         }
@@ -94,8 +106,8 @@ public final class InWavePlayer {
     
     func loadBreathLongExhale(duration: Int) {
         do {
-            longExhaleBreathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "pads2_exp_\(duration)s.mp3")))
-            longExhaleBreathPlayer.prepareToPlay()
+            Self.longExhaleBreathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "pads2_exp_\(duration)s.mp3")))
+            Self.longExhaleBreathPlayer.prepareToPlay()
         } catch {
             print("player init failed")
         }
@@ -103,45 +115,47 @@ public final class InWavePlayer {
     
     func loadBreathLongInhale(duration: Int) {
         do {
-            longInhaleBreathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "pads2_insp_\(duration)s.mp3")))
-            longExhaleBreathPlayer.prepareToPlay()
+            Self.longInhaleBreathPlayer = try AVAudioPlayer(contentsOf: URL(safeString: Bundle.main.safePath(forResource: "pads2_insp_\(duration)s.mp3")))
+            Self.longInhaleBreathPlayer.prepareToPlay()
         } catch {
             print("player init failed")
         }
     }
     
     public func play(_ audio: Audio) {
-        switch audio {
-        case .beach:
-            loadMusicBeach()
-            Self.musicPlayer.play()
-            Self.musicPlayer.volume = 0.05
-        case .inhale(let duration):
-            loadBreathInhale()
-            breathPlayer.play()
-            breathPlayer.volume = 0.05
-            loadBreathLongInhale(duration: duration)
-            longInhaleBreathPlayer.play()
-            longInhaleBreathPlayer.volume = 0.05
-        case .exhale(let duration):
-            loadBreathExhale()
-            breathPlayer.play()
-            breathPlayer.volume = 0.05
-            loadBreathLongExhale(duration: duration)
-            longExhaleBreathPlayer.play()
-            longExhaleBreathPlayer.volume = 0.05
-        case .hold:
-            loadBreathHold()
-            breathPlayer.volume = 0.05
-            breathPlayer.play()
-        case .countdownStart:
-            loadCountdownStart()
-            countDownPlayer.play()
-            countDownPlayer.volume = 0.05
-        case .countdownEnd:
-            loadCountdownEnd()
-            countDownPlayer.play()
-            countDownPlayer.volume = 0.05
+        DispatchQueue.global(qos: .userInitiated).sync {
+            switch audio {
+            case .beach:
+                loadMusicBeach()
+                Self.musicPlayer.play()
+                Self.musicPlayer.volume = 0.05
+            case .inhale(let duration):
+                loadBreathInhale()
+                Self.breathPlayer.play()
+                Self.breathPlayer.volume = 0.05
+                
+                loadBreathLongInhale(duration: duration)
+                Self.longInhaleBreathPlayer.play()
+                Self.longInhaleBreathPlayer.volume = 0.05
+            case .exhale(let duration):
+                loadBreathExhale()
+                Self.breathPlayer.play()
+                Self.breathPlayer.volume = 0.05
+                
+                loadBreathLongExhale(duration: duration)
+                Self.longExhaleBreathPlayer.play()
+                Self.longExhaleBreathPlayer.volume = 0.05
+            case .hold:
+                loadBreathHold()
+                Self.breathPlayer.volume = 0.05
+                Self.breathPlayer.play()
+            case .countdownStart:
+                Self.countDownPlayer.play()
+                Self.countDownPlayer.volume = 0.05
+            case .countdownEnd:
+                Self.countDownEndPlayer.play()
+                Self.countDownEndPlayer.volume = 0.05
+            }
         }
     }
     
@@ -160,7 +174,14 @@ public final class InWavePlayer {
     }
     
     public func stopMusic() {
-        Self.musicPlayer.setVolume(0, fadeDuration: 2)
+        Self.musicPlayer.setVolume(0, fadeDuration: 1)
+        
+        if Self.longExhaleBreathPlayer != nil {
+            Self.longExhaleBreathPlayer.setVolume(0, fadeDuration: 1)
+        }
+        if Self.longInhaleBreathPlayer != nil {
+            Self.longInhaleBreathPlayer.setVolume(0, fadeDuration: 1)
+        }
     }
 }
 

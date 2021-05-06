@@ -14,17 +14,15 @@ public struct BreathConfiguration {
     public let exhale: Int
     public let exhaleHold: Int
     public var duration: Int
-    public var cycleTotalNumber: Int
+    public var cycleNumber: Int
     
-    public init(inhale: Int, inHaleHold: Int, exhale: Int, exhaleHold: Int, duration: Int) {
+    public init(inhale: Int, inHaleHold: Int, exhale: Int, exhaleHold: Int, cycleNumber: Int) {
         self.inhale = inhale
         self.inHaleHold = inHaleHold
         self.exhale = exhale
         self.exhaleHold = exhaleHold
-        self.duration = duration
-        let cycleTotalNumberTemp: Double = Double(duration) / Double(inhale + inHaleHold + exhale + exhaleHold)
-        cycleTotalNumber = Int(ceil(cycleTotalNumberTemp))
-        
+        self.cycleNumber = cycleNumber
+        duration = (inhale + inHaleHold + exhale + exhaleHold) * cycleNumber
     }
 }
 

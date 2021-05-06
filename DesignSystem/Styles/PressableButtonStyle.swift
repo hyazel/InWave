@@ -14,6 +14,7 @@ public struct PressableButtonStyle: ButtonStyle {
     public func makeBody(configuration: PressableButtonStyle.Configuration) -> some View {
         configuration
             .label
-            .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
+            .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+            .animation(Animation.easeIn(duration: 0.1))
     }
 }

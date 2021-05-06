@@ -26,7 +26,7 @@ public struct BreathList {
                                                                                   inHaleHold: 5,
                                                                                   exhale: 5,
                                                                                   exhaleHold: 5,
-                                                                                  duration: 60 * 5))
+                                                                                  cycleNumber: 15))
     
     static var afghanWalk: Breath = Breath(name: Name.afghanWalk,
                                            description: "Marcher en respirant",
@@ -35,7 +35,7 @@ public struct BreathList {
                                                                               inHaleHold: 1,
                                                                               exhale: 3,
                                                                               exhaleHold: 1,
-                                                                              duration: 60 * 30))
+                                                                              cycleNumber: 225))
     
     static var square: Breath = Breath(name: Name.square,
                                        description: "Réduit le stress et améliore le bien être",
@@ -44,7 +44,7 @@ public struct BreathList {
                                                                           inHaleHold: 4,
                                                                           exhale: 4,
                                                                           exhaleHold: 4,
-                                                                          duration: 60 * 5))
+                                                                          cycleNumber: 20))
     
     static var cardiacCoherence: Breath = Breath(name: Name.cardiacCoherence,
                                                  description: "Equilibre et harmonie",
@@ -53,7 +53,7 @@ public struct BreathList {
                                                                                     inHaleHold: 0,
                                                                                     exhale: 5,
                                                                                     exhaleHold: 0,
-                                                                                    duration: 60 * 5))
+                                                                                    cycleNumber: 30))
     
     static var tonicCardiacCoherence: Breath = Breath(name: Name.tonicCardiacCoherence,
                                                       description: "Plus de tonus",
@@ -62,7 +62,7 @@ public struct BreathList {
                                                                                          inHaleHold: 0,
                                                                                          exhale: 4,
                                                                                          exhaleHold: 0,
-                                                                                         duration: 60 * 5))
+                                                                                         cycleNumber: 30))
     
     static var relaxCardiacCoherence: Breath = Breath(name: Name.relaxCardiacCoherence,
                                                       description: "Relaxez vous",
@@ -70,8 +70,8 @@ public struct BreathList {
                                                       configuration: BreathConfiguration(inhale: 4,
                                                                                          inHaleHold: 0,
                                                                                          exhale: 6,
-                                                                                         exhaleHold: 5,
-                                                                                         duration: 60 * 5))
+                                                                                         exhaleHold: 0,
+                                                                                         cycleNumber: 30))
     
     static var forSevenEight: Breath = Breath(name: Name.forSevenEight,
                                               description: "A long program to reach the calm",
@@ -80,7 +80,7 @@ public struct BreathList {
                                                                                  inHaleHold: 7,
                                                                                  exhale: 8,
                                                                                  exhaleHold: 0,
-                                                                                 duration: 2 * 60))
+                                                                                 cycleNumber: 10))
     
     public static func getBreathList() -> [Breath] {
         [

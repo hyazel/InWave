@@ -22,8 +22,10 @@ struct CongratsView: View {
                 VStack(spacing: 8) {
                     Text("Exercice terminé !")
                         .font(Font.title1())
+                        .foregroundColor(.black)
                     Text("Vos hormones de stress sont en chute et votre dopamine augmente.")
                         .font(Font.title3())
+                        .foregroundColor(.black)
                         .multilineTextAlignment(.center)
                 }
             }

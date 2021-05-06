@@ -19,7 +19,6 @@ struct RootViewCoordinator: View {
         Group {
             if viewModel.onBoardingDone || onBoadingHasFinished {
                 TabBarView()
-                    .transition(.opacity)
             } else {
                 OnBoarding() {
                     onBoadingHasFinished = true

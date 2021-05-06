@@ -18,8 +18,6 @@ struct HomeView: View {
     @State private var selectedBreath: Breath?
     @State private var isPresented: Bool = false
     
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
     var body: some View {
         ZStack {
             HStack {
@@ -65,14 +63,10 @@ struct HomeView: View {
                 }
                 Spacer()
             }
-//            .padding(.horizontal, 16)
             .padding(.bottom, 16)
-            .padding(.top, 48)
-//                     UIApplication.shared.windows.first?.safeAreaInsets.top == 0 ? 24 : 0)
+            .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.bottom == 0 ? 60 : 24)
         }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            viewModel.refresh()
-        }
+        
     }
 }
 
@@ -84,5 +78,11 @@ struct HomeView_Previews: PreviewProvider {
                      viewModelTimer: HomeViewModelTimer())
         }
         
+    }
+}
+
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(x:self.midX, y:self.midY)
     }
 }

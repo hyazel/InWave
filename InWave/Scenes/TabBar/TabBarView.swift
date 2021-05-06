@@ -27,11 +27,12 @@ struct TabBarView: View {
                 Color.Background.primary().ignoresSafeArea()
                 ZStack {
                     VStack(spacing: 0) {
-                        InWaveTabView(tabItems: tabItems, selectedTab: $selectedTab)
-                        TabBar(tabItems: tabItems, selectedTab: $selectedTab)
+                        InWaveTabView(tabItems: tabItems,
+                                      selectedTab: $selectedTab)
+                        TabBar(tabItems: tabItems,
+                               selectedTab: $selectedTab)
                     }
                 }
-                .padding(.top, 16)
             }
     }
 }
@@ -85,13 +86,14 @@ struct InWaveTabView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-                HomeView(viewModel: HomeViewModel(dependencies: AppDependencies.container), viewModelTimer: HomeViewModelTimer())
-                    .background(BackgroundHelper())
-                    .tag(tabItems[0])
-
-                BreathListView(viewModel: BreathListViewModel())
-                    .background(BackgroundHelper())
-                    .tag(tabItems[1])
+            HomeView(viewModel: HomeViewModel(dependencies: AppDependencies.container),
+                     viewModelTimer: HomeViewModelTimer())
+                .background(BackgroundHelper())
+                .tag(tabItems[0])
+            
+            BreathListView(viewModel: BreathListViewModel())
+                .background(BackgroundHelper())
+                .tag(tabItems[1])
         }
     }
 }
