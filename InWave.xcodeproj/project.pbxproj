@@ -73,7 +73,6 @@
 		F9DEA49C260E24B200885587 /* Waves.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA49B260E24B200885587 /* Waves.swift */; };
 		F9DFDB0A264167990078D36A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9DFDB09264167990078D36A /* Launch Screen.storyboard */; };
 		F9DFDB5A26418A5A0078D36A /* BacASable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DFDB5926418A5A0078D36A /* BacASable.swift */; };
-		F9E49505263FF36D00FB5D4F /* ScreenshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E49504263FF36D00FB5D4F /* ScreenshotTest.swift */; };
 		F9E984BB25B329DF00FA8E50 /* BreathPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E984BA25B329DF00FA8E50 /* BreathPlayerView.swift */; };
 		F9EEA3EB2613AEBC006AA6FA /* pads2_insp_5s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9EEA3DF2613AEBC006AA6FA /* pads2_insp_5s.mp3 */; };
 		F9EEA3EC2613AEBC006AA6FA /* pads2_insp_7s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9EEA3E02613AEBC006AA6FA /* pads2_insp_7s.mp3 */; };
@@ -247,7 +246,6 @@
 		F9DEA49B260E24B200885587 /* Waves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waves.swift; sourceTree = "<group>"; };
 		F9DFDB09264167990078D36A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F9DFDB5926418A5A0078D36A /* BacASable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacASable.swift; sourceTree = "<group>"; };
-		F9E49504263FF36D00FB5D4F /* ScreenshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotTest.swift; sourceTree = "<group>"; };
 		F9E984BA25B329DF00FA8E50 /* BreathPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathPlayerView.swift; sourceTree = "<group>"; };
 		F9EEA3DF2613AEBC006AA6FA /* pads2_insp_5s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pads2_insp_5s.mp3; sourceTree = "<group>"; };
 		F9EEA3E02613AEBC006AA6FA /* pads2_insp_7s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pads2_insp_7s.mp3; sourceTree = "<group>"; };
@@ -450,7 +448,6 @@
 				F93E0D3325F6642400643C91 /* Assets */,
 				F9D14E86255ED0A7005E9A3C /* Preview Content */,
 				F9DE9E8C25D6951D0067749B /* Playground.swift */,
-				F9E49504263FF36D00FB5D4F /* ScreenshotTest.swift */,
 			);
 			path = InWave;
 			sourceTree = "<group>";
@@ -958,7 +955,6 @@
 				F9D14F32256164C4005E9A3C /* BreathViewModel.swift in Sources */,
 				F903AE7725E0163200747D90 /* CongratsView.swift in Sources */,
 				F94304DB25BEDB31006FC535 /* OnBoarding.swift in Sources */,
-				F9E49505263FF36D00FB5D4F /* ScreenshotTest.swift in Sources */,
 				F98D2ADF260CE486001CBC4F /* RootViewModel.swift in Sources */,
 				F9D346B125D40B5A00071541 /* BreathListView.swift in Sources */,
 			);

@@ -173,15 +173,15 @@ struct BreathPlayerView: View {
                     } label: {
                         ZStack {
                             Circle().stroke(Color.white, lineWidth: 2)
-                                .frame(width: 36, height: 36)
+                                .frame(width: 30, height: 30)
                             
                             Image(systemName: "xmark")
-                                .frame(width: 36, height: 36)
+                                .frame(width: 24, height: 24)
                                 .foregroundColor(.white)
                         }
                     }
                     .frame(width: 46, height: 46)
-                    .shadow(color: Color.black.opacity(0.15), radius: 12.0, x: 0, y: 0)
+                    .shadow(color: Color.black.opacity(0.15), radius: 2.0, x: 0, y: 2)
                     .padding(.leading, 10)
                     Spacer()
                 }
@@ -195,11 +195,12 @@ struct BreathPlayerView: View {
                         viewModel.toogleMusic()
                     } label: {
                         Image(viewModel.isMusicPlaying ? "speaker_on" : "speaker_off")
-                            .frame(width: 46, height: 46)
-                            .foregroundColor(.white)
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            
                     }
                     .frame(width: 46, height: 46)
-                    .shadow(color: Color.black.opacity(0.15), radius: 12.0, x: 0, y: 0)
+                    .shadow(color: Color.black.opacity(0.15), radius: 2.0, x: 0, y: 2)
                     .padding(.trailing, 10)
                     Spacer()
                 }
@@ -213,9 +214,6 @@ struct BreathPlayerView: View {
         }
         .onAppear {
             startAnimation = true
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                startAnimation = true
-//            }
         }
     }
 }

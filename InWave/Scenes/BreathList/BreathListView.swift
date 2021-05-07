@@ -18,29 +18,28 @@ struct BreathListView: View {
         ZStack {
             ScrollView(showsIndicators: false) {
                 VStack {
+                    Text("Activités")
+                                .frame(maxWidth: .infinity,
+                                       alignment: .leading)
+                        .foregroundColor(.white)
+                        .font(Font.title2())
                     LazyVGrid(
                         columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible())],
                         alignment: .center,
                         spacing: 16,
                         pinnedViews: [.sectionHeaders]
                     ) {
-                        Section(header: Text("Activités")
-                                    .frame(maxWidth: .infinity,
-                                           alignment: .leading)
-                                    .foregroundColor(.white)
-                                    .padding(.leading, 0)) {
-                            ForEach(Array(viewModel.breathCellViewModels.enumerated()), id: \.element.id) { (index, breath) in
-                                Button(action: {
-                                    selectedBreath = viewModel.selectedBreath(index: index)
-                                }, label: {
-                                    BreathCard(imageName: breath.iconName,
-                                               title: breath.title,
-                                               subtitle: breath.subtitle,
-                                               duration: breath.duration,
-                                               imageSize: CGSize(width: 72, height: 72))
-                                })
-                                .buttonStyle(PressableButtonStyle())
-                            }
+                        ForEach(Array(viewModel.breathCellViewModels.enumerated()), id: \.element.id) { (index, breath) in
+                            Button(action: {
+                                selectedBreath = viewModel.selectedBreath(index: index)
+                            }, label: {
+                                BreathCard(imageName: breath.iconName,
+                                           title: breath.title,
+                                           subtitle: breath.subtitle,
+                                           duration: breath.duration,
+                                           imageSize: CGSize(width: 72, height: 72))
+                            })
+                            .buttonStyle(PressableButtonStyle())
                         }
                     }
                     Color.clear.padding(.bottom, 10)

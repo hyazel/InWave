@@ -1,16 +1,14 @@
 %PDF-1.7
 
 1 0 obj
-  << /BBox [ 0.000000 0.000000 36.000000 36.000000 ]
-     /Resources << >>
-     /Subtype /Form
-     /Length 2 0 R
-     /Group << /Type /Group
-               /S /Transparency
-            >>
-     /Type /XObject
-  >>
+  << >>
+endobj
+
+2 0 obj
+  << /Length 3 0 R >>
 stream
+/DeviceRGB CS
+/DeviceRGB cs
 q
 36.000000 18.000000 m
 36.000000 8.058874 27.941126 0.000000 18.000000 0.000000 c
@@ -195,72 +193,47 @@ Q
 endstream
 endobj
 
-2 0 obj
-  7175
-endobj
-
 3 0 obj
-  << /XObject << /X1 1 0 R >>
-     /ExtGState << /E1 << /ca 0.750000 >> >>
-  >>
+  7203
 endobj
 
 4 0 obj
-  << /Length 5 0 R >>
-stream
-/DeviceRGB CS
-/DeviceRGB cs
-q
-/E1 gs
-/X1 Do
-Q
-
-endstream
-endobj
-
-5 0 obj
-  46
-endobj
-
-6 0 obj
   << /Annots []
      /Type /Page
      /MediaBox [ 0.000000 0.000000 36.000000 36.000000 ]
-     /Resources 3 0 R
-     /Contents 4 0 R
-     /Parent 7 0 R
+     /Resources 1 0 R
+     /Contents 2 0 R
+     /Parent 5 0 R
   >>
 endobj
 
-7 0 obj
-  << /Kids [ 6 0 R ]
+5 0 obj
+  << /Kids [ 4 0 R ]
      /Count 1
      /Type /Pages
   >>
 endobj
 
-8 0 obj
+6 0 obj
   << /Type /Catalog
-     /Pages 7 0 R
+     /Pages 5 0 R
   >>
 endobj
 
 xref
-0 9
+0 7
 0000000000 65535 f
 0000000010 00000 n
-0000007433 00000 n
-0000007456 00000 n
-0000007552 00000 n
-0000007654 00000 n
-0000007675 00000 n
-0000007848 00000 n
-0000007922 00000 n
+0000000034 00000 n
+0000007293 00000 n
+0000007316 00000 n
+0000007489 00000 n
+0000007563 00000 n
 trailer
 << /ID [ (some) (id) ]
-   /Root 8 0 R
-   /Size 9
+   /Root 6 0 R
+   /Size 7
 >>
 startxref
-7981
+7622
 %%EOF
