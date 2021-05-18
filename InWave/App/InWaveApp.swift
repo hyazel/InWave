@@ -11,7 +11,7 @@ import Core
 @main
 struct InWaveApp: App {
     
-    // MARK: - Delegate
+    // MARK: - AppDelegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     // MARK: - State
@@ -33,7 +33,7 @@ struct InWaveApp: App {
                 if startRootView {
                     RootViewCoordinator(viewModel: RootViewModel(dependencies: AppDependencies.container))
                         .background(BackgroundView(color: Color.clear))
-                        .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
+                        .transition(AnyTransition.opacity.animation(.easeIn(duration: 1)))
                         .onAppear() {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                                 hideSplashScreen = true

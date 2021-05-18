@@ -12,119 +12,54 @@ import DesignSystem
 import AVKit
 
 struct BreathPlayerView: View {
+    enum Texts {
+        static var sessionStartButton: String = "COMMENCER LA SESSION"
+    }
+    
+    // MARK: - States
     @StateObject var viewModel: BreathViewModel
     @Environment(\.presentationMode) private var presentationMode
-    @State private var startAnimation: Bool = false
-    @State private var strokeWidth: Double = 12
-    
-    @State var test = false
-    
-    @State var countDownPlayer: AVAudioPlayer!
+    @State private var onAppear: Bool = false
     
     var body: some View {
-        ZStack(alignment: Alignment(horizontal: .center, vertical: .center)) {
-            Color
-                .Background.primary()
-                .ignoresSafeArea(.all)
-                .opacity(viewModel.viewState.hasFinished() ? 0.8 : 1)
+        BaseView {
+            // MARK: - Header
+            headerView()
             
-            VStack {
-                Image(viewModel.breath.image)
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .clipShape(Circle())
-                Text(viewModel.breathTitle)
-                    .font(Font.title2())
-                    .foregroundColor(.white)
-                Spacer()
+            // MARK: - Background
+            if onAppear {
+                backgroundView()
             }
-//            .padding(.top, 14)
             
-            
+            // MARK: - Breath values
             Text(viewModel.cycle)
                 .font(Font.detail())
-                .foregroundColor(.white)
+                .foregroundColor(Color.Text.primary())
                 .frame(maxWidth: .infinity)
                 .offset(y: -180)
-            
-            if startAnimation {
-                HStack {
-                    Spacer()
-                    Image("island_big")
-                }
-                .offset(y: 100)
-            }
-            
+
             BreathSymbolsView(indexAvailable: viewModel.breathSymbolIndexAvailable,
                               indexHighlighted: $viewModel.breathSymbolIndex)
                 .offset(x: 0, y: -130)
             
+            
+            // MARK: - Process exercice steps
             switch viewModel.viewState {
             case .notStarted:
                 ZStack {
-                    if startAnimation {
-                    LottieView(type: .idleLow,
-                               animationSpeed: viewModel.waveAnimation.1)
-                        .frame(maxWidth: .infinity,
-                               maxHeight: .infinity)
-                        .ignoresSafeArea()
-                    }
-                    Button {
+                    PrimaryButton(title: Texts.sessionStartButton) {
                         viewModel.viewState = .countdown
-                    } label: {
-                        Text("Commencer")
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity, maxHeight: 54)
-                            .background(Color.orange)
-                            .cornerRadius(54)
-                            .shadow(color: Color.black.opacity(0.15), radius: 12.0, x: 0, y: 0)
                     }
+                    .frame(maxWidth: .infinity, maxHeight: 54)
                     .padding(.horizontal, 53)
                     .offset(y: 50)
                 }
             case .countdown:
+                Text(viewModel.countdownTime)
+                    .font(Font.headline1())
+                    .foregroundColor(Color.Text.primary())
+            case .started:
                 ZStack {
-                    LottieView(type: .idleLow,
-                               animationSpeed: viewModel.waveAnimation.1)
-                        .frame(maxWidth: .infinity,
-                               maxHeight: .infinity)
-                        .ignoresSafeArea()
-                    Text(viewModel.countdownTime)
-                        .font(Font.headline1())
-                        .foregroundColor(.white)
-                }
-            case .started, .finished:
-                ZStack {
-                    VStack {
-                        Spacer()
-                        switch viewModel.waveAnimation.0 {
-                        case .idleLow:
-                            LottieView(type: viewModel.waveAnimation.0,
-                                       animationSpeed: viewModel.waveAnimation.1)
-                                .frame(maxWidth: .infinity,
-                                       maxHeight: .infinity)
-                                .ignoresSafeArea()
-                        case .rise:
-                            LottieView(type: viewModel.waveAnimation.0,
-                                       animationSpeed: viewModel.waveAnimation.1)
-                                .frame(maxWidth: .infinity,
-                                       maxHeight: .infinity)
-                                .ignoresSafeArea()
-                        case .fall:
-                            LottieView(type: viewModel.waveAnimation.0,
-                                       animationSpeed: viewModel.waveAnimation.1)
-                                .frame(maxWidth: .infinity,
-                                       maxHeight: .infinity)
-                                .ignoresSafeArea()
-                        case .idleHigh:
-                            LottieView(type: viewModel.waveAnimation.0,
-                                       animationSpeed: viewModel.waveAnimation.1)
-                                .frame(maxWidth: .infinity,
-                                       maxHeight: .infinity)
-                                .ignoresSafeArea()
-                        }
-                    }
-                    
                     HStack {
                         Text(viewModel.manoeuver)
                             .font(Font.headline2())
@@ -135,37 +70,35 @@ struct BreathPlayerView: View {
                     }
                     .offset(y: 100)
                     
-                    // MARK: - Player
-                    VStack {
-                        Spacer()
-                        VStack(spacing: 56) {
-                            VStack(spacing: 14) {
-                                ProgressView(value: viewModel.currentNumber, total: 1)
-                                HStack {
-                                    Text(viewModel.currentText)
-                                        .font(Font.title3())
-                                        .foregroundColor(.white)
-                                    Spacer()
-                                    Text(viewModel.totalTime)
-                                        .font(Font.title3())
-                                        .foregroundColor(.white)
-                                }
-                            }
-                            Button(action: {
-                                viewModel.tooglePlayer()
-                            }, label: {
-                                Image(viewModel.isPlaying ? "pause" : "play")
-                                    .resizable()
-                                    .frame(width: 64, height: 64)
-                            })
-                        }
-                        .padding()
-                    }
+                    player()
                 }
-                
-                
+            case .finished:
+                CongratsView()
+                    .transition(AnyTransition.scale.animation(Animation.easeIn(duration: 0.2)))
+                    .padding(.horizontal, 18)
+            }
+        }
+        .onAppear {
+            onAppear = true
+        }
+    }
+    
+    // MARK: -  Subviews
+    private func headerView() -> some View {
+        ZStack {
+            // Icon and text
+            VStack {
+                Image(viewModel.breath.image)
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
+                Text(viewModel.breathTitle)
+                    .font(Font.title2())
+                    .foregroundColor(.white)
+                Spacer()
             }
             
+            // Dismiss button
             HStack {
                 VStack {
                     Button {
@@ -188,6 +121,7 @@ struct BreathPlayerView: View {
                 Spacer()
             }
             
+            // Toogle music
             HStack {
                 Spacer()
                 VStack {
@@ -197,7 +131,7 @@ struct BreathPlayerView: View {
                         Image(viewModel.isMusicPlaying ? "speaker_on" : "speaker_off")
                             .resizable()
                             .frame(width: 30, height: 30)
-                            
+                        
                     }
                     .frame(width: 46, height: 46)
                     .shadow(color: Color.black.opacity(0.15), radius: 2.0, x: 0, y: 2)
@@ -205,16 +139,74 @@ struct BreathPlayerView: View {
                     Spacer()
                 }
             }
+        }
+    }
+    
+    private func backgroundView() -> some View {
+        ZStack {
+            // Big island
+            HStack {
+                Spacer()
+                Image("island_big")
+            }
+            .offset(y: 100)
             
-            if viewModel.viewState.hasFinished() {
-                CongratsView()
-                    .transition(AnyTransition.scale.animation(Animation.easeIn(duration: 0.2)))
-                    .padding(.horizontal, 18)
+            // Lottie
+            switch viewModel.waveAnimation.0 {
+            case .idleLow:
+                LottieView(type: viewModel.waveAnimation.0,
+                           animationSpeed: viewModel.waveAnimation.1)
+                    .frame(maxWidth: .infinity,
+                           maxHeight: .infinity)
+                    .ignoresSafeArea()
+            case .rise:
+                LottieView(type: viewModel.waveAnimation.0,
+                           animationSpeed: viewModel.waveAnimation.1)
+                    .frame(maxWidth: .infinity,
+                           maxHeight: .infinity)
+                    .ignoresSafeArea()
+            case .fall:
+                LottieView(type: viewModel.waveAnimation.0,
+                           animationSpeed: viewModel.waveAnimation.1)
+                    .frame(maxWidth: .infinity,
+                           maxHeight: .infinity)
+                    .ignoresSafeArea()
+            case .idleHigh:
+                LottieView(type: viewModel.waveAnimation.0,
+                           animationSpeed: viewModel.waveAnimation.1)
+                    .frame(maxWidth: .infinity,
+                           maxHeight: .infinity)
+                    .ignoresSafeArea()
             }
         }
-        .onAppear {
-            startAnimation = true
-        }
+    }
+    
+    private func player() -> some View {
+            VStack {
+                Spacer()
+                VStack(spacing: 56) {
+                    VStack(spacing: 14) {
+                        ProgressView(value: viewModel.currentNumber, total: 1)
+                        HStack {
+                            Text(viewModel.currentText)
+                                .font(Font.title3())
+                                .foregroundColor(.white)
+                            Spacer()
+                            Text(viewModel.totalTime)
+                                .font(Font.title3())
+                                .foregroundColor(.white)
+                        }
+                    }
+                    Button(action: {
+                        viewModel.tooglePlayer()
+                    }, label: {
+                        Image(viewModel.isPlaying ? "pause" : "play")
+                            .resizable()
+                            .frame(width: 64, height: 64)
+                    })
+                }
+                .padding()
+            }
     }
 }
 

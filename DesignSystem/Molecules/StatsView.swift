@@ -8,6 +8,11 @@
 import SwiftUI
 
 public struct StatsView: View {
+    enum Texts {
+        static var sessionNumber: String = "SESSIONS"
+        static var sessionTime: String = "MINUTES"
+    }
+    
     let leadingText: String
     let trailingText: String
     
@@ -19,13 +24,13 @@ public struct StatsView: View {
     public var body: some View {
         
         HStack {
-            VStack(spacing: 8) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(leadingText)
                     .font(Font.title1())
-                    .foregroundColor(.white)
-                Text("SESSIONS")
+                    .foregroundColor(Color.Text.primary())
+                Text(Texts.sessionNumber)
                     .font(Font.detail())
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.Text.primary())
             }
             Spacer()
             HStack(spacing: 24) {
@@ -33,13 +38,13 @@ public struct StatsView: View {
                     .frame(width: 1.0, height: 30.0)
                     .background(Color.Divider.primary())
                 
-                VStack(spacing: 8) {
+                VStack(alignment: .leading, spacing: 8) {
                     Text(trailingText)
                         .font(Font.title1())
-                        .foregroundColor(.white)
-                    Text("MINUTES")
+                        .foregroundColor(Color.Text.primary())
+                    Text(Texts.sessionTime)
                         .font(Font.detail())
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.Text.primary())
                 }
             }
             Spacer()

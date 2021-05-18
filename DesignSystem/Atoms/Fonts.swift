@@ -43,4 +43,9 @@ extension Font {
     public static func body() -> Font {
         .system(size: 14, weight: .regular)
     }
+    
+    // MARK: Button
+    public static func button() -> Font {
+        .system(size: 16, weight: .bold)
+    }
 }

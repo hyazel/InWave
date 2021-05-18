@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Core
+import Common
 
 struct TabBarView: View {
     // MARK: - States
@@ -23,8 +24,7 @@ struct TabBarView: View {
     
     // MARK: - View
     var body: some View {
-            ZStack {
-                Color.Background.primary().ignoresSafeArea()
+            BaseView {
                 ZStack {
                     VStack(spacing: 0) {
                         InWaveTabView(tabItems: tabItems,
@@ -62,20 +62,19 @@ struct TabBar: View {
                     VStack(spacing: 8) {
                         Circle()
                             .frame(width: 12, height: 12)
-                            .foregroundColor(Color.Palette.blueAccent)
+                            .foregroundColor(Color.Accent.secondary())
                             .opacity(selectedTab == item ? 1 : 0)
 
                         Image(item)
                             .renderingMode(.template)
-                            .foregroundColor(selectedTab == item ? .white : Color.Palette.lake)
+                            .foregroundColor(selectedTab == item ? Color.Icon.selected() : Color.Icon.unselected())
                     }
                 })
                 Spacer()
             }
         }
         .padding(.horizontal, 30)
-        .padding(.bottom,
-                 UIApplication.shared.windows.first?.safeAreaInsets.bottom == 0 ? 32 : 32)
+        .padding(.bottom, 32)
     }
 }
 
@@ -96,24 +95,4 @@ struct InWaveTabView: View {
                 .tag(tabItems[1])
         }
     }
-}
-
-struct BackgroundHelper: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIView {
-        let view = UIView()
-        DispatchQueue.main.async {
-            // find first superview with color and make it transparent
-            var parent = view.superview
-            repeat {
-                if parent?.backgroundColor != nil {
-                    parent?.backgroundColor = UIColor.clear
-                    break
-                }
-                parent = parent?.superview
-            } while (parent != nil)
-        }
-        return view
-    }
-
-    func updateUIView(_ uiView: UIView, context: Context) {}
 }

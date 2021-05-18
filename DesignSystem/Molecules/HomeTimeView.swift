@@ -9,6 +9,10 @@
 import SwiftUI
 
 public struct HomeTimeView: View {
+    enum Texts {
+        static var title: String = "Il est"
+    }
+    
     @Binding var time: String
     
     public init(time: Binding<String>) {
@@ -17,12 +21,12 @@ public struct HomeTimeView: View {
     
     public var body: some View {
         VStack(alignment: .leading) {
-            Text("Il est :")
+            Text(Texts.title)
                 .font(Font.title2())
             Text(time)
                 .font(Font.headline1())
         }
-        .foregroundColor(.white)
+        .foregroundColor(Color.Text.primary())
     }
 }
 

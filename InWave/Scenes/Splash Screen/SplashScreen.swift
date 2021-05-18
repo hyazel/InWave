@@ -9,72 +9,47 @@ import SwiftUI
 import DesignSystem
 
 struct SplashScreen: View {
+    enum Texts {
+        static var line1Leading = "Respirez"
+        static var line1Trailing = "pour"
+        static var line2Leading = "équilibrer"
+        static var line2Trailing = "votre flot intérieur"
+    }
+    
     var body: some View {
-        ZStack {
-            Color.Background.primary().ignoresSafeArea()
-            VStack {
-                HStack {
-                    Wave1()
-                        .fill(Color.Palette.blueAccent).opacity(0.35)
-                        .frame(width: 50, height: 500)
-                    Spacer()
-                }
-                Spacer()
-            }.ignoresSafeArea()
-            
-            VStack {
-                HStack {
-                    Spacer()
-                    Ellipse()
-                        .fill(Color.Palette.blueAccent).opacity(0.35)
-                        .frame(width: UIScreen.main.bounds.width - 50,
-                               height: UIScreen.main.bounds.width - 50)
-                        .offset(x: UIScreen.main.bounds.width - 100, y: -200)
-                }
-                Spacer()
-            }.ignoresSafeArea()
-            
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    Ellipse()
-                        .fill(Color.Palette.blueAccent).opacity(0.35)
-                        .frame(width: 300, height: 500)
-                        .offset(x: 100, y: 400)
-                }
-
-            }.ignoresSafeArea()
-            
+        BaseView {
+            BackgroundWaves()
             VStack(spacing: 32){
                 Image("logo")
-                Color.Divider.primary()
+                Capsule()
+                    .fill(Color.Divider.primary())
                     .frame(width: 24, height: 6)
-                    .cornerRadius(12)
-                VStack {
-                    HStack(spacing: 8) {
-                        Text("Respirez")
-                            .foregroundColor(Color.Text.accent())
-                            .font(Font.title1())
-                        Text("pour")
-                            .foregroundColor(.white)
-                            .font(Font.title1())
-
-
-                    }.padding(.horizontal, 43.0)
-                    HStack(spacing: 8) {
-                        Text("équilibrer")
-                            .foregroundColor(Color.Text.accent())
-                            .font(Font.title1())
-                        Text("votre flot intérieur")
-                            .foregroundColor(.white)
-                            .font(Font.title1())
-
-
-                    }
-                }
+                BreathText()
             }
             
+        }
+    }
+    
+    // MARK: - Subviews
+    fileprivate func BreathText() -> some View {
+        return VStack {
+            HStack(spacing: 8) {
+                Text(Texts.line1Leading)
+                    .foregroundColor(Color.Text.accent())
+                    .font(Font.title1())
+                Text(Texts.line1Trailing)
+                    .foregroundColor(Color.Text.primary())
+                    .font(Font.title1())
+            }
+            .padding(.horizontal, 43.0)
+            HStack(spacing: 8) {
+                Text(Texts.line2Leading)
+                    .foregroundColor(Color.Text.accent())
+                    .font(Font.title1())
+                Text(Texts.line2Leading)
+                    .foregroundColor(Color.Text.primary())
+                    .font(Font.title1())
+            }
         }
     }
 }
@@ -86,24 +61,5 @@ struct SplashScreen_Previews: PreviewProvider {
             SplashScreen().previewDevice(PreviewDevice(rawValue: "iPhone Xr"))
             SplashScreen().previewDevice(PreviewDevice(rawValue: "iPhone SE (2nd generation)"))
         }
-    }
-}
-
-struct Wave1: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.minX, y: rect.minY))
-        
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-        
-        path.addCurve(to: CGPoint(x: rect.minX, y: rect.maxY),
-                      control1: CGPoint(x: rect.maxX + 100, y: 50),
-                      control2: CGPoint(x: rect.maxX, y: 400) )
-        
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        
-        path.closeSubpath()
-        
-        return path
     }
 }

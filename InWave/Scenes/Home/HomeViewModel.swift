@@ -68,14 +68,6 @@ private extension HomeViewModel {
                                                  title: $0.name,
                                                  subtitle: $0.description,
                                                  duration: "\(Int( $0.configuration.duration / 60)) min") }
-        //        let journeys = getJourney(for: Date())
-        //        breaths = journeys.map { $0.breath }
-        //        return journeys.map {
-        //            BreathCellViewModel(iconName: $0.breath.image,
-        //                                title: $0.title,
-        //                                subtitle: $0.description,
-        //                                duration: "\(Int( $0.breath.configuration.duration / 60)) min")
-        //        }
     }
 }
 

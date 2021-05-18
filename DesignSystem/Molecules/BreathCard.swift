@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Common
 
 public struct BreathCard: View {
     private let imageName: String
@@ -15,7 +16,11 @@ public struct BreathCard: View {
     private let duration: String
     private let imageSize: CGSize
     
-    public init(imageName: String, title: String, subtitle: String, duration: String, imageSize: CGSize = CGSize(width: 92, height: 92)) {
+    public init(imageName: String,
+                title: String,
+                subtitle: String,
+                duration: String,
+                imageSize: CGSize = CGSize(width: 92, height: 92)) {
         self.imageName = imageName
         self.title = title
         self.subtitle = subtitle
@@ -30,30 +35,29 @@ public struct BreathCard: View {
                     .resizable()
                     .frame(width: imageSize.width, height: imageSize.height)
                     .clipShape(Circle())
-                    .shadow(color: Color(UIImage(named: imageName)!.averageColor).opacity(1), radius: 1.0, x: 0, y: 3)
+                    .shadow(color: Color(UIImage(named: imageName)!.averageColor),
+                            radius: 1.0, x: 0, y: 3)
                 
-                VStack(spacing: 20) {
-                    VStack(spacing: 6) {
-                        Text(title)
-                            .font(Font.detail())
-                            .foregroundColor(.black)
-                            .multilineTextAlignment(.center)
-                        Text(subtitle)
-                            .font(Font.title3())
-                            .foregroundColor(.black)
-                            .lineLimit(2)
-                            .multilineTextAlignment(.center)
-                            .frame(height: 35)
-                    }
-                    Text(duration)
+                VStack(spacing: 6) {
+                    Text(title)
                         .font(Font.detail())
-                        .foregroundColor(Color.Palette.shell)
+                        .foregroundColor(Color.Text.secondary())
+                        .multilineTextAlignment(.center)
+                    Text(subtitle)
+                        .font(Font.title3())
+                        .foregroundColor(Color.Text.secondary())
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
+                    Spacer()
                 }
+                Text(duration)
+                    .font(Font.detail())
+                    .foregroundColor(Color.Palette.shell)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding([.trailing, .leading, .bottom], 12)
+            .padding([.trailing, .leading, .bottom], 18)
             .padding(.top, 24)
-            .background(Color.white)
+            .background(Color.Background.card())
             .cornerRadius(24)
         }
     }
@@ -70,7 +74,7 @@ struct BreathCard_Previews: PreviewProvider {
                            duration: "30 MIN",
                            imageSize: CGSize(width: 92,
                                              height: 92))
-                    .frame(width: 182, height: 234)
+                    .frame(width: 188, height: 248)
                 
                 BreathCard(imageName: "buteyko",
                            title: "Marche Afghane",
@@ -78,25 +82,8 @@ struct BreathCard_Previews: PreviewProvider {
                            duration: "30 MIN",
                            imageSize: CGSize(width: 92,
                                              height: 92))
-                    .frame(width: 182, height: 234)
+                    .frame(width: 188, height: 244)
             }
         }
-    }
-}
-
-extension UIImage {
-    /// Average color of the image, nil if it cannot be found
-    var averageColor: UIColor {
-        guard let inputImage = CIImage(image: self) else { return .black }
-                let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
-
-        guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return .black }
-        guard let outputImage = filter.outputImage else { return .black }
-
-                var bitmap = [UInt8](repeating: 0, count: 4)
-        let context = CIContext(options: [.workingColorSpace: kCFNull])
-                context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
-
-                return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
     }
 }

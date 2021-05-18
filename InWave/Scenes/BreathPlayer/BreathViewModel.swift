@@ -53,7 +53,7 @@ final class BreathViewModel: ObservableObject, Identifiable {
     @Published var isMusicPlaying: Bool = true
     @Published var strokeWidth: Double = 1
     @Published var waveAnimation: (WaveAnimationType, CGFloat) = (.idleLow, 1)
-    @Published var breathSymbolIndex: Int = 1
+    @Published var breathSymbolIndex: Int = 0
     var breathSymbolIndexAvailable: [Int] = []
     
     let breathTitle: String

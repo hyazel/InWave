@@ -76,7 +76,7 @@ struct BreathSymbolsView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.Background.primary().ignoresSafeArea()
-            BreathSymbolsView(indexAvailable: [1, 2, 3, 4], indexHighlighted: .constant(1))
+            BreathSymbolsView(indexAvailable: [1, 2, 3, 4], indexHighlighted: .constant(5))
         }
     }
 }

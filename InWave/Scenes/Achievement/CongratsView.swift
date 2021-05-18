@@ -7,8 +7,16 @@
 //
 
 import SwiftUI
+import DesignSystem
 
 struct CongratsView: View {
+    // MARK: - Constants
+    enum Texts {
+        static var title: String = "Exercice terminé !"
+        static var text: String = "Vos hormones de stress sont en chute et votre dopamine augmente."
+    }
+    
+    // MARK: - Environment
     @Environment(\.presentationMode) private var presentationMode
     
     var body: some View {
@@ -20,26 +28,21 @@ struct CongratsView: View {
                     .clipShape(Circle())
                 
                 VStack(spacing: 8) {
-                    Text("Exercice terminé !")
+                    Text(Texts.title)
                         .font(Font.title1())
-                        .foregroundColor(.black)
-                    Text("Vos hormones de stress sont en chute et votre dopamine augmente.")
+                        .foregroundColor(Color.Text.secondary())
+                    Text(Texts.text)
                         .font(Font.title3())
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.Text.secondary())
                         .multilineTextAlignment(.center)
                 }
             }
-            Button(action: { presentationMode.wrappedValue.dismiss() },
-                   label: {
-                    Text("OK")
-                        .foregroundColor(.white)
-                        .frame(width: 166, height: 54)
-                        .background(Color.Palette.lagoon)
-                        .cornerRadius(54)
-                   }).shadow(color: Color.black.opacity(0.25), radius: 2, x: 0, y: 2)
+            SecondaryButton(title: "OK") {
+                presentationMode.wrappedValue.dismiss()
+            }
         }
         .padding(24)
-        .background(Color.white)
+        .background(Color.Background.card())
         .cornerRadius(24)
         .shadow(radius: 10)
     }

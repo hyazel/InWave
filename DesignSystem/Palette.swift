@@ -17,7 +17,6 @@ extension Color {
         public static let lake: Color = Color(hex: 0x014D5A)
         public static let shell: Color = Color(hex: 0xA0B4A9)
         public static let darkOcean: Color = Color(hex: 0x0A2A43)
-        
-        public static let blueAccent: Color = Color(hex: 0x4EB7EE)
+        public static let sunset: Color = Color(hex: 0xFF9B5A)
     }
 }

@@ -10,89 +10,68 @@ import SwiftUI
 import Core
 import DesignSystem
 
+// MARK: - Main View
 struct OnBoarding: View {
     enum Texts {
         static var page1 = "La vie moderne déséquilibre notre système nerveux"
         static var page2 = "La respiration permet de rééquilibrer ce système"
         static var page3 = "Les bénéfices sont nombreux : mieux dormir, digérer, mémoire ..."
+        static var startButton = "COMMENCER"
     }
     
     @State var selectedTab: Int = 0
     var onBoadingHasFinished: (() -> Void)
     
     var body: some View {
-        ZStack {
-            Color.Background.primary()
-            
-            VStack {
-                HStack {
-                    Wave1()
-                        .fill(Color.Palette.blueAccent).opacity(0.35)
-                        .frame(width: 50, height: 500)
-                    Spacer()
-                }
-                Spacer()
-            }.ignoresSafeArea()
-            
-            VStack {
-                HStack {
-                    Spacer()
-                    Ellipse()
-                        .fill(Color.Palette.blueAccent).opacity(0.35)
-                        .frame(width: UIScreen.main.bounds.width,
-                               height: UIScreen.main.bounds.width)
-                        .offset(x: UIScreen.main.bounds.width - 100, y: -200)
-                }
-                Spacer()
-            }.ignoresSafeArea()
-            
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    Ellipse()
-                        .fill(Color.Palette.blueAccent).opacity(0.35)
-                        .frame(width: 300, height: 500)
-                        .offset(x: 100, y: 400)
-                }
-
-            }.ignoresSafeArea()
-            
-            TabView(selection: $selectedTab,
-                    content:  {
-                        OnBoardingView(title: Texts.page1, icon: "worried_face")
-                            .tag(0)
-                            .padding([.leading, .trailing], 36)
-                        OnBoardingView(title: Texts.page2, icon: "interested_face")
-                            .tag(1)
-                            .padding([.leading, .trailing], 36)
-                        OnBoardingView(title: Texts.page3, icon: "happy_face")
-                            .tag(2)
-                            .padding([.leading, .trailing], 36)
-                    })
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-            VStack {
-                Spacer()
-                Button {
-                    onBoadingHasFinished()
-                } label: {
-                    Text("COMMENCER")
-                }
-                .frame(width: 158, height: 54)
-                .foregroundColor(Color.white)
-                .background(Color.Palette.lagoon)
-                .cornerRadius(54)
-                .padding(.bottom, 64)
-                .offset(y: selectedTab == 2 ? 0 : 150)
-                .animation(.interpolatingSpring(mass: 1, stiffness: 100, damping: 10, initialVelocity: 10))
-            }
+        BaseView() {
+            BackgroundWaves()
+            onBoardingTabView()
+            startButton()
         }
-        .edgesIgnoringSafeArea(.all)
+    }
+    
+    // MARK: - SubViews
+    private func onBoardingTabView() -> some View {
+        TabView(selection: $selectedTab,
+                content:  {
+                    OnBoardingView(title: Texts.page1,
+                                   icon: "worried_face")
+                        .tag(0)
+                        .padding([.leading, .trailing], 36)
+                    OnBoardingView(title: Texts.page2,
+                                   icon: "interested_face")
+                        .tag(1)
+                        .padding([.leading, .trailing], 36)
+                    OnBoardingView(title: Texts.page3,
+                                   icon: "happy_face")
+                        .tag(2)
+                        .padding([.leading, .trailing], 36)
+                })
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+    }
+    
+    private func startButton() -> some View {
+        VStack {
+            Spacer()
+            Button {
+                onBoadingHasFinished()
+            } label: {
+                Text(Texts.startButton)
+            }
+            .buttonStyle(SecondaryButtonStyle())
+            .frame(width: 158, height: 54)
+            .padding(.bottom, 64)
+            .offset(y: selectedTab == 2 ? 0 : 200)
+            .animation(Animations.spring)
+        }
     }
 }
 
 struct onBoarding_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoarding() {}
+        Group {
+            OnBoarding() {}.previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro Max"))
+            OnBoarding() {}.previewDevice(PreviewDevice(rawValue: "iPhone SE (2nd generation)"))
+        }
     }
 }

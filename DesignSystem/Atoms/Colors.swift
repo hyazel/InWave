@@ -24,6 +24,10 @@ extension Color {
         public static func primaryAlpha() -> LinearGradient {
             LinearGradient(gradient: Gradient(colors: [Color.Palette.darkOcean, Color.Palette.darkOcean.opacity(0)]), startPoint: .bottom, endPoint: .top)
         }
+        
+        public static func card() -> Color {
+            .white
+        }
     }
     
     public enum Divider {
@@ -33,8 +37,36 @@ extension Color {
     }
     
     public enum Text {
+        public static func primary() -> Color {
+            .white
+        }
+        
+        public static func secondary() -> Color {
+            .black
+        }
+        
         public static func accent() -> Color {
-            Color.Palette.blueAccent
+            Color.Palette.lagoon
+        }
+    }
+    
+    public enum Icon {
+        public static func selected() -> Color {
+            .white
+        }
+        
+        public static func unselected() -> Color {
+            Color.Palette.shell
+        }
+    }
+    
+    public enum Accent {
+        public static func primary() -> Color {
+            Color.Palette.sunset
+        }
+        
+        public static func secondary() -> Color {
+            Color.Palette.lagoon
         }
     }
 }

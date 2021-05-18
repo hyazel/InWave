@@ -15,12 +15,15 @@
 		F911452125A9EED4002C1127 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911452025A9EED4002C1127 /* Fonts.swift */; };
 		F9291CD5260CA25B005ABABA /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9291CD4260CA25B005ABABA /* Modifier.swift */; };
 		F9291D17260CE2CD005ABABA /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9291D16260CE2CD005ABABA /* AppDependencies.swift */; };
+		F93DB4CF264978D00034F2E7 /* BacASable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DB4CE264978D00034F2E7 /* BacASable.swift */; };
 		F94251F226149F14000B4E1E /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94251F126149F14000B4E1E /* Journey.swift */; };
 		F94304DB25BEDB31006FC535 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94304DA25BEDB31006FC535 /* OnBoarding.swift */; };
 		F9590381262478BF00BE1342 /* BreathSymbolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9590380262478BF00BE1342 /* BreathSymbolsView.swift */; };
 		F95B34742573DB84006AF485 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95B34732573DB84006AF485 /* TabBarView.swift */; };
-		F95B347D2573EB03006AF485 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95B347C2573EB03006AF485 /* ActivityView.swift */; };
 		F95B34842573EE96006AF485 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95B34832573EE96006AF485 /* HomeView.swift */; };
+		F9734BBE2653294500E3A59D /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9734BBD2653294500E3A59D /* UIImageExtensions.swift */; };
+		F9734BCB26532A5E00E3A59D /* libCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F98D2B04260CE987001CBC4F /* libCommon.a */; };
+		F9734BDB26532B6200E3A59D /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9734BDA26532B6200E3A59D /* Buttons.swift */; };
 		F973E64D25F3BBF40071177A /* RootViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F973E64C25F3BBF40071177A /* RootViewCoordinator.swift */; };
 		F97EC21C25CEDB17002DD88D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EC21B25CEDB17002DD88D /* HomeViewModel.swift */; };
 		F97EC23025CEEC51002DD88D /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EC22F25CEEC51002DD88D /* UserRepository.swift */; };
@@ -36,7 +39,10 @@
 		F99A453A262F24B500D27215 /* 3_idle_high.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4536262F24B500D27215 /* 3_idle_high.json */; };
 		F99A453B262F24B500D27215 /* 2_rise.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4537262F24B500D27215 /* 2_rise.json */; };
 		F99A453C262F24B500D27215 /* 1_idle_low.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4538262F24B500D27215 /* 1_idle_low.json */; };
-		F9B30B2726150C1200EAE40B /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B30B2626150C1200EAE40B /* PressableButtonStyle.swift */; };
+		F9A9DA99264C1C3900FB3C77 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DA98264C1C3900FB3C77 /* BaseView.swift */; };
+		F9A9DAA5264D5A4B00FB3C77 /* BackgroundWaves.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DAA4264D5A4A00FB3C77 /* BackgroundWaves.swift */; };
+		F9A9DAAC264D5E4900FB3C77 /* BackgroundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DAAB264D5E4800FB3C77 /* BackgroundHelper.swift */; };
+		F9B30B2726150C1200EAE40B /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B30B2626150C1200EAE40B /* ButtonStyles.swift */; };
 		F9BA63F125A735C500729E88 /* ColorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BA63F025A735C500729E88 /* ColorsExtensions.swift */; };
 		F9BA63FD25A7362400729E88 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BA63FC25A7362400729E88 /* Palette.swift */; };
 		F9BA640925A73FC300729E88 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BA640825A73FC300729E88 /* Colors.swift */; };
@@ -56,6 +62,8 @@
 		F9D14F32256164C4005E9A3C /* BreathViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D14F31256164C4005E9A3C /* BreathViewModel.swift */; };
 		F9D346B125D40B5A00071541 /* BreathListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D346B025D40B5A00071541 /* BreathListView.swift */; };
 		F9D346BD25D40CAA00071541 /* BreathListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D346BC25D40CAA00071541 /* BreathListViewModel.swift */; };
+		F9D645132652536300E016FC /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D645122652536300E016FC /* Animations.swift */; };
+		F9D6451A26525FB700E016FC /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D6451926525FB700E016FC /* UIApplicationExtensions.swift */; };
 		F9DE9E8D25D6951D0067749B /* Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DE9E8C25D6951D0067749B /* Playground.swift */; };
 		F9DEA3C7260CEB3100885587 /* libCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F98D2B04260CE987001CBC4F /* libCommon.a */; };
 		F9DEA3D0260CEB9500885587 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943042925B5DA83006FC535 /* NavigationLazyView.swift */; };
@@ -72,7 +80,6 @@
 		F9DEA441260CFAA500885587 /* BreathCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA440260CFAA500885587 /* BreathCellViewModel.swift */; };
 		F9DEA49C260E24B200885587 /* Waves.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA49B260E24B200885587 /* Waves.swift */; };
 		F9DFDB0A264167990078D36A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9DFDB09264167990078D36A /* Launch Screen.storyboard */; };
-		F9DFDB5A26418A5A0078D36A /* BacASable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DFDB5926418A5A0078D36A /* BacASable.swift */; };
 		F9E984BB25B329DF00FA8E50 /* BreathPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E984BA25B329DF00FA8E50 /* BreathPlayerView.swift */; };
 		F9EEA3EB2613AEBC006AA6FA /* pads2_insp_5s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9EEA3DF2613AEBC006AA6FA /* pads2_insp_5s.mp3 */; };
 		F9EEA3EC2613AEBC006AA6FA /* pads2_insp_7s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9EEA3E02613AEBC006AA6FA /* pads2_insp_7s.mp3 */; };
@@ -94,6 +101,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F9734BC426532A3D00E3A59D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9D14E75255ED0A6005E9A3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F98D2B03260CE987001CBC4F;
+			remoteInfo = Common;
+		};
+		F9734BCC26532A5E00E3A59D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9D14E75255ED0A6005E9A3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F98D2B03260CE987001CBC4F;
+			remoteInfo = Common;
+		};
 		F98D2B1E260CE9CB001CBC4F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F9D14E75255ED0A6005E9A3C /* Project object */;
@@ -187,6 +208,7 @@
 		F9291CD4260CA25B005ABABA /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		F9291D16260CE2CD005ABABA /* AppDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		F9291D1D260CE2D6005ABABA /* DependenciesContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependenciesContainer.swift; sourceTree = "<group>"; };
+		F93DB4CE264978D00034F2E7 /* BacASable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacASable.swift; sourceTree = "<group>"; };
 		F93E0D2525F6548100643C91 /* InWavePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InWavePlayer.swift; sourceTree = "<group>"; };
 		F93E0D2C25F6574000643C91 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		F94251F126149F14000B4E1E /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
@@ -195,9 +217,10 @@
 		F94304E125BEDDA6006FC535 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		F9590380262478BF00BE1342 /* BreathSymbolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathSymbolsView.swift; sourceTree = "<group>"; };
 		F95B34732573DB84006AF485 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		F95B347C2573EB03006AF485 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		F95B34832573EE96006AF485 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F972E10B25700D7900E3C7C3 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		F9734BBD2653294500E3A59D /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		F9734BDA26532B6200E3A59D /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		F973E64C25F3BBF40071177A /* RootViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewCoordinator.swift; sourceTree = "<group>"; };
 		F97EC21B25CEDB17002DD88D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F97EC22F25CEEC51002DD88D /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -208,8 +231,11 @@
 		F99A4536262F24B500D27215 /* 3_idle_high.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3_idle_high.json; sourceTree = "<group>"; };
 		F99A4537262F24B500D27215 /* 2_rise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 2_rise.json; sourceTree = "<group>"; };
 		F99A4538262F24B500D27215 /* 1_idle_low.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1_idle_low.json; sourceTree = "<group>"; };
+		F9A9DA98264C1C3900FB3C77 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		F9A9DAA4264D5A4A00FB3C77 /* BackgroundWaves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundWaves.swift; sourceTree = "<group>"; };
+		F9A9DAAB264D5E4800FB3C77 /* BackgroundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundHelper.swift; sourceTree = "<group>"; };
 		F9AC5C2125ACDF3D00B85FC1 /* BreathCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathCard.swift; sourceTree = "<group>"; };
-		F9B30B2626150C1200EAE40B /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
+		F9B30B2626150C1200EAE40B /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		F9BA63F025A735C500729E88 /* ColorsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtensions.swift; sourceTree = "<group>"; };
 		F9BA63FC25A7362400729E88 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		F9BA640825A73FC300729E88 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -236,6 +262,8 @@
 		F9D14F31256164C4005E9A3C /* BreathViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathViewModel.swift; sourceTree = "<group>"; };
 		F9D346B025D40B5A00071541 /* BreathListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathListView.swift; sourceTree = "<group>"; };
 		F9D346BC25D40CAA00071541 /* BreathListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathListViewModel.swift; sourceTree = "<group>"; };
+		F9D645122652536300E016FC /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		F9D6451926525FB700E016FC /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		F9DE9E8C25D6951D0067749B /* Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground.swift; sourceTree = "<group>"; };
 		F9DEA3EE260CEC8600885587 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9DEA40D260CF5D500885587 /* BreathEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathEngine.swift; sourceTree = "<group>"; };
@@ -245,7 +273,6 @@
 		F9DEA440260CFAA500885587 /* BreathCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathCellViewModel.swift; sourceTree = "<group>"; };
 		F9DEA49B260E24B200885587 /* Waves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waves.swift; sourceTree = "<group>"; };
 		F9DFDB09264167990078D36A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		F9DFDB5926418A5A0078D36A /* BacASable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacASable.swift; sourceTree = "<group>"; };
 		F9E984BA25B329DF00FA8E50 /* BreathPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathPlayerView.swift; sourceTree = "<group>"; };
 		F9EEA3DF2613AEBC006AA6FA /* pads2_insp_5s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pads2_insp_5s.mp3; sourceTree = "<group>"; };
 		F9EEA3E02613AEBC006AA6FA /* pads2_insp_7s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pads2_insp_7s.mp3; sourceTree = "<group>"; };
@@ -312,6 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9734BCB26532A5E00E3A59D /* libCommon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,9 +358,11 @@
 		F911452D25A9F705002C1127 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F9D6451926525FB700E016FC /* UIApplicationExtensions.swift */,
 				F911452F25A9F715002C1127 /* NSAttributedStringExtensions.swift */,
 				F90AEAF425F14414000266FF /* ViewExtensions.swift */,
 				F93E0D2C25F6574000643C91 /* URLExtensions.swift */,
+				F9734BBD2653294500E3A59D /* UIImageExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -357,13 +387,6 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		F95B347A2573EAB5006AF485 /* Atoms */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Atoms;
-			sourceTree = "<group>";
-		};
 		F95B347B2573EABE006AF485 /* Molecules */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,17 +394,37 @@
 				F913A8B025ACD8B500482F76 /* HomeTimeView.swift */,
 				F9AC5C2125ACDF3D00B85FC1 /* BreathCard.swift */,
 				F94304E125BEDDA6006FC535 /* OnBoardingView.swift */,
-				F95B347C2573EB03006AF485 /* ActivityView.swift */,
 				F9590380262478BF00BE1342 /* BreathSymbolsView.swift */,
+				F9A9DAA4264D5A4A00FB3C77 /* BackgroundWaves.swift */,
 			);
 			path = Molecules;
+			sourceTree = "<group>";
+		};
+		F9734BD826532AEA00E3A59D /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				F9734BDA26532B6200E3A59D /* Buttons.swift */,
+				F9BA640825A73FC300729E88 /* Colors.swift */,
+				F911452025A9EED4002C1127 /* Fonts.swift */,
+				F9D645122652536300E016FC /* Animations.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+		F9734BD926532AFA00E3A59D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F9BA63F025A735C500729E88 /* ColorsExtensions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		F98D2B05260CE987001CBC4F /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				F9DEA3CF260CEB8C00885587 /* Utilities */,
 				F9291D1D260CE2D6005ABABA /* DependenciesContainer.swift */,
+				F9A9DAAB264D5E4800FB3C77 /* BackgroundHelper.swift */,
+				F9DEA3CF260CEB8C00885587 /* Utilities */,
 				F911452D25A9F705002C1127 /* Extensions */,
 				F98D2B06260CE987001CBC4F /* Common.swift */,
 			);
@@ -395,10 +438,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F9A9DA96264C1C2000FB3C77 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F9A9DA97264C1C2800FB3C77 /* UI */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F9A9DA97264C1C2800FB3C77 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F9A9DA98264C1C3900FB3C77 /* BaseView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		F9B30B2526150C0400EAE40B /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				F9B30B2626150C1200EAE40B /* PressableButtonStyle.swift */,
+				F9B30B2626150C1200EAE40B /* ButtonStyles.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -441,6 +500,7 @@
 		F9D14E7F255ED0A6005E9A3C /* InWave */ = {
 			isa = PBXGroup;
 			children = (
+				F9A9DA96264C1C2000FB3C77 /* Utilities */,
 				F9D14EFF255ED386005E9A3C /* App */,
 				F9D14F00255ED38D005E9A3C /* Scenes */,
 				F9D14E84255ED0A7005E9A3C /* Assets.xcassets */,
@@ -517,17 +577,15 @@
 		F9D14EE5255ED29E005E9A3C /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				F9734BD926532AFA00E3A59D /* Utilities */,
 				F9B30B2526150C0400EAE40B /* Styles */,
 				F9DEA495260E22F300885587 /* Shapes */,
 				F9BA63EF25A735B100729E88 /* Modifiers */,
 				F95B347B2573EABE006AF485 /* Molecules */,
-				F95B347A2573EAB5006AF485 /* Atoms */,
+				F9734BD826532AEA00E3A59D /* Atoms */,
 				F9D14EE6255ED29E005E9A3C /* DesignSystem.h */,
 				F9D14EE7255ED29E005E9A3C /* Info.plist */,
-				F9BA63F025A735C500729E88 /* ColorsExtensions.swift */,
 				F9BA63FC25A7362400729E88 /* Palette.swift */,
-				F9BA640825A73FC300729E88 /* Colors.swift */,
-				F911452025A9EED4002C1127 /* Fonts.swift */,
 				F9DEA3EE260CEC8600885587 /* Assets.xcassets */,
 			);
 			path = DesignSystem;
@@ -537,8 +595,8 @@
 			isa = PBXGroup;
 			children = (
 				F9D14E80255ED0A6005E9A3C /* InWaveApp.swift */,
+				F93DB4CE264978D00034F2E7 /* BacASable.swift */,
 				F9DEA3DC260CEBAF00885587 /* Dependencies */,
-				F9DFDB5926418A5A0078D36A /* BacASable.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -791,6 +849,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				F9734BC526532A3D00E3A59D /* PBXTargetDependency */,
+				F9734BCD26532A5E00E3A59D /* PBXTargetDependency */,
 			);
 			name = DesignSystem;
 			productName = DesignSystem;
@@ -926,11 +986,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9734BBE2653294500E3A59D /* UIImageExtensions.swift in Sources */,
 				F98D2B10260CE997001CBC4F /* DependenciesContainer.swift in Sources */,
 				F98D2B17260CE9A0001CBC4F /* NSAttributedStringExtensions.swift in Sources */,
+				F9D6451A26525FB700E016FC /* UIApplicationExtensions.swift in Sources */,
 				F9DEA3D0260CEB9500885587 /* NavigationLazyView.swift in Sources */,
 				F98D2B18260CE9A0001CBC4F /* URLExtensions.swift in Sources */,
 				F98D2B16260CE9A0001CBC4F /* ViewExtensions.swift in Sources */,
+				F9A9DAAC264D5E4900FB3C77 /* BackgroundHelper.swift in Sources */,
 				F98D2B07260CE987001CBC4F /* Common.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -943,11 +1006,11 @@
 				F911450F25A9E8C9002C1127 /* SplashScreen.swift in Sources */,
 				F9DEA441260CFAA500885587 /* BreathCellViewModel.swift in Sources */,
 				F9E984BB25B329DF00FA8E50 /* BreathPlayerView.swift in Sources */,
-				F9DFDB5A26418A5A0078D36A /* BacASable.swift in Sources */,
 				F95B34742573DB84006AF485 /* TabBarView.swift in Sources */,
 				F973E64D25F3BBF40071177A /* RootViewCoordinator.swift in Sources */,
 				F9D346BD25D40CAA00071541 /* BreathListViewModel.swift in Sources */,
 				F9291D17260CE2CD005ABABA /* AppDependencies.swift in Sources */,
+				F93DB4CF264978D00034F2E7 /* BacASable.swift in Sources */,
 				F95B34842573EE96006AF485 /* HomeView.swift in Sources */,
 				F9DE9E8D25D6951D0067749B /* Playground.swift in Sources */,
 				F9DEA43A260CFA9000885587 /* HomeViewModelTimer.swift in Sources */,
@@ -955,6 +1018,7 @@
 				F9D14F32256164C4005E9A3C /* BreathViewModel.swift in Sources */,
 				F903AE7725E0163200747D90 /* CongratsView.swift in Sources */,
 				F94304DB25BEDB31006FC535 /* OnBoarding.swift in Sources */,
+				F9A9DA99264C1C3900FB3C77 /* BaseView.swift in Sources */,
 				F98D2ADF260CE486001CBC4F /* RootViewModel.swift in Sources */,
 				F9D346B125D40B5A00071541 /* BreathListView.swift in Sources */,
 			);
@@ -1003,10 +1067,12 @@
 				F9DEA3FF260CEFD900885587 /* BreathCard.swift in Sources */,
 				F9291CD5260CA25B005ABABA /* Modifier.swift in Sources */,
 				F9BA640925A73FC300729E88 /* Colors.swift in Sources */,
-				F9B30B2726150C1200EAE40B /* PressableButtonStyle.swift in Sources */,
+				F9B30B2726150C1200EAE40B /* ButtonStyles.swift in Sources */,
+				F9A9DAA5264D5A4B00FB3C77 /* BackgroundWaves.swift in Sources */,
 				F9DEA49C260E24B200885587 /* Waves.swift in Sources */,
 				F9590381262478BF00BE1342 /* BreathSymbolsView.swift in Sources */,
-				F95B347D2573EB03006AF485 /* ActivityView.swift in Sources */,
+				F9D645132652536300E016FC /* Animations.swift in Sources */,
+				F9734BDB26532B6200E3A59D /* Buttons.swift in Sources */,
 				F9BA63F125A735C500729E88 /* ColorsExtensions.swift in Sources */,
 				F9DEA405260CF04800885587 /* StatsView.swift in Sources */,
 			);
@@ -1015,6 +1081,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F9734BC526532A3D00E3A59D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = F98D2B03260CE987001CBC4F /* Common */;
+			targetProxy = F9734BC426532A3D00E3A59D /* PBXContainerItemProxy */;
+		};
+		F9734BCD26532A5E00E3A59D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F98D2B03260CE987001CBC4F /* Common */;
+			targetProxy = F9734BCC26532A5E00E3A59D /* PBXContainerItemProxy */;
+		};
 		F98D2B1F260CE9CB001CBC4F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F98D2B03260CE987001CBC4F /* Common */;

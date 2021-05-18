@@ -11,51 +11,64 @@ import Core
 import DesignSystem
 
 struct BreathListView: View {
+    enum Texts {
+        static var listTitle: String = "Activités"
+    }
+    
+    // MARK: - States
     @StateObject var viewModel: BreathListViewModel
     @State private var selectedBreath: Breath? = nil
     
     var body: some View {
         ZStack {
-            ScrollView(showsIndicators: false) {
-                VStack {
-                    Text("Activités")
-                                .frame(maxWidth: .infinity,
-                                       alignment: .leading)
-                        .foregroundColor(.white)
-                        .font(Font.title2())
-                    LazyVGrid(
-                        columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible())],
-                        alignment: .center,
-                        spacing: 16,
-                        pinnedViews: [.sectionHeaders]
-                    ) {
-                        ForEach(Array(viewModel.breathCellViewModels.enumerated()), id: \.element.id) { (index, breath) in
-                            Button(action: {
-                                selectedBreath = viewModel.selectedBreath(index: index)
-                            }, label: {
-                                BreathCard(imageName: breath.iconName,
-                                           title: breath.title,
-                                           subtitle: breath.subtitle,
-                                           duration: breath.duration,
-                                           imageSize: CGSize(width: 72, height: 72))
-                            })
-                            .buttonStyle(PressableButtonStyle())
-                        }
-                    }
-                    Color.clear.padding(.bottom, 10)
+            breathList()
+                .fullScreenCover(item: $selectedBreath) { breath in
+                    BreathPlayerView(viewModel: BreathViewModel(breath: breath))
                 }
-                
-            }
-            .padding(.top, 16)
-            .padding([.leading, .trailing], 16)
-            .fullScreenCover(item: $selectedBreath) { breath in
-                BreathPlayerView(viewModel: BreathViewModel(breath: breath))
-            }
             
+            bottomShadow()
+        }
+    }
+    
+    // MARK: - Subviews
+    private func breathList() -> some View {
+        ScrollView(showsIndicators: false) {
             VStack {
-                Spacer()
-                Color.Background.primaryAlpha().frame(maxWidth: .infinity, maxHeight: 36)
+                Text(Texts.listTitle)
+                    .frame(maxWidth: .infinity,
+                           alignment: .leading)
+                    .foregroundColor(Color.Text.primary())
+                    .font(Font.title2())
+                LazyVGrid(
+                    columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible())],
+                    alignment: .center,
+                    spacing: 16,
+                    pinnedViews: [.sectionHeaders]
+                ) {
+                    ForEach(Array(viewModel.breathCellViewModels.enumerated()), id: \.element.id) { (index, breath) in
+                        Button(action: {
+                            selectedBreath = viewModel.selectedBreath(index: index)
+                        }, label: {
+                            BreathCard(imageName: breath.iconName,
+                                       title: breath.title,
+                                       subtitle: breath.subtitle,
+                                       duration: breath.duration,
+                                       imageSize: CGSize(width: 72, height: 72))
+                        })
+                        .buttonStyle(PressableButtonStyle())
+                    }
+                }
+                Color.clear.padding(.bottom, 10)
             }
+        }
+        .padding(.top, 16)
+        .padding([.leading, .trailing], 16)
+    }
+    
+    private func bottomShadow() -> some View {
+        VStack {
+            Spacer()
+            Color.Background.primaryAlpha().frame(maxWidth: .infinity, maxHeight: 36)
         }
     }
 }

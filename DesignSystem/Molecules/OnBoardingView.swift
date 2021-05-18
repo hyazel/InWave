@@ -25,7 +25,8 @@ public struct OnBoardingView: View {
                 .clipShape(Circle())
             Text(title)
                 .font(Font.title1())
-                .foregroundColor(.white).multilineTextAlignment(.leading)
+                .foregroundColor(Color.Text.primary())
+                .multilineTextAlignment(.leading)
         }
     }
 }
