@@ -12,6 +12,7 @@ import Common
 
 public final class InWavePlayer {
     public enum Audio {
+        static var generalVolume: Float = 0.07
         case exhale(duration: Int)
         case inhale(duration: Int)
         case hold(duration: Int)
@@ -128,33 +129,33 @@ public final class InWavePlayer {
             case .beach:
                 loadMusicBeach()
                 Self.musicPlayer.play()
-                Self.musicPlayer.volume = 0.05
+                Self.musicPlayer.volume = Audio.generalVolume
             case .inhale(let duration):
                 loadBreathInhale()
                 Self.breathPlayer.play()
-                Self.breathPlayer.volume = 0.05
+                Self.breathPlayer.volume = Audio.generalVolume
                 
                 loadBreathLongInhale(duration: duration)
                 Self.longInhaleBreathPlayer.play()
-                Self.longInhaleBreathPlayer.volume = 0.05
+                Self.longInhaleBreathPlayer.volume = Audio.generalVolume
             case .exhale(let duration):
                 loadBreathExhale()
                 Self.breathPlayer.play()
-                Self.breathPlayer.volume = 0.05
+                Self.breathPlayer.volume = Audio.generalVolume
                 
                 loadBreathLongExhale(duration: duration)
                 Self.longExhaleBreathPlayer.play()
-                Self.longExhaleBreathPlayer.volume = 0.05
+                Self.longExhaleBreathPlayer.volume = Audio.generalVolume
             case .hold:
                 loadBreathHold()
-                Self.breathPlayer.volume = 0.05
+                Self.breathPlayer.volume = Audio.generalVolume
                 Self.breathPlayer.play()
             case .countdownStart:
                 Self.countDownPlayer.play()
-                Self.countDownPlayer.volume = 0.05
+                Self.countDownPlayer.volume = Audio.generalVolume
             case .countdownEnd:
                 Self.countDownEndPlayer.play()
-                Self.countDownEndPlayer.volume = 0.05
+                Self.countDownEndPlayer.volume = Audio.generalVolume
             }
         }
     }
@@ -165,7 +166,7 @@ public final class InWavePlayer {
             Self.musicPlayer.pause()
         } else {
             Self.musicPlayer.play()
-            Self.musicPlayer.setVolume(0.05, fadeDuration: 2)
+            Self.musicPlayer.setVolume(Audio.generalVolume, fadeDuration: 2)
         }
     }
     

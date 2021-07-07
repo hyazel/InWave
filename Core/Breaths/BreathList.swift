@@ -20,7 +20,7 @@ public struct BreathList {
     }
     
     public static var buteyko: Breath = Breath(name: Name.buteyko,
-                                               description: "Lutte contre le manque de souffle",
+                                               description: "Lutte contre le manque de souffle.",
                                                image: "buteyko",
                                                configuration: BreathConfiguration(inhale: 5,
                                                                                   inHaleHold: 5,
@@ -29,7 +29,7 @@ public struct BreathList {
                                                                                   cycleNumber: 15))
     
     static var afghanWalk: Breath = Breath(name: Name.afghanWalk,
-                                           description: "Marcher en respirant",
+                                           description: "Marcher avec une oxygénation optimale.",
                                            image: "afghan_walk",
                                            configuration: BreathConfiguration(inhale: 3,
                                                                               inHaleHold: 1,
@@ -38,7 +38,7 @@ public struct BreathList {
                                                                               cycleNumber: 225))
     
     static var square: Breath = Breath(name: Name.square,
-                                       description: "Réduit le stress et améliore le bien être",
+                                       description: "Réduit le stress et améliore le bien être.",
                                        image: "squared",
                                        configuration: BreathConfiguration(inhale: 4,
                                                                           inHaleHold: 4,
@@ -47,7 +47,7 @@ public struct BreathList {
                                                                           cycleNumber: 20))
     
     static var cardiacCoherence: Breath = Breath(name: Name.cardiacCoherence,
-                                                 description: "Equilibre et harmonie",
+                                                 description: "Equilibre et régulation des émotions.",
                                                  image: "cardiac_coherence",
                                                  configuration: BreathConfiguration(inhale: 5,
                                                                                     inHaleHold: 0,
@@ -56,7 +56,7 @@ public struct BreathList {
                                                                                     cycleNumber: 30))
     
     static var tonicCardiacCoherence: Breath = Breath(name: Name.tonicCardiacCoherence,
-                                                      description: "Plus de tonus",
+                                                      description: "Favorise le passage à l’action.",
                                                       image: "cardiac_coherence_tonic",
                                                       configuration: BreathConfiguration(inhale: 6,
                                                                                          inHaleHold: 0,
@@ -65,7 +65,7 @@ public struct BreathList {
                                                                                          cycleNumber: 30))
     
     static var relaxCardiacCoherence: Breath = Breath(name: Name.relaxCardiacCoherence,
-                                                      description: "Relaxez vous",
+                                                      description: "Régénère le corps, calme et détente.",
                                                       image: "cardiac_coherence_relax",
                                                       configuration: BreathConfiguration(inhale: 4,
                                                                                          inHaleHold: 0,
@@ -74,7 +74,7 @@ public struct BreathList {
                                                                                          cycleNumber: 30))
     
     static var forSevenEight: Breath = Breath(name: Name.forSevenEight,
-                                              description: "A long program to reach the calm",
+                                              description: "Prépare l'endormissement.",
                                               image: "4_7_8",
                                               configuration: BreathConfiguration(inhale: 4,
                                                                                  inHaleHold: 7,
@@ -85,12 +85,12 @@ public struct BreathList {
     public static func getBreathList() -> [Breath] {
         [
             Self.cardiacCoherence,
-            Self.square,
-            Self.tonicCardiacCoherence,
-            Self.relaxCardiacCoherence,
             Self.forSevenEight,
+            Self.tonicCardiacCoherence,
+            Self.square,
+            Self.relaxCardiacCoherence,
             Self.afghanWalk,
-            Self.buteyko
+//            Self.buteyko
         ]
     }
 }
@@ -102,13 +102,13 @@ public func getBestBreath(for time: Date) -> [Breath] {
     case 0..<4:
         return [BreathList.forSevenEight, BreathList.relaxCardiacCoherence]
     case 4..<12:
-        return [BreathList.tonicCardiacCoherence, BreathList.afghanWalk]
+        return [BreathList.tonicCardiacCoherence, BreathList.afghanWalk, BreathList.cardiacCoherence]
     case 12..<18:
         return [BreathList.cardiacCoherence, BreathList.square, BreathList.tonicCardiacCoherence]
     case 18..<20:
-        return [BreathList.square, BreathList.relaxCardiacCoherence]
+        return [BreathList.cardiacCoherence, BreathList.square, BreathList.relaxCardiacCoherence]
     case 20..<24:
-        return [BreathList.forSevenEight, BreathList.relaxCardiacCoherence]
+        return [BreathList.forSevenEight, BreathList.relaxCardiacCoherence, BreathList.square]
     default:
         return [BreathList.cardiacCoherence]
     }

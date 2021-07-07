@@ -13,7 +13,7 @@ import Combine
 import Common
 
 final class HomeViewModel: ObservableObject, Identifiable {
-    // MARK: - Pulic properties
+    // MARK: - Public properties
     @Published var breathCards: [BreathCellViewModel] = []
     @Published var totalSessionNumber: String = ""
     @Published var totalDailyTime: String = ""

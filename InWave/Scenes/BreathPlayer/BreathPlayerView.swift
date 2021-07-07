@@ -23,48 +23,56 @@ struct BreathPlayerView: View {
     
     var body: some View {
         BaseView {
-            // MARK: - Header
-            headerView()
             
             // MARK: - Background
             if onAppear {
-                backgroundView()
+                backgroundView().zIndex(0)
             }
             
+            // MARK: - Header
+            headerView().zIndex(1)
+            
             // MARK: - Breath values
-            Text(viewModel.cycle)
+            Text(viewModel.cycleText)
                 .font(Font.detail())
                 .foregroundColor(Color.Text.primary())
                 .frame(maxWidth: .infinity)
-                .offset(y: -180)
+                .offset(y: -200)
+                .zIndex(1)
 
             BreathSymbolsView(indexAvailable: viewModel.breathSymbolIndexAvailable,
                               indexHighlighted: $viewModel.breathSymbolIndex)
-                .offset(x: 0, y: -130)
+                .offset(x: 0, y: -150)
+                .zIndex(1)
             
+            if viewModel.viewStep.hasFinished() {
+                Color.black.opacity(0.4).ignoresSafeArea()
+            }
             
             // MARK: - Process exercice steps
-            switch viewModel.viewState {
+            switch viewModel.viewStep {
             case .notStarted:
                 ZStack {
                     PrimaryButton(title: Texts.sessionStartButton) {
-                        viewModel.viewState = .countdown
+                        viewModel.viewStep = .countdown
                     }
                     .frame(maxWidth: .infinity, maxHeight: 54)
                     .padding(.horizontal, 53)
                     .offset(y: 50)
                 }
+                .zIndex(1)
             case .countdown:
-                Text(viewModel.countdownTime)
+                Text(viewModel.countdownText)
                     .font(Font.headline1())
                     .foregroundColor(Color.Text.primary())
+                    .zIndex(1)
             case .started:
                 ZStack {
                     HStack {
-                        Text(viewModel.manoeuver)
+                        Text(viewModel.currentBreathAction)
                             .font(Font.headline2())
                             .foregroundColor(.white)
-                        Text(viewModel.manoeuverTime)
+                        Text(viewModel.currentBreathActionTimeRemaining)
                             .font(Font.headline2())
                             .foregroundColor(.white)
                     }
@@ -72,10 +80,19 @@ struct BreathPlayerView: View {
                     
                     player()
                 }
+                .zIndex(1)
             case .finished:
                 CongratsView()
-                    .transition(AnyTransition.scale.animation(Animation.easeIn(duration: 0.2)))
-                    .padding(.horizontal, 18)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.white)
+                    .cornerRadius(24)
+                    .padding(.horizontal, 24)
+                    .shadow(radius: 10)
+                    .transition(AnyTransition.scale.animation(Animation.interpolatingSpring(mass: 1,
+                                                                                            stiffness: 100,
+                                                                                            damping: 15,
+                                                                                            initialVelocity: 10)))
+                    .zIndex(3)
             }
         }
         .onAppear {
@@ -128,7 +145,7 @@ struct BreathPlayerView: View {
                     Button {
                         viewModel.toogleMusic()
                     } label: {
-                        Image(viewModel.isMusicPlaying ? "speaker_on" : "speaker_off")
+                        Image(viewModel.musicPlayerIsPlaying ? "speaker_on" : "speaker_off")
                             .resizable()
                             .frame(width: 30, height: 30)
                         
@@ -186,13 +203,13 @@ struct BreathPlayerView: View {
                 Spacer()
                 VStack(spacing: 56) {
                     VStack(spacing: 14) {
-                        ProgressView(value: viewModel.currentNumber, total: 1)
+                        ProgressView(value: viewModel.breathTimeProgressValue, total: 1)
                         HStack {
-                            Text(viewModel.currentText)
+                            Text(viewModel.breathTimeProgressText)
                                 .font(Font.title3())
                                 .foregroundColor(.white)
                             Spacer()
-                            Text(viewModel.totalTime)
+                            Text(viewModel.breathTotalDurationText)
                                 .font(Font.title3())
                                 .foregroundColor(.white)
                         }
@@ -200,7 +217,7 @@ struct BreathPlayerView: View {
                     Button(action: {
                         viewModel.tooglePlayer()
                     }, label: {
-                        Image(viewModel.isPlaying ? "pause" : "play")
+                        Image(viewModel.breathPlayerIsPlaying ? "pause" : "play")
                             .resizable()
                             .frame(width: 64, height: 64)
                     })
@@ -222,87 +239,5 @@ struct BreathPlayerView_Previews: PreviewProvider {
                                                                cycleNumber: 30))
         
         return BreathPlayerView(viewModel: BreathViewModel(breath: breath))
-    }
-}
-
-/// An animatable modifier that is used for observing animations for a given animatable value.
-struct AnimationCompletionObserverModifier<Value>: AnimatableModifier where Value: VectorArithmetic {
-    
-    /// While animating, SwiftUI changes the old input value to the new target value using this property. This value is set to the old value until the animation completes.
-    var animatableData: Value {
-        didSet {
-            notifyCompletionIfFinished()
-        }
-    }
-    
-    /// The target value for which we're observing. This value is directly set once the animation starts. During animation, `animatableData` will hold the oldValue and is only updated to the target value once the animation completes.
-    private var targetValue: Value
-    
-    /// The completion callback which is called once the animation completes.
-    private var completion: () -> Void
-    
-    init(observedValue: Value, completion: @escaping () -> Void) {
-        self.completion = completion
-        self.animatableData = observedValue
-        targetValue = observedValue
-    }
-    
-    /// Verifies whether the current animation is finished and calls the completion callback if true.
-    private func notifyCompletionIfFinished() {
-        guard animatableData == targetValue else { return }
-        
-        /// Dispatching is needed to take the next runloop for the completion callback.
-        /// This prevents errors like "Modifying state during view update, this will cause undefined behavior."
-        DispatchQueue.main.async {
-            self.completion()
-        }
-    }
-    
-    func body(content: Content) -> some View {
-        /// We're not really modifying the view so we can directly return the original input value.
-        return content
-    }
-}
-
-extension View {
-    
-    /// Calls the completion handler whenever an animation on the given value completes.
-    /// - Parameters:
-    ///   - value: The value to observe for animations.
-    ///   - completion: The completion callback to call once the animation completes.
-    /// - Returns: A modified `View` instance with the observer attached.
-    func onAnimationCompleted<Value: VectorArithmetic>(for value: Value, completion: @escaping () -> Void) -> ModifiedContent<Self, AnimationCompletionObserverModifier<Value>> {
-        return modifier(AnimationCompletionObserverModifier(observedValue: value, completion: completion))
-    }
-}
-
-struct ReversingScale: AnimatableModifier {
-    var value: CGFloat
-    
-    private var target: CGFloat
-    private var onEnded: () -> ()
-    
-    init(to value: CGFloat, onEnded: @escaping () -> () = {}) {
-        self.target = value
-        self.value = value
-        self.onEnded = onEnded // << callback
-    }
-    
-    var animatableData: CGFloat {
-        get { value }
-        set { value = newValue
-            // newValue here is interpolating by engine, so changing
-            // from previous to initially set, so when they got equal
-            // animation ended
-            if newValue == target {
-                onEnded()
-            }
-        }
-    }
-    
-    func body(content: Content) -> some View {
-        content.overlay(RoundedRectangle(cornerRadius: 60)
-                            .strokeBorder(Color.white.opacity(0.5), lineWidth: value)
-        )
     }
 }

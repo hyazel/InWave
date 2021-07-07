@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public struct BackgroundHelper: UIViewRepresentable {
+public struct ClearBackground: UIViewRepresentable {
     public init() {}
     
     public func makeUIView(context: Context) -> UIView {

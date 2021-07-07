@@ -61,6 +61,11 @@ public final class BreathEngine {
         }
     }
     
+    public func getManoeuverTime(totalSeconds: Int) -> String {
+        let upperBounds = getCurrentManoeuverDuration()
+        return String(upperBounds - totalSeconds) + "s"
+    }
+    
     public func getCurrentAudio() -> InWavePlayer.Audio {
         switch currentManoeuver {
         case .inhale:

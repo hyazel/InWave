@@ -15,8 +15,6 @@
 		F911452125A9EED4002C1127 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911452025A9EED4002C1127 /* Fonts.swift */; };
 		F9291CD5260CA25B005ABABA /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9291CD4260CA25B005ABABA /* Modifier.swift */; };
 		F9291D17260CE2CD005ABABA /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9291D16260CE2CD005ABABA /* AppDependencies.swift */; };
-		F93DB4CF264978D00034F2E7 /* BacASable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DB4CE264978D00034F2E7 /* BacASable.swift */; };
-		F94251F226149F14000B4E1E /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94251F126149F14000B4E1E /* Journey.swift */; };
 		F94304DB25BEDB31006FC535 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94304DA25BEDB31006FC535 /* OnBoarding.swift */; };
 		F9590381262478BF00BE1342 /* BreathSymbolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9590380262478BF00BE1342 /* BreathSymbolsView.swift */; };
 		F95B34742573DB84006AF485 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95B34732573DB84006AF485 /* TabBarView.swift */; };
@@ -25,11 +23,13 @@
 		F9734BCB26532A5E00E3A59D /* libCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F98D2B04260CE987001CBC4F /* libCommon.a */; };
 		F9734BDB26532B6200E3A59D /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9734BDA26532B6200E3A59D /* Buttons.swift */; };
 		F973E64D25F3BBF40071177A /* RootViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F973E64C25F3BBF40071177A /* RootViewCoordinator.swift */; };
+		F975B1E22678F7140011BDBC /* AnimationCompletionObserverModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975B1E12678F7140011BDBC /* AnimationCompletionObserverModifier.swift */; };
+		F975B1E52678FC930011BDBC /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975B1E42678FC930011BDBC /* LottieView.swift */; };
+		F975B1E72678FCBB0011BDBC /* WaveAnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975B1E62678FCBB0011BDBC /* WaveAnimationType.swift */; };
 		F97EC21C25CEDB17002DD88D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EC21B25CEDB17002DD88D /* HomeViewModel.swift */; };
 		F97EC23025CEEC51002DD88D /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97EC22F25CEEC51002DD88D /* UserRepository.swift */; };
 		F97EC23625CEED44002DD88D /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D14F17255ED7E2005E9A3C /* StorageProvider.swift */; };
 		F98D2ADF260CE486001CBC4F /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98D2ADE260CE486001CBC4F /* RootViewModel.swift */; };
-		F98D2B07260CE987001CBC4F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98D2B06260CE987001CBC4F /* Common.swift */; };
 		F98D2B10260CE997001CBC4F /* DependenciesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9291D1D260CE2D6005ABABA /* DependenciesContainer.swift */; };
 		F98D2B16260CE9A0001CBC4F /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90AEAF425F14414000266FF /* ViewExtensions.swift */; };
 		F98D2B17260CE9A0001CBC4F /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911452F25A9F715002C1127 /* NSAttributedStringExtensions.swift */; };
@@ -41,7 +41,7 @@
 		F99A453C262F24B500D27215 /* 1_idle_low.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4538262F24B500D27215 /* 1_idle_low.json */; };
 		F9A9DA99264C1C3900FB3C77 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DA98264C1C3900FB3C77 /* BaseView.swift */; };
 		F9A9DAA5264D5A4B00FB3C77 /* BackgroundWaves.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DAA4264D5A4A00FB3C77 /* BackgroundWaves.swift */; };
-		F9A9DAAC264D5E4900FB3C77 /* BackgroundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DAAB264D5E4800FB3C77 /* BackgroundHelper.swift */; };
+		F9A9DAAC264D5E4900FB3C77 /* ClearBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DAAB264D5E4800FB3C77 /* ClearBackground.swift */; };
 		F9B30B2726150C1200EAE40B /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B30B2626150C1200EAE40B /* ButtonStyles.swift */; };
 		F9BA63F125A735C500729E88 /* ColorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BA63F025A735C500729E88 /* ColorsExtensions.swift */; };
 		F9BA63FD25A7362400729E88 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BA63FC25A7362400729E88 /* Palette.swift */; };
@@ -74,7 +74,6 @@
 		F9DEA406260CF04800885587 /* HomeTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F913A8B025ACD8B500482F76 /* HomeTimeView.swift */; };
 		F9DEA40E260CF5D500885587 /* BreathEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA40D260CF5D500885587 /* BreathEngine.swift */; };
 		F9DEA41A260CF61200885587 /* BreathList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA419260CF61200885587 /* BreathList.swift */; };
-		F9DEA426260CF63900885587 /* JourneyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA425260CF63900885587 /* JourneyList.swift */; };
 		F9DEA42E260CF67D00885587 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D14F05255ED579005E9A3C /* StorageKeys.swift */; };
 		F9DEA43A260CFA9000885587 /* HomeViewModelTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA439260CFA9000885587 /* HomeViewModelTimer.swift */; };
 		F9DEA441260CFAA500885587 /* BreathCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA440260CFAA500885587 /* BreathCellViewModel.swift */; };
@@ -208,10 +207,8 @@
 		F9291CD4260CA25B005ABABA /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		F9291D16260CE2CD005ABABA /* AppDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		F9291D1D260CE2D6005ABABA /* DependenciesContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependenciesContainer.swift; sourceTree = "<group>"; };
-		F93DB4CE264978D00034F2E7 /* BacASable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacASable.swift; sourceTree = "<group>"; };
 		F93E0D2525F6548100643C91 /* InWavePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InWavePlayer.swift; sourceTree = "<group>"; };
 		F93E0D2C25F6574000643C91 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
-		F94251F126149F14000B4E1E /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
 		F943042925B5DA83006FC535 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		F94304DA25BEDB31006FC535 /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
 		F94304E125BEDDA6006FC535 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -222,18 +219,20 @@
 		F9734BBD2653294500E3A59D /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		F9734BDA26532B6200E3A59D /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		F973E64C25F3BBF40071177A /* RootViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewCoordinator.swift; sourceTree = "<group>"; };
+		F975B1E12678F7140011BDBC /* AnimationCompletionObserverModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCompletionObserverModifier.swift; sourceTree = "<group>"; };
+		F975B1E42678FC930011BDBC /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		F975B1E62678FCBB0011BDBC /* WaveAnimationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveAnimationType.swift; sourceTree = "<group>"; };
 		F97EC21B25CEDB17002DD88D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F97EC22F25CEEC51002DD88D /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		F98D2ADE260CE486001CBC4F /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		F98D2B04260CE987001CBC4F /* libCommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F98D2B06260CE987001CBC4F /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		F99A4535262F24B400D27215 /* 4_fall.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 4_fall.json; sourceTree = "<group>"; };
 		F99A4536262F24B500D27215 /* 3_idle_high.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3_idle_high.json; sourceTree = "<group>"; };
 		F99A4537262F24B500D27215 /* 2_rise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 2_rise.json; sourceTree = "<group>"; };
 		F99A4538262F24B500D27215 /* 1_idle_low.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1_idle_low.json; sourceTree = "<group>"; };
 		F9A9DA98264C1C3900FB3C77 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		F9A9DAA4264D5A4A00FB3C77 /* BackgroundWaves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundWaves.swift; sourceTree = "<group>"; };
-		F9A9DAAB264D5E4800FB3C77 /* BackgroundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundHelper.swift; sourceTree = "<group>"; };
+		F9A9DAAB264D5E4800FB3C77 /* ClearBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBackground.swift; sourceTree = "<group>"; };
 		F9AC5C2125ACDF3D00B85FC1 /* BreathCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathCard.swift; sourceTree = "<group>"; };
 		F9B30B2626150C1200EAE40B /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		F9BA63F025A735C500729E88 /* ColorsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtensions.swift; sourceTree = "<group>"; };
@@ -268,7 +267,6 @@
 		F9DEA3EE260CEC8600885587 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9DEA40D260CF5D500885587 /* BreathEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathEngine.swift; sourceTree = "<group>"; };
 		F9DEA419260CF61200885587 /* BreathList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathList.swift; sourceTree = "<group>"; };
-		F9DEA425260CF63900885587 /* JourneyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyList.swift; sourceTree = "<group>"; };
 		F9DEA439260CFA9000885587 /* HomeViewModelTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTimer.swift; sourceTree = "<group>"; };
 		F9DEA440260CFAA500885587 /* BreathCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathCellViewModel.swift; sourceTree = "<group>"; };
 		F9DEA49B260E24B200885587 /* Waves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waves.swift; sourceTree = "<group>"; };
@@ -419,14 +417,21 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		F975B1E32678FC1D0011BDBC /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F9A9DAAB264D5E4800FB3C77 /* ClearBackground.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		F98D2B05260CE987001CBC4F /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				F9291D1D260CE2D6005ABABA /* DependenciesContainer.swift */,
-				F9A9DAAB264D5E4800FB3C77 /* BackgroundHelper.swift */,
+				F975B1E32678FC1D0011BDBC /* UI */,
 				F9DEA3CF260CEB8C00885587 /* Utilities */,
 				F911452D25A9F705002C1127 /* Extensions */,
-				F98D2B06260CE987001CBC4F /* Common.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -438,10 +443,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F99BE86B267B461600D14D6D /* BreathEngine */ = {
+			isa = PBXGroup;
+			children = (
+				F9DEA40D260CF5D500885587 /* BreathEngine.swift */,
+			);
+			path = BreathEngine;
+			sourceTree = "<group>";
+		};
+		F99BE86C267B462500D14D6D /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				F93E0D2525F6548100643C91 /* InWavePlayer.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		F99BE86D267B463B00D14D6D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F9D14EF9255ED2CB005E9A3C /* Breath.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F99BE86E267B465F00D14D6D /* Breaths */ = {
+			isa = PBXGroup;
+			children = (
+				F9DEA419260CF61200885587 /* BreathList.swift */,
+			);
+			path = Breaths;
+			sourceTree = "<group>";
+		};
 		F9A9DA96264C1C2000FB3C77 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				F9A9DA97264C1C2800FB3C77 /* UI */,
+				F975B1E62678FCBB0011BDBC /* WaveAnimationType.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -450,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				F9A9DA98264C1C3900FB3C77 /* BaseView.swift */,
+				F975B1E42678FC930011BDBC /* LottieView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -466,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				F9291CD4260CA25B005ABABA /* Modifier.swift */,
+				F975B1E12678F7140011BDBC /* AnimationCompletionObserverModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -500,9 +540,9 @@
 		F9D14E7F255ED0A6005E9A3C /* InWave */ = {
 			isa = PBXGroup;
 			children = (
-				F9A9DA96264C1C2000FB3C77 /* Utilities */,
 				F9D14EFF255ED386005E9A3C /* App */,
 				F9D14F00255ED38D005E9A3C /* Scenes */,
+				F9A9DA96264C1C2000FB3C77 /* Utilities */,
 				F9D14E84255ED0A7005E9A3C /* Assets.xcassets */,
 				F9D14E89255ED0A7005E9A3C /* Info.plist */,
 				F93E0D3325F6642400643C91 /* Assets */,
@@ -551,14 +591,12 @@
 		F9D14EBE255ED271005E9A3C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F99BE86E267B465F00D14D6D /* Breaths */,
+				F99BE86D267B463B00D14D6D /* Models */,
+				F99BE86C267B462500D14D6D /* Player */,
+				F99BE86B267B461600D14D6D /* BreathEngine */,
 				F9DEA42D260CF65D00885587 /* Storage */,
 				F9DEA42C260CF65400885587 /* Repositories */,
-				F9DEA40D260CF5D500885587 /* BreathEngine.swift */,
-				F93E0D2525F6548100643C91 /* InWavePlayer.swift */,
-				F9D14EF9255ED2CB005E9A3C /* Breath.swift */,
-				F9DEA419260CF61200885587 /* BreathList.swift */,
-				F94251F126149F14000B4E1E /* Journey.swift */,
-				F9DEA425260CF63900885587 /* JourneyList.swift */,
 				F9D14EBF255ED271005E9A3C /* Core.h */,
 				F9D14EC0255ED271005E9A3C /* Info.plist */,
 			);
@@ -595,7 +633,6 @@
 			isa = PBXGroup;
 			children = (
 				F9D14E80255ED0A6005E9A3C /* InWaveApp.swift */,
-				F93DB4CE264978D00034F2E7 /* BacASable.swift */,
 				F9DEA3DC260CEBAF00885587 /* Dependencies */,
 			);
 			path = App;
@@ -993,8 +1030,7 @@
 				F9DEA3D0260CEB9500885587 /* NavigationLazyView.swift in Sources */,
 				F98D2B18260CE9A0001CBC4F /* URLExtensions.swift in Sources */,
 				F98D2B16260CE9A0001CBC4F /* ViewExtensions.swift in Sources */,
-				F9A9DAAC264D5E4900FB3C77 /* BackgroundHelper.swift in Sources */,
-				F98D2B07260CE987001CBC4F /* Common.swift in Sources */,
+				F9A9DAAC264D5E4900FB3C77 /* ClearBackground.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,12 +1045,13 @@
 				F95B34742573DB84006AF485 /* TabBarView.swift in Sources */,
 				F973E64D25F3BBF40071177A /* RootViewCoordinator.swift in Sources */,
 				F9D346BD25D40CAA00071541 /* BreathListViewModel.swift in Sources */,
+				F975B1E52678FC930011BDBC /* LottieView.swift in Sources */,
 				F9291D17260CE2CD005ABABA /* AppDependencies.swift in Sources */,
-				F93DB4CF264978D00034F2E7 /* BacASable.swift in Sources */,
 				F95B34842573EE96006AF485 /* HomeView.swift in Sources */,
 				F9DE9E8D25D6951D0067749B /* Playground.swift in Sources */,
 				F9DEA43A260CFA9000885587 /* HomeViewModelTimer.swift in Sources */,
 				F9D14E81255ED0A6005E9A3C /* InWaveApp.swift in Sources */,
+				F975B1E72678FCBB0011BDBC /* WaveAnimationType.swift in Sources */,
 				F9D14F32256164C4005E9A3C /* BreathViewModel.swift in Sources */,
 				F903AE7725E0163200747D90 /* CongratsView.swift in Sources */,
 				F94304DB25BEDB31006FC535 /* OnBoarding.swift in Sources */,
@@ -1040,9 +1077,7 @@
 				F97EC23025CEEC51002DD88D /* UserRepository.swift in Sources */,
 				F9DEA42E260CF67D00885587 /* StorageKeys.swift in Sources */,
 				F97EC23625CEED44002DD88D /* StorageProvider.swift in Sources */,
-				F9DEA426260CF63900885587 /* JourneyList.swift in Sources */,
 				F9DEA40E260CF5D500885587 /* BreathEngine.swift in Sources */,
-				F94251F226149F14000B4E1E /* Journey.swift in Sources */,
 				F9D14EFA255ED2CB005E9A3C /* Breath.swift in Sources */,
 				F9DEA41A260CF61200885587 /* BreathList.swift in Sources */,
 			);
@@ -1065,6 +1100,7 @@
 				F911452125A9EED4002C1127 /* Fonts.swift in Sources */,
 				F9DEA3E8260CEC5D00885587 /* OnBoardingView.swift in Sources */,
 				F9DEA3FF260CEFD900885587 /* BreathCard.swift in Sources */,
+				F975B1E22678F7140011BDBC /* AnimationCompletionObserverModifier.swift in Sources */,
 				F9291CD5260CA25B005ABABA /* Modifier.swift in Sources */,
 				F9BA640925A73FC300729E88 /* Colors.swift in Sources */,
 				F9B30B2726150C1200EAE40B /* ButtonStyles.swift in Sources */,
@@ -1287,6 +1323,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_ASSET_PATHS = "\"InWave/Preview Content\"";
 				DEVELOPMENT_TEAM = KNR6KF3VJA;
 				ENABLE_PREVIEWS = YES;
@@ -1312,6 +1349,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_ASSET_PATHS = "\"InWave/Preview Content\"";
 				DEVELOPMENT_TEAM = KNR6KF3VJA;
 				ENABLE_PREVIEWS = YES;
@@ -1395,9 +1433,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Core;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1425,8 +1464,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Core;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1479,7 +1519,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RCSU9599FQ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1496,9 +1536,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.DesignSystem;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1509,7 +1550,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RCSU9599FQ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1526,8 +1567,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.DesignSystem;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

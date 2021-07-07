@@ -18,7 +18,7 @@ public struct OnBoardingView: View {
     }
     
     public var body: some View {
-        VStack {
+        VStack(spacing: 24) {
             Image(icon)
                 .resizable()
                 .frame(width: 180, height: 180, alignment: .center)
@@ -35,7 +35,7 @@ struct onBoardingView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.Background.primary()
-            OnBoardingView(title: "bla", icon: "interested_face")
+            OnBoardingView(title: "La vie moderne déséquilibre notre systeme nerveux", icon: "interested_face")
         }.edgesIgnoringSafeArea(.all)
     }
 }

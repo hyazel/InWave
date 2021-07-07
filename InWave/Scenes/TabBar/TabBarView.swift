@@ -87,11 +87,11 @@ struct InWaveTabView: View {
         TabView(selection: $selectedTab) {
             HomeView(viewModel: HomeViewModel(dependencies: AppDependencies.container),
                      viewModelTimer: HomeViewModelTimer())
-                .background(BackgroundHelper())
+                .background(ClearBackground())
                 .tag(tabItems[0])
             
             BreathListView(viewModel: BreathListViewModel())
-                .background(BackgroundHelper())
+                .background(ClearBackground())
                 .tag(tabItems[1])
         }
     }

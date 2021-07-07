@@ -13,7 +13,7 @@ struct CongratsView: View {
     // MARK: - Constants
     enum Texts {
         static var title: String = "Exercice terminé !"
-        static var text: String = "Vos hormones de stress sont en chute et votre dopamine augmente."
+        static var text: String = "\u{2022} Hormones de stress en chute \n\u{2022} Augmentation des hormones du bien être \n\u{2022} Meilleur défense immunitaire"
     }
     
     // MARK: - Environment
@@ -27,14 +27,16 @@ struct CongratsView: View {
                     .frame(width: 120, height: 120)
                     .clipShape(Circle())
                 
-                VStack(spacing: 8) {
+                VStack(spacing: 12) {
                     Text(Texts.title)
                         .font(Font.title1())
                         .foregroundColor(Color.Text.secondary())
+                        .multilineTextAlignment(.center)
                     Text(Texts.text)
                         .font(Font.title3())
                         .foregroundColor(Color.Text.secondary())
-                        .multilineTextAlignment(.center)
+                        .multilineTextAlignment(.leading)
+                        .lineSpacing(5)
                 }
             }
             SecondaryButton(title: "OK") {
@@ -42,9 +44,6 @@ struct CongratsView: View {
             }
         }
         .padding(24)
-        .background(Color.Background.card())
-        .cornerRadius(24)
-        .shadow(radius: 10)
     }
 }
 
@@ -54,7 +53,11 @@ struct CongratsView_Previews: PreviewProvider {
             Color.black.ignoresSafeArea().opacity(0.2)
             
             CongratsView()
-                .frame(width: 339, height: 400)
+                .frame(maxWidth: .infinity)
+                .background(Color.white)
+                .cornerRadius(24)
+                .padding(.horizontal, 24)
+                .shadow(radius: 10)
         }
     }
 }

@@ -12,7 +12,7 @@ import Common
 
 final class BreathViewModel: ObservableObject, Identifiable {
     // MARK: - ViewState
-    enum ViewState {
+    enum ViewStep {
         case notStarted
         case countdown
         case started
@@ -31,10 +31,12 @@ final class BreathViewModel: ObservableObject, Identifiable {
         }
     }
     
-    // Outputs
-    @Published var viewState: ViewState = .notStarted {
+    // MARK: - Outputs
+    
+    /// View steps
+    @Published var viewStep: ViewStep = .notStarted {
         didSet {
-            switch viewState {
+            switch viewStep {
             case .started:
                 startBreathing()
             case .countdown:
@@ -43,21 +45,31 @@ final class BreathViewModel: ObservableObject, Identifiable {
             }
         }
     }
-    @Published var cycle: String = ""
-    @Published var countdownTime: String = ""
-    @Published var manoeuver: String = ""
-    @Published var manoeuverTime: String = ""
-    @Published var currentText: String  = "00:00"
-    @Published var currentNumber: Double  = 0
-    @Published var isPlaying: Bool = true
-    @Published var isMusicPlaying: Bool = true
-    @Published var strokeWidth: Double = 1
-    @Published var waveAnimation: (WaveAnimationType, CGFloat) = (.idleLow, 1)
-    @Published var breathSymbolIndex: Int = 0
-    var breathSymbolIndexAvailable: [Int] = []
-    
+    /// Breath title : ex : "coherence cardiac"
     let breathTitle: String
-    var totalTime: String = ""
+    /// Text showing the current cycle on the total number of cycles - ex: cycle 09 / 30
+    @Published var cycleText: String = ""
+    /// Breath symbol - 0 : inhale, 1: hold, 2 : exhale, 3 : hold
+    @Published var breathSymbolIndex: Int = 0
+    /// Breath symbols available
+    var breathSymbolIndexAvailable: [Int] = []
+    /// On the countdown step, show the countdown : "3, 2, 1, go"
+    @Published var countdownText: String = ""
+    /// Name of the current breath action - ex: "Inspirez"
+    @Published var currentBreathAction: String = ""
+    /// Time remaining for current breath action
+    @Published var currentBreathActionTimeRemaining: String = ""
+    var breathTotalDurationText: String = ""
+    /// Breath duration text
+    @Published var breathTimeProgressText: String  = ""//"00:00"
+    /// Breath time remaining
+    @Published var breathTimeProgressValue: Double  = 0
+    /// Breath player is playing
+    @Published var breathPlayerIsPlaying: Bool = true
+    /// Music player is playing
+    @Published var musicPlayerIsPlaying: Bool = true
+    /// Wave animation
+    @Published var waveAnimation: (WaveAnimationType, CGFloat) = (.idleLow, 1)
     
     // MARK: - Private properties
     // Injected
@@ -74,7 +86,6 @@ final class BreathViewModel: ObservableObject, Identifiable {
         feedbackGenerator.prepare()
         return feedbackGenerator
     }()
-    private var disposables = Set<AnyCancellable>()
     
     // Utilities
     private var upperBounds = 0
@@ -86,11 +97,9 @@ final class BreathViewModel: ObservableObject, Identifiable {
         self.breath = breath
         self.breathEngine = BreathEngine(breath: breath)
         
-        
-        
         upperBounds = breathEngine.getCurrentManoeuverDuration()
         breathTitle = breath.name
-        totalTime = formatNumber(breath.configuration.duration)
+        breathTotalDurationText = formatNumber(breath.configuration.duration)
         
         breathSymbolIndexAvailable = configureBreathSymbolsAvailable(breath: breath)
         
@@ -99,8 +108,7 @@ final class BreathViewModel: ObservableObject, Identifiable {
             self.setupPlayer()
         }
         
-        cycle = "CYCLE 01 / \(breath.configuration.cycleNumber.formatStringWith0())"
-        
+        cycleText = "CYCLE 01 / \(breath.configuration.cycleNumber.formatStringWith0())"
     }
     
     deinit {
@@ -113,7 +121,7 @@ final class BreathViewModel: ObservableObject, Identifiable {
 // MARK: - Countdown
 private extension BreathViewModel {
     func startCountdown() {
-        countdownTime = "3"
+        countdownText = "3"
         totalSeconds += 1
         player.play(.countdownStart)
 
@@ -121,16 +129,16 @@ private extension BreathViewModel {
             guard let self = self else { return }
             
             self.totalSeconds += 1
-            self.countdownTime = String(3 - self.totalSeconds)
+            self.countdownText = String(3 - self.totalSeconds)
             if self.totalSeconds == 3 {
-                self.countdownTime = "Go"
+                self.countdownText = "Go"
                 self.player.play(.countdownEnd)
                 return
             }
             else if self.totalSeconds == 4 {
                 self.countdownTimer?.invalidate()
                 self.totalSeconds = -1
-                self.viewState = .started
+                self.viewStep = .started
                 return
             }
             self.player.play(.countdownStart)
@@ -141,8 +149,7 @@ private extension BreathViewModel {
 // MARK: - Start breathing
 private extension BreathViewModel {
     func startBreathing() {
-        isPlaying = true
-        strokeWidth = 5
+        breathPlayerIsPlaying = true
         emitManoeuvers()
         player.play(self.breathEngine.getCurrentAudio())
     }
@@ -158,7 +165,6 @@ private extension BreathViewModel {
     }
     
     func manoeuverLogic() {
-        print("totalSeconds \(totalSeconds)")
         // Increment totalSeconds
         self.totalSeconds += 1
         // End session if beyond breath total duration
@@ -171,11 +177,12 @@ private extension BreathViewModel {
         
         waveAnimation = (WaveAnimationType.convert(from: breathEngine.currentManoeuver),
                          2 / CGFloat(breathEngine.getCurrentManoeuverDuration()))
-        manoeuver = self.breathEngine.currentManoeuver.getTitle()
-        manoeuverTime = String(self.upperBounds - self.totalSeconds) + "s"
-        currentText = self.formatNumber(self.totalSeconds)
-        currentNumber = Double(self.totalSeconds) / Double(self.breath.configuration.duration)
-
+        currentBreathAction = self.breathEngine.currentManoeuver.getTitle()
+        currentBreathActionTimeRemaining = String(self.upperBounds - self.totalSeconds) + "s"
+        breathTimeProgressText = self.formatNumber(self.totalSeconds)
+        
+        breathTimeProgressValue = Double(self.totalSeconds) / Double(self.breath.configuration.duration)
+        
         switch breathEngine.currentManoeuver {
         case .inhale:
             breathSymbolIndex = 1
@@ -193,11 +200,10 @@ private extension BreathViewModel {
             feedbackGenerator.impactOccurred()
             breathEngine.nextManoeuver()
             player.play(self.breathEngine.getCurrentAudio())
-            strokeWidth = 5
             // Update cycle if needed
             if case .inhale = breathEngine.currentManoeuver {
                 currentCycle += 1
-                cycle = "CYCLE " +
+                cycleText = "CYCLE " +
                     currentCycle.formatStringWith0()
                     + " / "
                     + breath.configuration.cycleNumber.formatStringWith0()
@@ -213,8 +219,8 @@ private extension BreathViewModel {
         breathTimer?.invalidate()
         userRepository.totalSessionNumber += 1
         userRepository.totalDailyTime += self.breath.configuration.duration
-        currentNumber = 1
-        viewState = .finished
+        breathTimeProgressValue = 1
+        viewStep = .finished
         player.stopMusic()
     }
 }
@@ -223,14 +229,11 @@ private extension BreathViewModel {
 private extension BreathViewModel {
     func setupPlayer() {
         DispatchQueue.main.async {
-            self.isMusicPlaying = !self.userRepository.isMusicmuted
+            self.musicPlayerIsPlaying = !self.userRepository.isMusicmuted
         }
         
         if !userRepository.isMusicmuted {
             self.player.play(.beach)
-//            DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-//                self.player.play(.beach)
-//            }
         }
     }
 }
@@ -238,18 +241,18 @@ private extension BreathViewModel {
 // MARK: - Inputs
 extension BreathViewModel {
     func tooglePlayer() {
-        if isPlaying {
+        if breathPlayerIsPlaying {
             breathTimer?.invalidate()
         } else {
             emitManoeuvers()
         }
-        isPlaying.toggle()
+        breathPlayerIsPlaying.toggle()
     }
     
     func toogleMusic() {
         player.toogleMusic()
         userRepository.isMusicmuted = !player.musicIsPlaying()
-        isMusicPlaying.toggle()
+        musicPlayerIsPlaying.toggle()
     }
 }
 

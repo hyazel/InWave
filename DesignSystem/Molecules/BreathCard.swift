@@ -46,7 +46,7 @@ public struct BreathCard: View {
                     Text(subtitle)
                         .font(Font.title3())
                         .foregroundColor(Color.Text.secondary())
-                        .lineLimit(2)
+                        .lineLimit(3)
                         .multilineTextAlignment(.center)
                     Spacer()
                 }
@@ -69,12 +69,12 @@ struct BreathCard_Previews: PreviewProvider {
             Color.Background.primary().edgesIgnoringSafeArea(.all)
             HStack {
                 BreathCard(imageName: "squared",
-                           title: "Respiration Relaxante",
-                           subtitle: "Marche Afghane, to reach the calm.",
+                           title: "Respiration Relaxante + +",
+                           subtitle: "Marcher avec une oxygénation optimale",
                            duration: "30 MIN",
                            imageSize: CGSize(width: 92,
                                              height: 92))
-                    .frame(width: 188, height: 248)
+                    .frame(width: 188, height: 280)
                 
                 BreathCard(imageName: "buteyko",
                            title: "Marche Afghane",
@@ -82,7 +82,7 @@ struct BreathCard_Previews: PreviewProvider {
                            duration: "30 MIN",
                            imageSize: CGSize(width: 92,
                                              height: 92))
-                    .frame(width: 188, height: 244)
+                    .frame(width: 188, height: 280)
             }
         }
     }
