@@ -13,7 +13,7 @@ struct SplashScreen: View {
         static var line1Leading = "Respirez"
         static var line1Trailing = "pour"
         static var line2Leading = "équilibrer"
-        static var line2Trailing = "votre flot intérieur"
+        static var line2Trailing = "votre flow intérieur"
     }
     
     var body: some View {
@@ -46,7 +46,7 @@ struct SplashScreen: View {
                 Text(Texts.line2Leading)
                     .foregroundColor(Color.Text.accent())
                     .font(Font.title1())
-                Text(Texts.line2Leading)
+                Text(Texts.line2Trailing)
                     .foregroundColor(Color.Text.primary())
                     .font(Font.title1())
             }
