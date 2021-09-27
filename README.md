@@ -27,6 +27,8 @@
   <img src="./ReadmeRessources/3.png" width="200" />
 </p>
 
+https://user-images.githubusercontent.com/32452224/134909469-4ca1ac33-a1f7-408b-82af-ede80eec4cb8.mp4
+
 # How to run ?
 ```
 git clone git@github.com:hyazel/InWave.git
@@ -52,7 +54,3 @@ Several **modules** :
 - **Design system** : UI, colors, ...
 - **Core** : breath engine, storage, ...
 - **Common** : Dependencies container, extensions, ...
-
-
-
-
