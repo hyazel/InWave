@@ -12,7 +12,7 @@ import Common
 
 public final class InWavePlayer {
     public enum Audio {
-        static var generalVolume: Float = 0.07
+        static var generalVolume: Float = 0.5
         case exhale(duration: Int)
         case inhale(duration: Int)
         case hold(duration: Int)
