@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Core
+import Firebase
+import DesignSystem
 
 @main
 struct InWaveApp: App {
@@ -45,35 +47,22 @@ struct InWaveApp: App {
     }
 }
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+final class AppDelegate: NSObject, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
        
         AppDependencies.make()
+        configureFirebase()
         
         return true
     }
 }
 
-struct BackgroundView: UIViewRepresentable {
-    let color: Color
-    
-    func makeUIView(context: Context) -> UIView {
-        let view = UIView()
-        DispatchQueue.main.async {
-            // find first superview with color and make it transparent
-            var parent = view.superview
-            repeat {
-                if parent?.backgroundColor != nil {
-                    parent?.backgroundColor = UIColor(color)
-                    break
-                }
-                parent = parent?.superview
-            } while (parent != nil)
-        }
-        return view
+// MARK: - Configurations
+private extension AppDelegate {
+    func configureFirebase() {
+        FirebaseApp.configure()
+        FirebaseConfiguration.shared.setLoggerLevel(.min)
     }
-
-    func updateUIView(_ uiView: UIView, context: Context) {}
 }
