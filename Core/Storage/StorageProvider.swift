@@ -57,3 +57,29 @@ public struct OptionnalUserDefaultObject<T: Codable> {
         }
     }
 }
+
+@propertyWrapper
+/// PropertyWrapper to handle value from UserDefaults
+public struct ObjectUserDefault<T: Codable> {
+    let key: String
+    let defaultValue: T
+
+    init(_ key: String, defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+
+    public var wrappedValue: T {
+        get {
+            guard let data = UserDefaults.standard.data(forKey: key),
+                  let decoded = try? JSONDecoder().decode(T.self, from: data) else { return defaultValue }
+            
+            return decoded
+        }
+        set {
+            if let encoded = try? JSONEncoder().encode(newValue) {
+                UserDefaults.standard.set(encoded, forKey: key)
+            }
+        }
+    }
+}

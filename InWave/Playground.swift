@@ -15,7 +15,7 @@ struct Playground: View {
     var body: some View {
         ZStack {
             
-            LottieView(type: .fall,
+            WaveLottieView(type: .fall,
                        animationSpeed: 1)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()

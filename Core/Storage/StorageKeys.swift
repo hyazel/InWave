@@ -13,6 +13,10 @@ enum StorageKeys {
     static let onBoardingDone = "onBoardingDone"
     static let totalSessionNumber = "totalSessionNumber"
     static let totalDailyTime = "totalDailyTime"
+    static let dailySessionNumberInARow = "dailySessionNumberInARow"
+    
+    // Sessions
+    static let recordedSessions = "recordedSessions"
     
     // Music
     static let isMusicmuted = "isMusicmuted"

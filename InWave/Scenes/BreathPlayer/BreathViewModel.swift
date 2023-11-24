@@ -71,6 +71,8 @@ final class BreathViewModel: ObservableObject, Identifiable {
     /// Wave animation
     @Published var waveAnimation: (WaveAnimationType, CGFloat) = (.idleLow, 1)
     
+    @Published var congratsText: (totalDailyTime: Int, dailySessionNumberInARow: Int) = (0, 0)
+    
     // MARK: - Private properties
     // Injected
     let breath: Breath
@@ -217,8 +219,17 @@ private extension BreathViewModel {
 private extension BreathViewModel {
     func finishSession() {
         breathTimer?.invalidate()
+        
+        congratsText = (userRepository.totalDailyTime, userRepository.dailySessionNumberInARow)
+        
         userRepository.totalSessionNumber += 1
         userRepository.totalDailyTime += self.breath.configuration.duration
+        userRepository.recordSession(breath: breath)
+        
+        if userRepository.dailySessionNumberInARow == 1 {
+            congratsText.dailySessionNumberInARow = 0
+        }
+        
         breathTimeProgressValue = 1
         viewStep = .finished
         player.stopMusic()

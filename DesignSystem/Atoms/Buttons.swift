@@ -29,10 +29,12 @@ public struct PrimaryButton: View {
 public struct SecondaryButton: View {
     let title: String
     let action: () -> ()
+    let fixedWidth: Bool
     
-    public init(title: String, action: @escaping () -> ()) {
+    public init(title: String, fixedWidth: Bool = true, action: @escaping () -> ()) {
         self.title = title
         self.action = action
+        self.fixedWidth = fixedWidth
     }
     
     public var body: some View {
@@ -41,7 +43,7 @@ public struct SecondaryButton: View {
                 Text(title)
                     .font(Font.button())
                     .foregroundColor(.white)
-                    .frame(width: 166, height: 54)
+                    .frame(maxWidth: fixedWidth ? 166 : .infinity, maxHeight: 54)
                     .background(Color.Palette.lagoon)
                     .cornerRadius(54)
                })

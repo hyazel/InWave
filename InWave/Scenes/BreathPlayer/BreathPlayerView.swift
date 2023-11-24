@@ -16,10 +16,13 @@ struct BreathPlayerView: View {
         static var sessionStartButton: String = "COMMENCER LA SESSION"
     }
     
+    @State var hasFinished: Bool = false
+    
     // MARK: - States
     @StateObject var viewModel: BreathViewModel
     @Environment(\.presentationMode) private var presentationMode
     @State private var onAppear: Bool = false
+    @State private var sheetHeight: CGFloat = .zero
     
     var body: some View {
         BaseView {
@@ -82,17 +85,21 @@ struct BreathPlayerView: View {
                 }
                 .zIndex(1)
             case .finished:
-                CongratsView()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.white)
-                    .cornerRadius(24)
-                    .padding(.horizontal, 24)
-                    .shadow(radius: 10)
-                    .transition(AnyTransition.scale.animation(Animation.interpolatingSpring(mass: 1,
-                                                                                            stiffness: 100,
-                                                                                            damping: 15,
-                                                                                            initialVelocity: 10)))
-                    .zIndex(3)
+                EmptyView()
+            }
+        }
+        .sheet(isPresented: $hasFinished) {
+            CongratsView(leadingText: viewModel.congratsText.totalDailyTime / 60,
+                         trailingText: viewModel.congratsText.dailySessionNumberInARow) {
+                presentationMode.wrappedValue.dismiss()
+            }
+            .presentationDragIndicator(.hidden)
+            .presentationDetents([.height(340)])
+            .interactiveDismissDisabled()
+        }
+        .onChange(of: viewModel.viewStep) {
+            if $0.hasFinished() {
+                hasFinished = true
             }
         }
         .onAppear {
@@ -171,25 +178,25 @@ struct BreathPlayerView: View {
             // Lottie
             switch viewModel.waveAnimation.0 {
             case .idleLow:
-                LottieView(type: viewModel.waveAnimation.0,
+                WaveLottieView(type: viewModel.waveAnimation.0,
                            animationSpeed: viewModel.waveAnimation.1)
                     .frame(maxWidth: .infinity,
                            maxHeight: .infinity)
                     .ignoresSafeArea()
             case .rise:
-                LottieView(type: viewModel.waveAnimation.0,
+                WaveLottieView(type: viewModel.waveAnimation.0,
                            animationSpeed: viewModel.waveAnimation.1)
                     .frame(maxWidth: .infinity,
                            maxHeight: .infinity)
                     .ignoresSafeArea()
             case .fall:
-                LottieView(type: viewModel.waveAnimation.0,
+                WaveLottieView(type: viewModel.waveAnimation.0,
                            animationSpeed: viewModel.waveAnimation.1)
                     .frame(maxWidth: .infinity,
                            maxHeight: .infinity)
                     .ignoresSafeArea()
             case .idleHigh:
-                LottieView(type: viewModel.waveAnimation.0,
+                WaveLottieView(type: viewModel.waveAnimation.0,
                            animationSpeed: viewModel.waveAnimation.1)
                     .frame(maxWidth: .infinity,
                            maxHeight: .infinity)

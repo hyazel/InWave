@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -43,6 +43,7 @@
 		F99A453A262F24B500D27215 /* 3_idle_high.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4536262F24B500D27215 /* 3_idle_high.json */; };
 		F99A453B262F24B500D27215 /* 2_rise.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4537262F24B500D27215 /* 2_rise.json */; };
 		F99A453C262F24B500D27215 /* 1_idle_low.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4538262F24B500D27215 /* 1_idle_low.json */; };
+		F9A0CC5A2AE2A62400C6ABB4 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A0CC592AE2A62400C6ABB4 /* MeView.swift */; };
 		F9A9DA99264C1C3900FB3C77 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DA98264C1C3900FB3C77 /* BaseView.swift */; };
 		F9A9DAA5264D5A4B00FB3C77 /* BackgroundWaves.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DAA4264D5A4A00FB3C77 /* BackgroundWaves.swift */; };
 		F9A9DAAC264D5E4900FB3C77 /* ClearBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DAAB264D5E4800FB3C77 /* ClearBackground.swift */; };
@@ -83,6 +84,7 @@
 		F9DEA43A260CFA9000885587 /* HomeViewModelTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA439260CFA9000885587 /* HomeViewModelTimer.swift */; };
 		F9DEA441260CFAA500885587 /* BreathCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA440260CFAA500885587 /* BreathCellViewModel.swift */; };
 		F9DEA49C260E24B200885587 /* Waves.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DEA49B260E24B200885587 /* Waves.swift */; };
+		F9DFD4F12B0F87DB00558612 /* SessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DFD4F02B0F87DB00558612 /* SessionRepository.swift */; };
 		F9DFDB0A264167990078D36A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9DFDB09264167990078D36A /* Launch Screen.storyboard */; };
 		F9E984BB25B329DF00FA8E50 /* BreathPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E984BA25B329DF00FA8E50 /* BreathPlayerView.swift */; };
 		F9EEA3EB2613AEBC006AA6FA /* pads2_insp_5s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9EEA3DF2613AEBC006AA6FA /* pads2_insp_5s.mp3 */; };
@@ -237,6 +239,7 @@
 		F99A4536262F24B500D27215 /* 3_idle_high.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3_idle_high.json; sourceTree = "<group>"; };
 		F99A4537262F24B500D27215 /* 2_rise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 2_rise.json; sourceTree = "<group>"; };
 		F99A4538262F24B500D27215 /* 1_idle_low.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1_idle_low.json; sourceTree = "<group>"; };
+		F9A0CC592AE2A62400C6ABB4 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
 		F9A9DA98264C1C3900FB3C77 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		F9A9DAA4264D5A4A00FB3C77 /* BackgroundWaves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundWaves.swift; sourceTree = "<group>"; };
 		F9A9DAAB264D5E4800FB3C77 /* ClearBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBackground.swift; sourceTree = "<group>"; };
@@ -278,6 +281,7 @@
 		F9DEA439260CFA9000885587 /* HomeViewModelTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTimer.swift; sourceTree = "<group>"; };
 		F9DEA440260CFAA500885587 /* BreathCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathCellViewModel.swift; sourceTree = "<group>"; };
 		F9DEA49B260E24B200885587 /* Waves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waves.swift; sourceTree = "<group>"; };
+		F9DFD4F02B0F87DB00558612 /* SessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRepository.swift; sourceTree = "<group>"; };
 		F9DFDB09264167990078D36A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F9E984BA25B329DF00FA8E50 /* BreathPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathPlayerView.swift; sourceTree = "<group>"; };
 		F9EEA3DF2613AEBC006AA6FA /* pads2_insp_5s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pads2_insp_5s.mp3; sourceTree = "<group>"; };
@@ -494,6 +498,14 @@
 			path = Breaths;
 			sourceTree = "<group>";
 		};
+		F9A0CC582AE2A61500C6ABB4 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				F9A0CC592AE2A62400C6ABB4 /* MeView.swift */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
 		F9A9DA96264C1C2000FB3C77 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -669,6 +681,7 @@
 		F9D14F00255ED38D005E9A3C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F9A0CC582AE2A61500C6ABB4 /* Me */,
 				F911450D25A9E8B2002C1127 /* Splash Screen */,
 				F9DEA3DB260CEBA500885587 /* RootView */,
 				F9D14EB4255ED137005E9A3C /* OnBoarding */,
@@ -737,6 +750,7 @@
 			isa = PBXGroup;
 			children = (
 				F97EC22F25CEEC51002DD88D /* UserRepository.swift */,
+				F9DFD4F02B0F87DB00558612 /* SessionRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1115,6 +1129,7 @@
 				F9A9DA99264C1C3900FB3C77 /* BaseView.swift in Sources */,
 				F98D2ADF260CE486001CBC4F /* RootViewModel.swift in Sources */,
 				F9CFA84F2722ECC20070B974 /* AskReviewView.swift in Sources */,
+				F9A0CC5A2AE2A62400C6ABB4 /* MeView.swift in Sources */,
 				F9D346B125D40B5A00071541 /* BreathListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1137,6 +1152,7 @@
 				F97EC23625CEED44002DD88D /* StorageProvider.swift in Sources */,
 				F9DEA40E260CF5D500885587 /* BreathEngine.swift in Sources */,
 				F9D14EFA255ED2CB005E9A3C /* Breath.swift in Sources */,
+				F9DFD4F12B0F87DB00558612 /* SessionRepository.swift in Sources */,
 				F9DEA41A260CF61200885587 /* BreathList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1309,7 +1325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1364,7 +1380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1388,7 +1404,7 @@
 				DEVELOPMENT_TEAM = KNR6KF3VJA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InWave/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1416,7 +1432,7 @@
 				DEVELOPMENT_TEAM = KNR6KF3VJA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InWave/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

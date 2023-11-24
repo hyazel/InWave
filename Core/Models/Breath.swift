@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-public struct BreathConfiguration {
+public struct BreathConfiguration: Codable {
     public let inhale: Int
     public let inHaleHold: Int
     public let exhale: Int
@@ -26,7 +26,7 @@ public struct BreathConfiguration {
     }
 }
 
-public struct Breath: Identifiable {
+public struct Breath: Identifiable, Codable {
     public let id = UUID()
     public let name: String
     public let description: String
