@@ -458,8 +458,6 @@
 		F98D2B2F260CEA74001CBC4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F9E3F8662B14CD52005A91C9 /* WidgetKit.framework */,
-				F9E3F8682B14CD52005A91C9 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -842,7 +840,6 @@
 				F9D14E7A255ED0A6005E9A3C /* Frameworks */,
 				F9D14E7B255ED0A6005E9A3C /* Resources */,
 				F9D14ED7255ED272005E9A3C /* Embed Frameworks */,
-				F9E3F8782B14CD53005A91C9 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -1370,7 +1367,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.6.0.0;
+				CURRENT_PROJECT_VERSION = 1.6.1.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"InWave/Preview Content\"";
 				DEVELOPMENT_TEAM = KNR6KF3VJA;
@@ -1381,7 +1378,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inwave.InWave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1398,7 +1395,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.6.0.0;
+				CURRENT_PROJECT_VERSION = 1.6.1.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"InWave/Preview Content\"";
 				DEVELOPMENT_TEAM = KNR6KF3VJA;
@@ -1409,7 +1406,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inwave.InWave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
