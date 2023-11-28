@@ -20,7 +20,7 @@ struct BreathPlayerView: View {
     
     // MARK: - States
     @StateObject var viewModel: BreathViewModel
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     @State private var onAppear: Bool = false
     @State private var sheetHeight: CGFloat = .zero
     
@@ -90,9 +90,10 @@ struct BreathPlayerView: View {
         }
         .sheet(isPresented: $hasFinished) {
             CongratsView(leadingText: viewModel.congratsText.totalDailyTime / 60,
-                         trailingText: viewModel.congratsText.dailySessionNumberInARow) {
-                presentationMode.wrappedValue.dismiss()
-            }
+                         trailingText: viewModel.congratsText.dailySessionNumberInARow, 
+                         dismissed: {
+                dismiss()
+            })
             .presentationDragIndicator(.hidden)
             .presentationDetents([.height(340)])
             .interactiveDismissDisabled()
@@ -126,7 +127,7 @@ struct BreathPlayerView: View {
             HStack {
                 VStack {
                     Button {
-                        presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     } label: {
                         ZStack {
                             Circle().stroke(Color.white, lineWidth: 2)

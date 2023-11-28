@@ -20,6 +20,7 @@ struct CongratsView: View {
     
     // MARK: - Environment
     var dismissed: (()->())? = nil
+    @Environment(\.dismiss) private var dismiss
     
     private let userRepository = UserRepository()
     
@@ -27,8 +28,8 @@ struct CongratsView: View {
     @State private var trailingText: Int
     
     init(leadingText: Int, trailingText: Int, dismissed: (()->())? = nil) {
-        self.leadingText = leadingText
-        self.trailingText = trailingText
+        self._leadingText = .init(initialValue: leadingText)
+        self._trailingText = .init(initialValue: trailingText)
         self.dismissed = dismissed
     }
     
@@ -53,6 +54,7 @@ struct CongratsView: View {
                         VStack {
                             HStack(spacing: 2) {
                                 Text("**\(leadingText)**")
+                                    .font(.title2())
                                     .onAppear {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                             withAnimation {
@@ -64,9 +66,11 @@ struct CongratsView: View {
                                 Text("**min**")
                             }
                             Text("de pratique")
+                                .foregroundColor(.Palette.test)
                         }
                         VStack {
                             Text("**\(trailingText)**")
+                                .font(.title2())
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                         withAnimation {
@@ -76,6 +80,7 @@ struct CongratsView: View {
                                 }
                                 .contentTransition(.numericText())
                             Text("sessions d'affilée")
+                                .foregroundColor(.Palette.test)
                         }
                     }
                     .font(.body())
@@ -85,6 +90,7 @@ struct CongratsView: View {
                 
                 SecondaryButton(title: "OK", fixedWidth: false) {
                     dismissed?()
+                    dismiss()
                 }
             }
             .padding(.horizontal, 32)

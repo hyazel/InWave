@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Core
-import Firebase
 import DesignSystem
 
 @main
@@ -53,16 +52,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
        
         AppDependencies.make()
-        configureFirebase()
         
         return true
-    }
-}
-
-// MARK: - Configurations
-private extension AppDelegate {
-    func configureFirebase() {
-        FirebaseApp.configure()
-        FirebaseConfiguration.shared.setLoggerLevel(.min)
     }
 }
