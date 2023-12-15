@@ -46,6 +46,16 @@ struct HomeView: View {
                 }
                 Spacer()
             }
+            .onOpenURL(perform: { url in
+                switch url.absoluteString {
+                case "www.inwave.com/breath/\(BreathList.cardiacCoherence.image)":
+                    selectedBreath = BreathList.cardiacCoherence
+                case "www.inwave.com/breath/\(BreathList.forSevenEight.image)":
+                    selectedBreath = BreathList.forSevenEight
+                default:
+                    break
+                }
+            })
             .padding(.bottom, 16)
             .padding(.top, Sizes.topInset(hasNotch: UIApplication.screenHasNotch))
         }

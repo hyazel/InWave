@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F903AE6925DFE5DB00747D90 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F903AE6825DFE5DB00747D90 /* Lottie */; };
 		F903AE7725E0163200747D90 /* CongratsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F903AE7625E0163200747D90 /* CongratsView.swift */; };
+		F90BAC5E2B2A54D9008D751E /* WidgetViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90BAC5D2B2A54D9008D751E /* WidgetViewFactory.swift */; };
 		F9104DC92603AAED00C6D972 /* InWavePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93E0D2525F6548100643C91 /* InWavePlayer.swift */; };
 		F9104DF02603B84800C6D972 /* music-beach.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9104DED2603B84800C6D972 /* music-beach.mp3 */; };
 		F911450F25A9E8C9002C1127 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911450E25A9E8C9002C1127 /* SplashScreen.swift */; };
@@ -42,6 +43,12 @@
 		F99A453B262F24B500D27215 /* 2_rise.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4537262F24B500D27215 /* 2_rise.json */; };
 		F99A453C262F24B500D27215 /* 1_idle_low.json in Resources */ = {isa = PBXBuildFile; fileRef = F99A4538262F24B500D27215 /* 1_idle_low.json */; };
 		F9A0CC5A2AE2A62400C6ABB4 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A0CC592AE2A62400C6ABB4 /* MeView.swift */; };
+		F9A2D11B2B2A4B0200D8A146 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F97ABC492B18F08600DDB6AD /* WidgetKit.framework */; };
+		F9A2D11C2B2A4B0200D8A146 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F97ABC4B2B18F08700DDB6AD /* SwiftUI.framework */; };
+		F9A2D11F2B2A4B0200D8A146 /* InWaveWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2D11E2B2A4B0200D8A146 /* InWaveWidgetBundle.swift */; };
+		F9A2D1212B2A4B0200D8A146 /* InWaveWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2D1202B2A4B0200D8A146 /* InWaveWidget.swift */; };
+		F9A2D1232B2A4B0400D8A146 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9A2D1222B2A4B0400D8A146 /* Assets.xcassets */; };
+		F9A2D1272B2A4B0400D8A146 /* InWaveWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F9A2D11A2B2A4B0200D8A146 /* InWaveWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F9A9DA99264C1C3900FB3C77 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DA98264C1C3900FB3C77 /* BaseView.swift */; };
 		F9A9DAA5264D5A4B00FB3C77 /* BackgroundWaves.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DAA4264D5A4A00FB3C77 /* BackgroundWaves.swift */; };
 		F9A9DAAC264D5E4900FB3C77 /* ClearBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9DAAB264D5E4800FB3C77 /* ClearBackground.swift */; };
@@ -105,6 +112,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F90BAC5F2B2A55D4008D751E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9D14E75255ED0A6005E9A3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9D14EBC255ED271005E9A3C;
+			remoteInfo = Core;
+		};
+		F90BAC612B2A55D4008D751E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9D14E75255ED0A6005E9A3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9D14EE3255ED29E005E9A3C;
+			remoteInfo = DesignSystem;
+		};
 		F9734BC426532A3D00E3A59D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F9D14E75255ED0A6005E9A3C /* Project object */;
@@ -132,6 +153,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F98D2B03260CE987001CBC4F;
 			remoteInfo = Common;
+		};
+		F9A2D1252B2A4B0400D8A146 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9D14E75255ED0A6005E9A3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9A2D1192B2A4B0200D8A146;
+			remoteInfo = InWaveWidgetExtension;
 		};
 		F9D14E8F255ED0A7005E9A3C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -178,6 +206,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		F97ABC582B18F08800DDB6AD /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F9A2D1272B2A4B0400D8A146 /* InWaveWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F98D2B02260CE987001CBC4F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,6 +243,7 @@
 /* Begin PBXFileReference section */
 		F903AE7625E0163200747D90 /* CongratsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsView.swift; sourceTree = "<group>"; };
 		F90AEAF425F14414000266FF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		F90BAC5D2B2A54D9008D751E /* WidgetViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewFactory.swift; sourceTree = "<group>"; };
 		F9104DED2603B84800C6D972 /* music-beach.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "music-beach.mp3"; sourceTree = "<group>"; };
 		F911450E25A9E8C9002C1127 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		F911452025A9EED4002C1127 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -229,6 +269,8 @@
 		F975B1E12678F7140011BDBC /* AnimationCompletionObserverModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCompletionObserverModifier.swift; sourceTree = "<group>"; };
 		F975B1E42678FC930011BDBC /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		F975B1E62678FCBB0011BDBC /* WaveAnimationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveAnimationType.swift; sourceTree = "<group>"; };
+		F97ABC492B18F08600DDB6AD /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F97ABC4B2B18F08700DDB6AD /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F97EC21B25CEDB17002DD88D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F97EC22F25CEEC51002DD88D /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		F98D2ADE260CE486001CBC4F /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
@@ -238,6 +280,11 @@
 		F99A4537262F24B500D27215 /* 2_rise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 2_rise.json; sourceTree = "<group>"; };
 		F99A4538262F24B500D27215 /* 1_idle_low.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1_idle_low.json; sourceTree = "<group>"; };
 		F9A0CC592AE2A62400C6ABB4 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
+		F9A2D11A2B2A4B0200D8A146 /* InWaveWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = InWaveWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9A2D11E2B2A4B0200D8A146 /* InWaveWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InWaveWidgetBundle.swift; sourceTree = "<group>"; };
+		F9A2D1202B2A4B0200D8A146 /* InWaveWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InWaveWidget.swift; sourceTree = "<group>"; };
+		F9A2D1222B2A4B0400D8A146 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F9A2D1242B2A4B0400D8A146 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9A9DA98264C1C3900FB3C77 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		F9A9DAA4264D5A4A00FB3C77 /* BackgroundWaves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundWaves.swift; sourceTree = "<group>"; };
 		F9A9DAAB264D5E4800FB3C77 /* ClearBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBackground.swift; sourceTree = "<group>"; };
@@ -306,6 +353,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9A2D1172B2A4B0200D8A146 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9A2D11C2B2A4B0200D8A146 /* SwiftUI.framework in Frameworks */,
+				F9A2D11B2B2A4B0200D8A146 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +514,8 @@
 		F98D2B2F260CEA74001CBC4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F97ABC492B18F08600DDB6AD /* WidgetKit.framework */,
+				F97ABC4B2B18F08700DDB6AD /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -500,6 +558,18 @@
 				F9A0CC592AE2A62400C6ABB4 /* MeView.swift */,
 			);
 			path = Me;
+			sourceTree = "<group>";
+		};
+		F9A2D11D2B2A4B0200D8A146 /* InWaveWidget */ = {
+			isa = PBXGroup;
+			children = (
+				F9A2D11E2B2A4B0200D8A146 /* InWaveWidgetBundle.swift */,
+				F9A2D1202B2A4B0200D8A146 /* InWaveWidget.swift */,
+				F90BAC5D2B2A54D9008D751E /* WidgetViewFactory.swift */,
+				F9A2D1222B2A4B0400D8A146 /* Assets.xcassets */,
+				F9A2D1242B2A4B0400D8A146 /* Info.plist */,
+			);
+			path = InWaveWidget;
 			sourceTree = "<group>";
 		};
 		F9A9DA96264C1C2000FB3C77 /* Utilities */ = {
@@ -554,6 +624,7 @@
 				F98D2B05260CE987001CBC4F /* Common */,
 				F9D14E91255ED0A7005E9A3C /* InWaveTests */,
 				F9D14ECB255ED272005E9A3C /* CoreTests */,
+				F9A2D11D2B2A4B0200D8A146 /* InWaveWidget */,
 				F9D14E7E255ED0A6005E9A3C /* Products */,
 				F98D2B2F260CEA74001CBC4F /* Frameworks */,
 			);
@@ -568,6 +639,7 @@
 				F9D14EC5255ED271005E9A3C /* CoreTests.xctest */,
 				F9D14EE4255ED29E005E9A3C /* DesignSystem.framework */,
 				F98D2B04260CE987001CBC4F /* libCommon.a */,
+				F9A2D11A2B2A4B0200D8A146 /* InWaveWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -832,6 +904,25 @@
 			productReference = F98D2B04260CE987001CBC4F /* libCommon.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		F9A2D1192B2A4B0200D8A146 /* InWaveWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9A2D1282B2A4B0500D8A146 /* Build configuration list for PBXNativeTarget "InWaveWidgetExtension" */;
+			buildPhases = (
+				F9A2D1162B2A4B0200D8A146 /* Sources */,
+				F9A2D1172B2A4B0200D8A146 /* Frameworks */,
+				F9A2D1182B2A4B0200D8A146 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F90BAC602B2A55D4008D751E /* PBXTargetDependency */,
+				F90BAC622B2A55D4008D751E /* PBXTargetDependency */,
+			);
+			name = InWaveWidgetExtension;
+			productName = InWaveWidgetExtension;
+			productReference = F9A2D11A2B2A4B0200D8A146 /* InWaveWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F9D14E7C255ED0A6005E9A3C /* InWave */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F9D14EA2255ED0A7005E9A3C /* Build configuration list for PBXNativeTarget "InWave" */;
@@ -840,6 +931,7 @@
 				F9D14E7A255ED0A6005E9A3C /* Frameworks */,
 				F9D14E7B255ED0A6005E9A3C /* Resources */,
 				F9D14ED7255ED272005E9A3C /* Embed Frameworks */,
+				F97ABC582B18F08800DDB6AD /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -847,6 +939,7 @@
 				F9D14ED1255ED272005E9A3C /* PBXTargetDependency */,
 				F9D14EEA255ED29E005E9A3C /* PBXTargetDependency */,
 				F98D2B32260CEA74001CBC4F /* PBXTargetDependency */,
+				F9A2D1262B2A4B0400D8A146 /* PBXTargetDependency */,
 			);
 			name = InWave;
 			packageProductDependencies = (
@@ -946,6 +1039,9 @@
 					F98D2B03260CE987001CBC4F = {
 						CreatedOnToolsVersion = 12.4;
 					};
+					F9A2D1192B2A4B0200D8A146 = {
+						CreatedOnToolsVersion = 15.0;
+					};
 					F9D14E7C255ED0A6005E9A3C = {
 						CreatedOnToolsVersion = 12.1;
 					};
@@ -989,11 +1085,20 @@
 				F9D14EC4255ED271005E9A3C /* CoreTests */,
 				F9D14EE3255ED29E005E9A3C /* DesignSystem */,
 				F98D2B03260CE987001CBC4F /* Common */,
+				F9A2D1192B2A4B0200D8A146 /* InWaveWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F9A2D1182B2A4B0200D8A146 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9A2D1232B2A4B0400D8A146 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F9D14E7B255ED0A6005E9A3C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1074,6 +1179,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F9A2D1162B2A4B0200D8A146 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9A2D11F2B2A4B0200D8A146 /* InWaveWidgetBundle.swift in Sources */,
+				F9A2D1212B2A4B0200D8A146 /* InWaveWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F9D14E79255ED0A6005E9A3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1091,6 +1205,7 @@
 				F9DE9E8D25D6951D0067749B /* Playground.swift in Sources */,
 				F9DEA43A260CFA9000885587 /* HomeViewModelTimer.swift in Sources */,
 				F9D14E81255ED0A6005E9A3C /* InWaveApp.swift in Sources */,
+				F90BAC5E2B2A54D9008D751E /* WidgetViewFactory.swift in Sources */,
 				F975B1E72678FCBB0011BDBC /* WaveAnimationType.swift in Sources */,
 				F9D14F32256164C4005E9A3C /* BreathViewModel.swift in Sources */,
 				F903AE7725E0163200747D90 /* CongratsView.swift in Sources */,
@@ -1161,6 +1276,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F90BAC602B2A55D4008D751E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9D14EBC255ED271005E9A3C /* Core */;
+			targetProxy = F90BAC5F2B2A55D4008D751E /* PBXContainerItemProxy */;
+		};
+		F90BAC622B2A55D4008D751E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9D14EE3255ED29E005E9A3C /* DesignSystem */;
+			targetProxy = F90BAC612B2A55D4008D751E /* PBXContainerItemProxy */;
+		};
 		F9734BC526532A3D00E3A59D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -1181,6 +1306,11 @@
 			isa = PBXTargetDependency;
 			target = F98D2B03260CE987001CBC4F /* Common */;
 			targetProxy = F98D2B31260CEA74001CBC4F /* PBXContainerItemProxy */;
+		};
+		F9A2D1262B2A4B0400D8A146 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9A2D1192B2A4B0200D8A146 /* InWaveWidgetExtension */;
+			targetProxy = F9A2D1252B2A4B0400D8A146 /* PBXContainerItemProxy */;
 		};
 		F9D14E90255ED0A7005E9A3C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1238,6 +1368,75 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F9A2D1292B2A4B0500D8A146 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KNR6KF3VJA;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InWaveWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = InWaveWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 InWave . All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inwave.InWave.InWaveWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F9A2D12A2B2A4B0500D8A146 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KNR6KF3VJA;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InWaveWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = InWaveWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 InWave . All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inwave.InWave.InWaveWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1631,6 +1830,15 @@
 			buildConfigurations = (
 				F98D2B09260CE987001CBC4F /* Debug */,
 				F98D2B0A260CE987001CBC4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9A2D1282B2A4B0500D8A146 /* Build configuration list for PBXNativeTarget "InWaveWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9A2D1292B2A4B0500D8A146 /* Debug */,
+				F9A2D12A2B2A4B0500D8A146 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -28,7 +28,7 @@ public struct BreathList {
                                                                                   exhaleHold: 5,
                                                                                   cycleNumber: 15))
     
-    static var afghanWalk: Breath = Breath(name: Name.afghanWalk,
+    public static var afghanWalk: Breath = Breath(name: Name.afghanWalk,
                                            description: "Marcher avec une oxygénation optimale.",
                                            image: "afghan_walk",
                                            configuration: BreathConfiguration(inhale: 3,
@@ -37,7 +37,7 @@ public struct BreathList {
                                                                               exhaleHold: 1,
                                                                               cycleNumber: 225))
     
-    static var square: Breath = Breath(name: Name.square,
+    public static var square: Breath = Breath(name: Name.square,
                                        description: "Réduit le stress et améliore le bien être.",
                                        image: "squared",
                                        configuration: BreathConfiguration(inhale: 4,
@@ -46,7 +46,7 @@ public struct BreathList {
                                                                           exhaleHold: 4,
                                                                           cycleNumber: 20))
     
-    static var cardiacCoherence: Breath = Breath(name: Name.cardiacCoherence,
+    public static var cardiacCoherence: Breath = Breath(name: Name.cardiacCoherence,
                                                  description: "Equilibre et régulation des émotions.",
                                                  image: "cardiac_coherence",
                                                  configuration: BreathConfiguration(inhale: 5,
@@ -55,7 +55,7 @@ public struct BreathList {
                                                                                     exhaleHold: 0,
                                                                                     cycleNumber: 30))
     
-    static var tonicCardiacCoherence: Breath = Breath(name: Name.tonicCardiacCoherence,
+    public static var tonicCardiacCoherence: Breath = Breath(name: Name.tonicCardiacCoherence,
                                                       description: "Favorise le passage à l’action.",
                                                       image: "cardiac_coherence_tonic",
                                                       configuration: BreathConfiguration(inhale: 6,
@@ -64,7 +64,7 @@ public struct BreathList {
                                                                                          exhaleHold: 0,
                                                                                          cycleNumber: 30))
     
-    static var relaxCardiacCoherence: Breath = Breath(name: Name.relaxCardiacCoherence,
+    public static var relaxCardiacCoherence: Breath = Breath(name: Name.relaxCardiacCoherence,
                                                       description: "Régénère le corps, calme et détente.",
                                                       image: "cardiac_coherence_relax",
                                                       configuration: BreathConfiguration(inhale: 4,
@@ -73,7 +73,7 @@ public struct BreathList {
                                                                                          exhaleHold: 0,
                                                                                          cycleNumber: 30))
     
-    static var forSevenEight: Breath = Breath(name: Name.forSevenEight,
+    public static var forSevenEight: Breath = Breath(name: Name.forSevenEight,
                                               description: "Prépare l'endormissement.",
                                               image: "4_7_8",
                                               configuration: BreathConfiguration(inhale: 4,
